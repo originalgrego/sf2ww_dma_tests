@@ -1,0 +1,6117 @@
+000416  move.b  #$0, $800030.l
+00041E  lea     ($6,PC) ; ($426), A4
+000422  bra     $73c
+000426  lea     ($6,PC) ; ($42e), A4
+00042A  bra     $7cc
+00042E  move.b  #$f0, $800181.l
+000436  move.w  #$ffc0, $80010c.l
+00043E  move.w  #$0, $80010e.l
+000446  move.w  #$9100, $800100.l
+00044E  move.w  #$90c0, $800102.l
+000456  move.w  #$9040, $800104.l
+00045E  move.w  #$9080, $800106.l
+000466  move.w  #$9200, $800108.l
+00046E  lea     ($6,PC) ; ($476), A4
+000472  bra     $7b0
+000476  lea     ($6,PC) ; ($47e), A4
+00047A  bra     $768
+00047E  lea     ($6,PC) ; ($486), A4
+000482  bra     $77e
+000486  lea     ($6,PC) ; ($48e), A4
+00048A  bra     $794
+00048E  move.w  #$12c8, $800166.l
+000496  move.w  #$3e, $800122.l
+00049E  move.w  #$3f, $800170.l
+0004A6  move.w  #$9000, $80010a.l
+0004AE  lea     ($378,PC) ; ($828), A2
+0004B2  lea     ($6,PC) ; ($4ba), A5
+0004B6  bra     $706
+0004BA  move.w  #$4000, D0
+0004BE  dbra    D0, $4be
+0004C2  move.w  $800172.l, D0
+0004C8  andi.w  #$fc3f, D0
+0004CC  cmpi.w  #$401, D0
+0004D0  bne     $6f0
+0004D4  lea     ($36d,PC) ; ($843), A2
+0004D8  lea     ($6,PC) ; ($4e0), A5
+0004DC  bra     $706
+0004E0  lea     ($38b,PC) ; ($86d), A2
+0004E4  lea     ($6,PC) ; ($4ec), A5
+0004E8  bra     $706
+0004EC  movea.l #$90c000, A0
+0004F2  movea.l A0, A1
+0004F4  adda.l  #$3ffe, A1
+0004FA  lea     ($37b,PC) ; ($877), A2
+0004FE  lea     ($6,PC) ; ($506), A6
+000502  bra     $6ca
+000506  lea     ($37a,PC) ; ($882), A2
+00050A  lea     ($6,PC) ; ($512), A5
+00050E  bra     $706
+000512  lea     ($379,PC) ; ($88d), A2
+000516  lea     ($6,PC) ; ($51e), A5
+00051A  bra     $706
+00051E  movea.l #$904000, A0
+000524  movea.l A0, A1
+000526  adda.l  #$3ffe, A1
+00052C  lea     ($36a,PC) ; ($898), A2
+000530  lea     ($6,PC) ; ($538), A6
+000534  bra     $6ca
+000538  lea     ($369,PC) ; ($8a3), A2
+00053C  lea     ($6,PC) ; ($544), A5
+000540  bra     $706
+000544  lea     ($6,PC) ; ($54c), A4
+000548  bra     $77e
+00054C  lea     ($360,PC) ; ($8ae), A2
+000550  lea     ($6,PC) ; ($558), A5
+000554  bra     $706
+000558  movea.l #$908000, A0
+00055E  movea.l A0, A1
+000560  adda.l  #$3ffe, A1
+000566  lea     ($350,PC) ; ($8b8), A2
+00056A  lea     ($6,PC) ; ($572), A6
+00056E  bra     $6ca
+000572  lea     ($34f,PC) ; ($8c3), A2
+000576  lea     ($6,PC) ; ($57e), A5
+00057A  bra     $706
+00057E  lea     ($6,PC) ; ($586), A4
+000582  bra     $794
+000586  lea     ($346,PC) ; ($8ce), A2
+00058A  lea     ($6,PC) ; ($592), A5
+00058E  bra     $706
+
+000592  movea.l #$910000, A0
+000598  movea.l A0, A1
+00059A  adda.l  #$7ffe, A1
+0005A0  lea     ($337,PC) ; ($8d9), A2
+0005A4  lea     ($6,PC) ; ($5ac), A6
+0005A8  bra     $6ca
+
+0005AC  lea     ($336,PC) ; ($8e4), A2
+0005B0  lea     ($6,PC) ; ($5b8), A5
+0005B4  bra     $706
+
+; Work ram test
+0005B8  lea     ($294,PC) ; ($84e), A2 ; WORK
+0005BC  lea     ($6,PC) ; ($5c4), A5 ; Continue
+0005C0  bra     $706
+
+0005C4  movea.l #$ff0000, A0
+0005CA  movea.l A0, A1
+0005CC  adda.l  #$fffe, A1
+0005D2  lea     ($283,PC) ; ($857), A2 ; RAM NG
+0005D6  lea     ($6,PC) ; ($5de), A6 ; Fail jump
+0005DA  bra     $6ca ; Run test
+
+0005DE  lea     ($282,PC) ; ($862), A2
+0005E2  lea     ($6,PC) ; ($5ea), A5
+0005E6  bra     $706 ; WORK - RAM OK
+; Work ram test
+
+0005EA  lea     ($6,PC) ; ($5f2), A4
+0005EE  bra     $7b0
+0005F2  lea     ($6,PC) ; ($5fa), A4
+0005F6  bra     $752
+0005FA  lea     $8000.w, A5
+0005FE  move.w  #$3f, $800122.l
+000606  move.w  #$3f, ($4c,A5)
+00060C  move.w  #$12f8, ($52,A5)
+000612  move.w  #$3f, ($5c,A5)
+000618  move.w  #$9000, ($34,A5)
+00061E  move.w  #$9100, $800100.l
+000626  move.w  #$9100, ($2a,A5)
+00062C  move.w  #$90c0, $800102.l
+000634  move.w  #$90c0, ($2c,A5)
+00063A  move.w  #$9040, $800104.l
+000642  move.w  #$9040, ($2e,A5)
+000648  move.w  #$9080, $800106.l
+000650  move.w  #$9080, ($30,A5)
+000656  move.w  #$9200, $800108.l
+00065E  move.w  #$9200, ($32,A5)
+000664  move.w  #$0, D0
+000668  move.w  D0, ($36,A5)
+00066C  move.w  D0, ($60,A5)
+000670  move.w  D0, ($3a,A5)
+000674  move.w  D0, ($64,A5)
+000678  move.w  D0, ($3e,A5)
+00067C  move.w  D0, ($68,A5)
+000680  move.w  D0, ($42,A5)
+000684  move.w  D0, ($6c,A5)
+000688  move.w  D0, ($46,A5)
+00068C  move.w  D0, ($70,A5)
+000690  move.w  D0, ($4a,A5)
+000694  move.w  D0, ($74,A5)
+000698  move.w  #$100, D0
+00069C  move.w  D0, ($38,A5)
+0006A0  move.w  D0, ($62,A5)
+0006A4  moveq   #$0, D0
+0006A6  move.w  D0, ($3c,A5)
+0006AA  move.w  D0, ($66,A5)
+0006AE  move.w  D0, ($40,A5)
+0006B2  move.w  D0, ($6a,A5)
+0006B6  move.w  D0, ($44,A5)
+0006BA  move.w  D0, ($6e,A5)
+0006BE  move.w  D0, ($48,A5)
+0006C2  move.w  D0, ($72,A5)
+0006C6  jmp     $934.w
+
+; Ram test
+0006CA  movea.l A0, A3
+0006CC  move.w  #$3, D1
+0006D0  moveq   #$0, D3
+0006D2  move.w  ($2a,PC,D3.w), D0
+0006D6  movea.l A3, A0
+0006D8  move.w  (A0), D2
+0006DA  move.w  D0, (A0)
+0006DC  cmp.w   (A0), D0
+0006DE  bne     $6f4
+
+0006E0  move.w  D2, (A0)+
+0006E2  cmpa.l  A1, A0
+0006E4  bls     $6d8
+
+0006E6  addi.w  #$2, D3
+0006EA  dbra    D1, $6d2
+0006EE  jmp     (A6)
+; Ram test
+
+; Draw test screen text
+000706  lea     (A2), A0
+000708  moveq   #$0, D0
+00070A  move.b  (A0)+, D0
+00070C  lsl.w   #7, D0
+00070E  moveq   #$0, D1
+000710  move.b  (A0)+, D1
+000712  lsl.w   #2, D1
+000714  add.w   D1, D0
+000716  movea.l #$90c000, A1
+00071C  adda.l  D0, A1
+00071E  moveq   #$0, D0
+000720  move.b  (A0)+, D0
+000722  moveq   #$0, D1
+000724  move.b  (A0)+, D1
+000726  beq     $73a
+000728  addi.w  #$4000, D1
+00072C  move.w  D1, ($0,A1)
+000730  move.w  D0, ($2,A1)
+000734  lea     ($80,A1), A1
+000738  bra     $722
+00073A  jmp     (A5)
+; Draw test screen text
+
+00073C  lea     $900000.l, A0
+000742  lea     $903fff.l, A1
+000748  move.w  #$0, (A0)+
+00074C  cmpa.l  A1, A0
+00074E  bls     $748
+000750  jmp     (A4)
+000752  lea     $ff0000.l, A0
+000758  move.w  #$1fff, D4
+00075C  moveq   #$0, D0
+00075E  move.l  D0, (A0)+
+000760  move.l  D0, (A0)+
+000762  dbra    D4, $75e
+000766  jmp     (A4)
+000768  lea     $90c000.l, A0
+00076E  lea     $90ffff.l, A1
+000774  move.w  #$4020, D0
+000778  moveq   #$0, D1
+00077A  bra     $7a6
+00077E  lea     $904000.l, A0
+000784  lea     $907fff.l, A1
+00078A  move.w  #$2800, D0
+00078E  moveq   #$0, D1
+000790  bra     $7a6
+000794  lea     $908000.l, A0
+00079A  lea     $90bfff.l, A1
+0007A0  move.w  #$400, D0
+0007A4  moveq   #$0, D1
+0007A6  move.w  D0, (A0)+
+0007A8  move.w  D1, (A0)+
+0007AA  cmpa.l  A1, A0
+0007AC  bls     $7a6
+0007AE  jmp     (A4)
+0007B0  lea     $910000.l, A0
+0007B6  move.w  #$0, D0
+0007BA  moveq   #$0, D1
+0007BC  move.w  #$ff, D4
+0007C0  move.w  D0, (A0)+
+0007C2  move.w  D1, (A0)+
+0007C4  move.l  D1, (A0)+
+0007C6  dbra    D4, $7c0
+0007CA  jmp     (A4)
+0007CC  lea     ($122,PC) ; ($8f0), A0
+0007D0  lea     $900400.l, A1
+0007D6  move.l  (A0)+, D0
+0007D8  ori.l   #$f000f000, D0
+0007DE  move.l  D0, (A1)+
+0007E0  move.l  (A0)+, D0
+0007E2  ori.l   #$f000f000, D0
+0007E8  move.l  D0, (A1)+
+0007EA  move.l  (A0)+, D0
+0007EC  ori.l   #$f000f000, D0
+0007F2  move.l  D0, (A1)+
+0007F4  move.l  (A0)+, D0
+0007F6  ori.l   #$f000f000, D0
+0007FC  move.l  D0, (A1)+
+0007FE  move.l  (A0)+, D0
+000800  ori.l   #$f000f000, D0
+000806  move.l  D0, (A1)+
+000808  move.l  (A0)+, D0
+00080A  ori.l   #$f000f000, D0
+000810  move.l  D0, (A1)+
+000812  move.l  (A0)+, D0
+000814  ori.l   #$f000f000, D0
+00081A  move.l  D0, (A1)+
+00081C  move.l  (A0)+, D0
+00081E  ori.l   #$f000f000, D0
+000824  move.l  D0, (A1)+
+000826  jmp     (A4)
+00091E  move.b  ($2db,A5), D0
+000922  cmpi.b  #$9, ($2dd,A5)
+000928  bcc     $914
+00092A  ori.b   #$c, D0
+00092E  move.b  D0, ($2db,A5)
+000932  rts
+000934  lea     $0.w, A7
+000938  lea     $8000.w, A5
+00093C  moveq   #$0, D0
+00093E  move.w  D0, ($24,A5)
+000942  move.w  D0, ($22,A5)
+000946  move.w  D0, ($20,A5)
+00094A  move.w  D0, ($1e,A5)
+00094E  lea     ($a2,A5), A0
+000952  move.w  #$1f, D0
+000956  move.l  #$ffffffff, (A0)+
+00095C  move.l  #$ffffffff, (A0)+
+000962  dbra    D0, $956
+000966  lea     ($1a2,A5), A0
+00096A  move.w  #$1f, D0
+00096E  move.l  #$0, (A0)+
+000974  move.l  #$0, (A0)+
+00097A  dbra    D0, $96e
+00097E  move.w  #$4, ($2c2,A5)
+000984  jsr     $1b44.w
+000988  jsr     $1b9c.w
+00098C  bsr     $170e
+000990  bsr     $184e
+000994  clr.b   ($322,A5)
+000998  move.b  $800000.l, D0
+00099E  not.b   D0
+0009A0  cmpi.b  #$50, D0
+0009A4  bne     $9ac
+0009AC  lea     ($3ba,PC) ; ($d68), A0
+0009B0  lea     (-$8000,A5), A6
+0009B4  move.w  #$f, D7
+0009B8  move.l  (A0)+, ($c,A6)
+0009BC  lea     ($20,A6), A6
+0009C0  dbra    D7, $9b8
+0009C4  lea     ($528a,A5), A0
+0009C8  lea     ($52da,A5), A1
+0009CC  moveq   #$5, D6
+0009CE  move.l  A0, (A1)+
+0009D0  lea     ($8,A0), A0
+0009D4  dbra    D6, $9ce
+0009D8  lea     ($528a,A5), A0
+0009DC  lea     ($3ea,PC) ; ($dc8), A1
+0009E0  move.l  (A1), ($5302,A5)
+0009E4  moveq   #$5, D6
+0009E6  move.l  (A1)+, (A0)+
+0009E8  move.l  (A1)+, (A0)+
+0009EA  dbra    D6, $9e6
+0009EE  lea     ($3b8,PC) ; ($da8), A0
+0009F2  lea     (-$75d0,A5), A6
+0009F6  move.w  #$7, D7
+0009FA  move.l  (A0)+, -(A6)
+0009FC  dbra    D7, $9fa
+000A00  move.l  A6, (-$7df8,A5)
+000A04  move.w  #$8, (-$7df4,A5)
+000A0A  move.b  #$0, ($307,A5)
+000A10  move.w  #$0, D0
+000A14  movea.l #$6396, A0
+000A1A  jsr     $b44.w
+000A1E  move.w  #$c0, D0
+000A22  movea.l #$e38, A0
+000A28  jsr     $b44.w
+000A2C  move    #$2000, SR
+000A30  clr.b   (-$7df2,A5)
+000A34  lea     (-$8000,A5), A0
+000A38  move.w  #$f, D0
+000A3C  move    #$2600, SR
+000A40  tst.b   (-$7df2,A5)
+000A44  bne     $a30
+000A46  move.b  ($0,A0), D1
+000A4A  cmpi.b  #$4, D1
+000A4E  bcc     $a5e
+000A50  move    #$2000, SR
+000A54  lea     ($20,A0), A0
+000A58  dbra    D0, $a3c
+000A5C  bra     $a30
+000A5E  pea     (-$10,PC) ; ($a50)
+000A62  move.w  D0, -(A7)
+000A64  move.l  A0, -(A7)
+000A66  move.l  A7, (-$7e00,A5)
+000A6A  move.l  A0, (-$7dfc,A5)
+000A6E  ext.w   D1
+000A70  movea.l (PC,D1.w), A1
+000A74  jmp     (A1)
+000A82  movea.l (-$7e00,A5), A7
+000A86  movea.l (A7)+, A0
+000A88  move.w  (A7)+, D0
+000A8A  rts
+000A8C  move.b  #$8, ($0,A0)
+000A92  move.l  ($4,A0), -(A7)
+000A96  move.w  ($2,A0), -(A7)
+000A9A  movea.l ($8,A0), A1
+000A9E  move    A1, USP
+000AA0  rte
+000AA2  move.b  #$8, ($0,A0)
+000AA8  movea.l ($4,A0), A1
+000AAC  movea.l ($c,A0), A4
+000AB0  move    A4, USP
+000AB2  move    #$0, SR
+000AB6  jmp     (A1)
+000AB8  movem.l D0-D7/A0-A6, -(A7)
+000ABC  lea     $8000.w, A5
+000AC0  move.w  ($2a,A5), $800100.l
+000AC8  move.w  ($32,A5), $800108.l
+000AD0  move.w  $800172.l, ($5e,A5)
+000AD8  bsr     $166a
+000ADC  bsr     $b2a
+000AE0  jsr     $15d4.w
+000AE4  jsr     $6264.w
+000AE8  bsr     $1990
+000AEC  bsr     $1aa2
+000AF0  bsr     $1832
+000AF4  addq.b  #1, ($1c,A5)
+000AF8  st      (-$7df2,A5)
+000AFC  clr.b   ($2e2,A5)
+000B00  lea     (-$8000,A5), A0
+000B04  move.w  #$f, D0
+000B08  cmpi.b  #$1, ($0,A0)
+000B0E  bne     $b1c
+000B10  subq.b  #1, ($1,A0)
+000B14  bne     $b1c
+000B16  move.b  #$4, ($0,A0)
+000B1C  lea     ($20,A0), A0
+000B20  dbra    D0, $b08
+000B24  movem.l (A7)+, D0-D7/A0-A6
+000B28  rte
+000B2A  move.w  ($5c,A5), $800170.l
+000B32  move.w  ($34,A5), $80010a.l
+000B3A  move.w  #$50, D0
+000B3E  dbra    D0, $b3e
+000B42  rts
+000B44  trap    #$0
+000B46  rts
+000B48  lea     (-$8000,A5), A1
+000B4C  tst.b   (A1,D0.w)
+000B50  bne     $b64
+000B52  move.w  #$c00, (A1,D0.w)
+000B58  move.l  A0, ($4,A1,D0.w)
+000B5C  move.w  D1, ($10,A1,D0.w)
+000B60  move.w  D2, ($12,A1,D0.w)
+000B64  rte
+000B82  trap    #$7
+000B84  rts
+000B86  tst.w   (-$7df4,A5)
+000B8A  beq     $bac
+000B8C  movea.l (-$7df8,A5), A3
+000B90  movea.l (A3)+, A1
+000B92  move.l  A3, (-$7df8,A5)
+000B96  subq.w  #1, (-$7df4,A5)
+000B9A  move.w  #$c00, ($0,A1)
+000BA0  move.l  A0, ($4,A1)
+000BA4  move.w  D0, ($10,A1)
+000BA8  move.w  D1, ($12,A1)
+000BAC  rte
+000BAE  trap    #$1
+000BB0  addq.l  #6, A7
+000BB2  movea.l (-$7dfc,A5), A0
+000BB6  moveq   #$0, D0
+000BB8  move.l  D0, ($10,A0)
+000BBC  move.l  D0, ($14,A0)
+000BC0  move.l  D0, ($18,A0)
+000BC4  move.l  D0, ($1c,A0)
+000BC8  move.b  #$0, ($0,A0)
+000BCE  bra     $a82
+000BD2  trap    #$9
+000BD4  addq.l  #6, A7
+000BD6  movea.l (-$7dfc,A5), A0
+000BDA  moveq   #$0, D0
+000BDC  move.l  D0, ($10,A0)
+000BE0  move.l  D0, ($14,A0)
+000BE4  move.l  D0, ($18,A0)
+000BE8  move.l  D0, ($1c,A0)
+000BEC  move.b  #$0, ($0,A0)
+000BF2  movea.l (-$7df8,A5), A4
+000BF6  move.l  A0, -(A4)
+000BF8  move.l  A4, (-$7df8,A5)
+000BFC  addq.w  #1, (-$7df4,A5)
+000C00  bra     $a82
+000C04  trap    #$2
+000C06  rts
+000C08  lea     (-$8000,A5), A4
+000C0C  tst.b   (A4,D0.w)
+000C10  beq     $c2a
+000C2A  rte
+000C80  trap    #$b
+000C82  rts
+000C84  lea     (-$7f00,A5), A4
+000C88  move.w  #$7, D7
+000C8C  tst.b   ($0,A4)
+000C90  beq     $cb8
+000C92  moveq   #$0, D0
+000C94  move.l  D0, ($10,A4)
+000C98  move.l  D0, ($14,A4)
+000C9C  move.l  D0, ($18,A4)
+000CA0  move.l  D0, ($1c,A4)
+000CA4  move.b  #$0, ($0,A4)
+000CAA  movea.l (-$7df8,A5), A3
+000CAE  move.l  A4, -(A3)
+000CB0  move.l  A3, (-$7df8,A5)
+000CB4  addq.w  #1, (-$7df4,A5)
+000CB8  lea     ($20,A4), A4
+000CBC  dbra    D7, $c8c
+000CC0  rte
+000CDC  movem.l D0-D7/A0-A6, -(A7)
+000CE0  trap    #$3
+000CE2  movem.l (A7)+, D0-D7/A0-A6
+000CE6  rts
+000CE8  movea.l (-$7dfc,A5), A0
+000CEC  move.w  #$100, D1
+000CF0  tst.b   D0
+000CF2  bne     $cf8
+000CF8  or.w    D1, D0
+000CFA  move.w  D0, ($0,A0)
+000CFE  move    USP, A1
+000D00  move.l  A1, ($8,A0)
+000D04  move.w  (A7)+, ($2,A0)
+000D08  move.l  (A7)+, ($4,A0)
+000D0C  bra     $a82
+000D10  trap    #$4
+000D12  rts
+000D14  movea.l (-$7dfc,A5), A0
+000D18  move.b  #$4, ($0,A0)
+000D1E  move    USP, A1
+000D20  move.l  A1, ($8,A0)
+000D24  move.w  (A7)+, ($2,A0)
+000D28  move.l  (A7)+, ($4,A0)
+000D2C  bra     $a82
+000DF8  move.w  ($2c4,A5), D0
+000DFC  move.w  D0, D1
+000DFE  add.w   D0, D0
+000E00  add.w   D1, D0
+000E02  lsr.w   #8, D0
+000E04  add.b   D0, ($2c5,A5)
+000E08  move.b  D0, ($2c4,A5)
+000E0C  move.b  ($2c5,A5), D0
+000E10  rts
+000E12  move.l  #$ffffffff, (A0,D2.w)
+000E1A  addq.w  #4, D2
+000E1C  andi.w  #$fc, D2
+000E20  move.w  D2, ($20,A5)
+000E24  move.w  D0, D1
+000E26  swap    D0
+000E28  move.w  D0, D2
+000E2A  lsr.w   #8, D2
+000E2C  andi.w  #$ff, D0
+000E30  movea.l ($70,PC,D2.w), A0
+000E34  jsr     $b82.w
+000E38  clr.w   (-$75d0,A5)
+000E3C  tst.b   ($2e1,A5)
+000E40  bne     $e50
+000E42  tst.b   ($2d7,A5)
+000E46  beq     $e80
+000E50  move.w  #$1, (-$75d0,A5)
+000E56  lea     (-$8000,A5), A0
+000E5A  move.w  #$f, D0
+000E5E  tst.b   ($1f,A0)
+000E62  bne     $e78
+000E64  cmpi.b  #$1, ($0,A0)
+000E6A  bne     $e78
+000E6C  subq.b  #1, ($1,A0)
+000E70  bne     $e78
+000E72  move.b  #$4, ($0,A0)
+000E78  lea     ($20,A0), A0
+000E7C  dbra    D0, $e5e
+000E80  jsr     $d10.w
+000E84  tst.b   (-$7df2,A5)
+000E88  bne     $ea0
+000E8A  tst.w   (-$7df4,A5)
+000E8E  beq     $ea0
+000E90  lea     ($a2,A5), A0
+000E94  move.w  ($20,A5), D2
+000E98  move.l  (A0,D2.w), D0
+000E9C  bpl     $e12
+000EA0  bra     $e38
+000ED2  tst.w   (-$7df4,A5)
+000ED6  beq     $f0e
+000ED8  cmpi.w  #$2, ($0,A5)
+000EDE  bne     $efe
+000EE0  cmpi.w  #$4, ($4,A5)
+000EE6  bne     $efe
+000EE8  cmpi.w  #$a, ($8,A5)
+000EEE  bne     $efe
+000EFE  move.w  D0, D2
+000F00  lsr.w   #8, D2
+000F02  andi.w  #$ff, D0
+000F06  movea.l (-$66,PC,D2.w), A0
+000F0A  jmp     $b82.w
+000F1A  movea.l (-$7dfc,A5), A6
+000F1E  move.w  ($10,A6), D0
+000F22  move.w  ($6,PC,D0.w), D1
+000F26  jmp     ($2,PC,D1.w)
+000F58  tst.w   ($5d56,A5)
+000F5C  bne     $f94
+000F5E  move.b  #$1, ($5d58,A5)
+000F64  move.w  #$f000, D2
+000F68  bsr     $11e8
+000F6C  moveq   #$0, D0
+000F6E  move.b  ($13,A6), D0
+000F72  jsr     $cdc.w
+000F76  cmpi.l  #$1fa, ($5d3a,A5)
+000F7E  bne     $f64
+000F80  clr.b   ($5d58,A5)
+000F84  move.w  #$1, ($5d56,A5)
+000F8A  andi.w  #$ffc0, ($52,A5)
+000F90  jmp     $bd2.w
+000F94  lea     $900c00.l, A0
+000F9A  move.w  (A0), D0
+000F9C  andi.w  #$f000, D0
+000FA0  bne     $f54
+000FA2  jmp     $bd2.w
+000FAC  ori.w   #$38, ($52,A5)
+000FB2  tst.w   ($5d56,A5)
+000FB6  beq     $fe2
+000FB8  move.b  #$1, ($5d58,A5)
+000FBE  move.w  #$1000, D2
+000FC2  bsr     $11e8
+000FC6  moveq   #$0, D0
+000FC8  move.b  ($13,A6), D0
+000FCC  jsr     $cdc.w
+000FD0  tst.l   ($5d3a,A5)
+000FD4  bne     $fbe
+000FD6  clr.b   ($5d58,A5)
+000FDA  clr.w   ($5d56,A5)
+000FDE  jmp     $bd2.w
+000FFC  tst.w   ($5d56,A5)
+001000  bne     $1038
+001002  move.b  #$1, ($5d58,A5)
+001008  move.w  #$f000, D2
+00100C  bsr     $125a
+001010  moveq   #$0, D0
+001012  move.b  ($13,A6), D0
+001016  jsr     $cdc.w
+00101A  cmpi.l  #$1fa, ($5d3a,A5)
+001022  bne     $1008
+001024  clr.b   ($5d58,A5)
+001028  move.w  #$1, ($5d56,A5)
+00102E  andi.w  #$ffc0, ($52,A5)
+001034  jmp     $bd2.w
+0011E8  clr.l   ($5d3a,A5)
+0011EC  lea     $900000.l, A0
+0011F2  lea     ($5d3e,A5), A1
+0011F6  move.w  #$1f, D7
+0011FA  bsr     $124a
+0011FC  lea     $900400.l, A0
+001202  lea     ($5d42,A5), A1
+001206  move.w  #$1f, D7
+00120A  bsr     $124a
+00120C  lea     $900800.l, A0
+001212  lea     ($5d46,A5), A1
+001216  move.w  #$1f, D7
+00121A  bsr     $124a
+00121C  lea     $900c00.l, A0
+001222  lea     ($5d4a,A5), A1
+001226  move.w  #$1f, D7
+00122A  bsr     $124a
+00122C  lea     $901000.l, A0
+001232  lea     ($5d4e,A5), A1
+001236  move.w  #$7, D7
+00123A  bsr     $124a
+00123C  lea     $901400.l, A0
+001242  lea     ($5d52,A5), A1
+001246  move.w  #$7, D7
+00124A  bsr     $12f2
+00124E  dbra    D7, $124a
+001252  move.l  (A1), D0
+001254  add.l   D0, ($5d3a,A5)
+001258  rts
+00125A  clr.l   ($5d3a,A5)
+00125E  lea     $900020.l, A0
+001264  lea     ($5d3e,A5), A1
+001268  move.w  #$1e, D7
+00126C  bsr     $12ca
+00126E  lea     $900400.l, A0
+001274  lea     ($5d42,A5), A1
+001278  move.w  #$1f, D7
+00127C  bsr     $12bc
+00127E  lea     $900800.l, A0
+001284  lea     ($5d46,A5), A1
+001288  move.w  #$1f, D7
+00128C  bsr     $12bc
+00128E  lea     $900c00.l, A0
+001294  lea     ($5d4a,A5), A1
+001298  move.w  #$1f, D7
+00129C  bsr     $12bc
+00129E  lea     $901000.l, A0
+0012A4  lea     ($5d4e,A5), A1
+0012A8  move.w  #$7, D7
+0012AC  bsr     $12bc
+0012AE  lea     $901400.l, A0
+0012B4  lea     ($5d52,A5), A1
+0012B8  move.w  #$7, D7
+0012BC  bsr     $12f2
+0012BE  dbra    D7, $12bc
+0012C2  move.l  (A1), D0
+0012C4  add.l   D0, ($5d3a,A5)
+0012C8  rts
+0012CA  bsr     $12f2
+0012CC  dbra    D7, $12ca
+0012D0  move.l  (A1), D0
+0012D2  tst.w   D2
+0012D4  bmi     $12e0
+0012E0  bset    #$1f, D0
+0012E4  add.l   D0, ($5d3a,A5)
+0012E8  rts
+0012F2  move.w  (A0), D0
+0012F4  tst.w   D2
+0012F6  bmi     $12fa
+0012F8  add.w   D2, D0
+0012FA  andi.w  #$f000, D0
+0012FE  beq     $1312
+001300  move.w  #$3, D6
+001304  add.w   D2, (A0)+
+001306  add.w   D2, (A0)+
+001308  add.w   D2, (A0)+
+00130A  add.w   D2, (A0)+
+00130C  dbra    D6, $1304
+001310  rts
+001312  lea     ($20,A0), A0
+001316  move.l  (A1), D5
+001318  tst.w   D2
+00131A  bpl     $1322
+00131C  bset    D7, D5
+00131E  move.l  D5, (A1)
+001320  rts
+001322  bclr    D7, D5
+001324  move.l  D5, (A1)
+001326  rts
+0015D4  move.w  #$4041, D0
+0015D8  bra     $15e0
+0015DA  add.w   D0, D0
+0015DC  move.w  ($50,PC,D0.w), D0
+0015E0  tst.b   ($2d7,A5)
+0015E4  beq     $162c
+00162C  rts
+00163E  tst.b   ($2d7,A5)
+001642  beq     $162c
+00166A  move.b  ($2d2,A5), D0
+00166E  move.b  ($2df,A5), D1
+001672  eor.b   D1, D0
+001674  move.b  D0, ($8d,A5)
+001678  lsl.w   #8, D0
+00167A  or.w    ($4c,A5), D0
+00167E  move.w  D0, $800122.l
+001684  move.w  ($52,A5), $800166.l
+00168C  move.b  ($2db,A5), $800030.l
+001694  move.w  ($54,A5), $800168.l
+00169C  move.w  ($56,A5), $80016a.l
+0016A4  move.w  ($58,A5), $80016c.l
+0016AC  move.w  ($5a,A5), $80016e.l
+0016B4  move.l  ($76,A5), D0
+0016B8  lsr.l   #8, D0
+0016BA  move.l  D0, ($76,A5)
+0016BE  move.b  $800018.l, D0
+0016C4  not.b   D0
+0016C6  move.b  D0, ($76,A5)
+0016CA  move.w  ($7e,A5), ($80,A5)
+0016D0  move.w  ($82,A5), ($84,A5)
+0016D6  move.b  $800001.l, D0
+0016DC  not.b   D0
+0016DE  move.b  D0, ($7f,A5)
+0016E2  move.b  $800000.l, D0
+0016E8  not.b   D0
+0016EA  move.b  D0, ($83,A5)
+0016EE  move.b  $800177.l, D0
+0016F4  not.b   D0
+0016F6  move.b  D0, D1
+0016F8  andi.b  #$7, D0
+0016FC  move.b  D0, ($7e,A5)
+001700  lsr.w   #4, D1
+001702  andi.b  #$7, D1
+001706  move.b  D1, ($82,A5)
+00170A  bsr     $1736
+00170E  move.b  $80001a.l, D0
+001714  not.b   D0
+001716  move.b  D0, ($8a,A5)
+00171A  move.b  $80001c.l, D0
+001720  not.b   D0
+001722  move.b  D0, ($8b,A5)
+001726  move.b  $80001e.l, D0
+00172C  not.b   D0
+00172E  move.b  D0, ($8c,A5)
+001732  bra     $1ad2
+001736  move.w  #$ffc0, D1
+00173A  move.w  ($60,A5), $80010c.l
+001742  move.w  ($36,A5), D0
+001746  add.w   D1, D0
+001748  move.w  D0, ($60,A5)
+00174C  move.w  ($64,A5), $800110.l
+001754  move.w  ($3a,A5), D0
+001758  add.w   D1, D0
+00175A  move.w  D0, ($64,A5)
+00175E  move.w  ($68,A5), $800114.l
+001766  move.w  ($3e,A5), D0
+00176A  add.w   D1, D0
+00176C  move.w  D0, ($68,A5)
+001770  move.w  ($6c,A5), $800118.l
+001778  move.w  ($42,A5), D0
+00177C  tst.b   ($8d,A5)
+001780  bpl     $178a
+00178A  move.w  D0, ($6c,A5)
+00178E  move.w  ($70,A5), $80011c.l
+001796  move.w  ($46,A5), D0
+00179A  tst.b   ($8d,A5)
+00179E  bpl     $17a8
+0017A8  move.w  D0, ($70,A5)
+0017AC  move.w  ($62,A5), $80010e.l
+0017B4  move.w  #$100, D0
+0017B8  sub.w   ($38,A5), D0
+0017BC  move.w  D0, ($62,A5)
+0017C0  move.w  ($66,A5), $800112.l
+0017C8  move.w  #$300, D0
+0017CC  sub.w   ($3c,A5), D0
+0017D0  move.w  D0, ($66,A5)
+0017D4  move.w  ($6a,A5), $800116.l
+0017DC  move.w  #$700, D0
+0017E0  sub.w   ($40,A5), D0
+0017E4  move.w  D0, ($6a,A5)
+0017E8  move.w  ($74,A5), $800120.l
+0017F0  move.w  #$300, D0
+0017F4  sub.w   ($4a,A5), D0
+0017F8  move.w  D0, ($74,A5)
+0017FC  move.w  ($6e,A5), $80011a.l
+001804  move.w  ($44,A5), D0
+001808  tst.b   ($8d,A5)
+00180C  bpl     $1812
+001812  move.w  D0, ($6e,A5)
+001816  move.w  ($72,A5), $80011e.l
+00181E  move.w  ($48,A5), D0
+001822  tst.b   ($8d,A5)
+001826  bpl     $182c
+00182C  move.w  D0, ($72,A5)
+001830  rts
+001832  bsr     $18f2
+001836  clr.b   ($2e3,A5)
+00183A  tst.b   ($2d7,A5)
+00183E  beq     $184c
+00184C  rts
+00184E  bsr     $185a
+001852  bsr     $18b0
+001856  bra     $18d6
+00185A  lea     ($2a2,A5), A0
+00185E  move.b  ($8a,A5), D0
+001862  andi.w  #$7, D0
+001866  add.w   D0, D0
+001868  move.w  ($36,PC,D0.w), ($4,A0)
+00186E  lea     ($8,A0), A0
+001872  move.b  ($8a,A5), D0
+001876  andi.w  #$38, D0
+00187A  lsr.w   #2, D0
+00187C  move.w  ($22,PC,D0.w), ($4,A0)
+001882  move.b  ($8a,A5), D0
+001886  andi.w  #$40, D0
+00188A  lsr.w   #6, D0
+00188C  move.b  D0, ($2d4,A5)
+001890  move.b  ($8a,A5), D0
+001894  andi.w  #$80, D0
+001898  lsr.w   #7, D0
+00189A  move.b  D0, ($2d0,A5)
+00189E  rts
+0018B0  move.b  ($8b,A5), D0
+0018B4  andi.w  #$7, D0
+0018B8  move.w  D0, ($2c6,A5)
+0018BC  tst.w   ($2c2,A5)
+0018C0  bne     $18d4
+0018D4  rts
+0018D6  move.b  ($8c,A5), D0
+0018DA  andi.w  #$4, D0
+0018DE  lsr.w   #2, D0
+0018E0  move.b  D0, ($2d3,A5)
+0018E4  move.b  ($8c,A5), D0
+0018E8  andi.w  #$40, D0
+0018EC  lsr.w   #6, D0
+0018EE  move.b  D0, ($2ce,A5)
+0018F2  move.b  ($8c,A5), D0
+0018F6  andi.w  #$20, D0
+0018FA  lsr.w   #5, D0
+0018FC  move.b  D0, ($2d1,A5)
+001900  move.b  ($8c,A5), D0
+001904  andi.w  #$8, D0
+001908  lsr.w   #3, D0
+00190A  move.b  D0, ($2d6,A5)
+00190E  move.b  ($8c,A5), D0
+001912  andi.w  #$10, D0
+001916  lsl.w   #3, D0
+001918  move.b  D0, ($2d2,A5)
+00191C  move.b  ($8c,A5), D0
+001920  andi.w  #$80, D0
+001924  lsr.w   #7, D0
+001926  move.b  D0, ($323,A5)
+00192A  tst.b   ($322,A5)
+00192E  beq     $1934
+001934  rts
+00193A  moveq   #$0, D0
+00193C  move.b  D0, D1
+00193E  move.b  D0, D2
+001940  move.b  D0, D3
+001942  move.b  ($79,A5), D0
+001946  lsr.b   #1, D0
+001948  roxl.b  #1, D1
+00194A  lsr.b   #1, D0
+00194C  roxl.b  #1, D2
+00194E  lsr.b   #1, D0
+001950  roxl.b  #1, D3
+001952  move.b  ($78,A5), D0
+001956  lsr.b   #1, D0
+001958  roxl.b  #1, D1
+00195A  lsr.b   #1, D0
+00195C  roxl.b  #1, D2
+00195E  lsr.b   #1, D0
+001960  roxl.b  #1, D3
+001962  move.b  ($77,A5), D0
+001966  lsr.b   #1, D0
+001968  roxl.b  #1, D1
+00196A  lsr.b   #1, D0
+00196C  roxl.b  #1, D2
+00196E  lsr.b   #1, D0
+001970  roxl.b  #1, D3
+001972  move.b  ($76,A5), D0
+001976  lsr.b   #1, D0
+001978  roxl.b  #1, D1
+00197A  lsr.b   #1, D0
+00197C  roxl.b  #1, D2
+00197E  lsr.b   #1, D0
+001980  roxl.b  #1, D3
+001982  move.b  D1, ($7,A6)
+001986  move.b  D2, ($f,A6)
+00198A  move.b  D3, ($2b2,A5)
+00198E  rts
+001990  tst.b   ($2d8,A5)
+001994  bne     $19da
+001996  lea     ($2a2,A5), A6
+00199A  bsr     $193a
+00199C  lea     (-$68,PC) ; ($1936), A0
+0019A0  bsr     $1a5e
+0019A4  bsr     $19dc
+0019A6  lea     ($8,A6), A6
+0019AA  lea     (-$74,PC) ; ($1938), A0
+0019AE  bsr     $1a5e
+0019B2  bsr     $19dc
+0019B4  cmpi.b  #$3, ($2b2,A5)
+0019BA  bne     $19da
+0019DA  rts
+0019DC  move.b  ($0,A6), D1
+0019E0  bne     $19f6
+0019E2  cmpi.b  #$3, ($7,A6)
+0019E8  bne     $1a08
+0019EA  addq.b  #1, ($0,A6)
+0019EE  move.b  #$78, ($6,A6)
+0019F4  rts
+0019F6  cmpi.b  #$c, ($7,A6)
+0019FC  beq     $1a0a
+0019FE  subq.b  #1, ($6,A6)
+001A02  bne     $1a08
+001A08  rts
+001A0A  addq.w  #1, ($2f4,A5)
+001A0E  addq.b  #1, ($2b3,A5)
+001A12  bsr     $1a1a
+001A14  clr.b   ($0,A6)
+001A18  rts
+001A1A  addq.b  #1, ($1,A6)
+001A1E  addq.b  #1, ($2,A6)
+001A22  tst.b   ($2d4,A5)
+001A26  bne     $1a34
+001A28  move.b  ($2,A6), D0
+001A2C  cmp.b   ($4,A6), D0
+001A30  blt     $1a5c
+001A34  moveq   #$0, D0
+001A36  move.b  ($5,A6), D0
+001A3A  move.b  ($2dd,A5), D1
+001A3E  andi    #$ef, CCR
+001A42  abcd    D0, D1
+001A44  bcs     $1a4a
+001A46  move.b  D1, ($2dd,A5)
+001A4A  cmpi.b  #$9, ($2dd,A5)
+001A50  bls     $1a58
+001A58  clr.b   ($2,A6)
+001A5C  rts
+001A5E  move.b  ($3,A6), D0
+001A62  beq     $1a80
+001A64  subq.b  #1, D0
+001A66  move.b  D0, ($3,A6)
+001A6A  cmpi.b  #$f, D0
+001A6E  bne     $1aa0
+001A70  move.b  ($2db,A5), D0
+001A74  and.b   (A0), D0
+001A76  eori.b  #$0, D0
+001A7A  move.b  D0, ($2db,A5)
+001A7E  rts
+001A80  move.b  ($1,A6), D0
+001A84  beq     $1aa0
+001A86  subq.b  #1, ($1,A6)
+001A8A  move.b  ($2db,A5), D0
+001A8E  or.b    ($1,A0), D0
+001A92  eori.b  #$0, D0
+001A96  move.b  D0, ($2db,A5)
+001A9A  move.b  #$1e, ($3,A6)
+001AA0  rts
+001AA2  tst.b   ($2b3,A5)
+001AA6  beq     $1ad0
+001AA8  subq.b  #1, ($2b3,A5)
+001AAC  jsr     $6352.w
+001AB0  tst.b   ($2da,A5)
+001AB4  beq     $1ad0
+001AB6  tst.b   ($2d3,A5)
+001ABA  bne     $1ad0
+001ABC  tst.b   ($9de,A5)
+001AC0  bne     $1ad0
+001AC2  tst.b   ($2dd,A5)
+001AC6  beq     $1ad0
+001AC8  move.w  #$1000, D0
+001ACC  jmp     $2564.w
+001AD0  rts
+001AD2  tst.b   (-$7f80,A5)
+001AD6  beq     $1adc
+001AD8  addq.l  #1, ($2fa,A5)
+001ADC  moveq   #$1, D1
+001ADE  move.b  ($2f9,A5), D0
+001AE2  andi    #$ef, CCR
+001AE6  abcd    D1, D0
+001AE8  cmpi.b  #$59, D0
+001AEC  bhi     $1af4
+001AEE  move.b  D0, ($2f9,A5)
+001AF2  rts
+001AF4  clr.b   ($2f9,A5)
+001AF8  move.b  ($2f8,A5), D0
+001AFC  andi    #$ef, CCR
+001B00  abcd    D1, D0
+001B02  cmpi.b  #$59, D0
+001B06  bhi     $1b0e
+001B08  move.b  D0, ($2f8,A5)
+001B0C  rts
+001B44  movea.l #$8acba, A0
+001B4A  lea     $900000.l, A1
+001B50  bra     $1d1c
+001B7C  move.w  ($9e4,A5), D0
+001B80  bsr     $1c1e
+001B84  move.w  ($9e4,A5), D0
+001B88  bsr     $1c3a
+001B8C  move.w  ($9e4,A5), D0
+001B90  bsr     $1c5a
+001B94  move.w  ($9e4,A5), D0
+001B98  bra     $1c76
+001B9C  moveq   #$10, D0
+001B9E  bsr     $1c1e
+001BA2  moveq   #$10, D0
+001BA4  bsr     $1c3a
+001BA8  moveq   #$10, D0
+001BAA  bsr     $1c5a
+001BAE  moveq   #$10, D0
+001BB0  bra     $1c76
+001BB4  moveq   #$11, D0
+001BB6  bsr     $1c1e
+001BBA  moveq   #$11, D0
+001BBC  bsr     $1c3a
+001BC0  moveq   #$11, D0
+001BC2  bsr     $1c5a
+001BC6  moveq   #$11, D0
+001BC8  bra     $1c76
+001C02  moveq   #$13, D0
+001C04  bra     $1c3a
+001C08  bsr     $1c18
+001C0C  bsr     $1c34
+001C10  bsr     $1c50
+001C14  bra     $1c70
+001C18  moveq   #$0, D0
+001C1A  move.w  ($9ca,A5), D0
+001C1E  asl.l   #8, D0
+001C20  asl.l   #1, D0
+001C22  movea.l #$900200, A1
+001C28  movea.l #$8aeba, A0
+001C2E  adda.l  D0, A0
+001C30  bra     $1d36
+001C34  moveq   #$0, D0
+001C36  move.w  ($9ca,A5), D0
+001C3A  asl.l   #8, D0
+001C3C  asl.l   #2, D0
+001C3E  movea.l #$900400, A1
+001C44  movea.l #$c0000, A0
+001C4A  adda.l  D0, A0
+001C4C  bra     $1d1c
+001C50  bsr     $1e38
+001C54  moveq   #$0, D0
+001C56  move.w  ($9ca,A5), D0
+001C5A  asl.l   #8, D0
+001C5C  asl.l   #2, D0
+001C5E  movea.l #$900800, A1
+001C64  movea.l #$c5000, A0
+001C6A  adda.l  D0, A0
+001C6C  bra     $1d1c
+001C70  moveq   #$0, D0
+001C72  move.w  ($9ca,A5), D0
+001C76  asl.l   #8, D0
+001C78  asl.l   #2, D0
+001C7A  movea.l #$900c00, A1
+001C80  movea.l #$ca000, A0
+001C86  adda.l  D0, A0
+001C88  bra     $1d1c
+001D1C  move.w  #$1f, D7
+001D20  move.l  (A0)+, (A1)+
+001D22  move.l  (A0)+, (A1)+
+001D24  move.l  (A0)+, (A1)+
+001D26  move.l  (A0)+, (A1)+
+001D28  move.l  (A0)+, (A1)+
+001D2A  move.l  (A0)+, (A1)+
+001D2C  move.l  (A0)+, (A1)+
+001D2E  move.l  (A0)+, (A1)+
+001D30  dbra    D7, $1d20
+001D34  rts
+001D36  move.w  #$1f, D7
+001D3A  move.l  (A0)+, (A1)+
+001D3C  move.l  (A0)+, (A1)+
+001D3E  move.l  (A0)+, (A1)+
+001D40  move.l  (A0)+, (A1)+
+001D42  dbra    D7, $1d3a
+001D46  rts
+001DD4  move.l  (A0)+, (A1)+
+001DD6  move.l  (A0)+, (A1)+
+001DD8  move.l  (A0)+, (A1)+
+001DDA  move.l  (A0)+, (A1)+
+001DDC  move.l  (A0)+, (A1)+
+001DDE  move.l  (A0)+, (A1)+
+001DE0  move.l  (A0)+, (A1)+
+001DE2  move.l  (A0)+, (A1)+
+001DE4  rts
+001E38  move.w  ($9ca,A5), D0
+001E3C  lsl.w   #3, D0
+001E3E  lea     ($28,PC,D0.w), A0
+001E42  move.w  (A0)+, ($54,A5)
+001E46  move.w  (A0)+, ($56,A5)
+001E4A  move.w  (A0)+, ($58,A5)
+001E4E  move.w  (A0), ($5a,A5)
+001E52  rts
+002052  move.w  ($9ca,A5), D0
+002056  add.w   D0, D0
+002058  lea     $900140.l, A1
+00205E  move.w  ($6,PC,D0.w), ($0,A1)
+002064  rts
+0020AA  bsr     $225a
+0020AE  bsr     $2242
+0020B2  bsr     $226c
+0020B6  bsr     $2290
+0020BA  bsr     $227e
+0020BE  lea     ($5dfe,A5), A6
+0020C2  moveq   #$0, D1
+0020C4  move.w  #$1f, D7
+0020C8  move.l  D1, (A6)+
+0020CA  dbra    D7, $20c8
+0020CE  lea     ($d56,A5), A0
+0020D2  lea     ($118a,A5), A6
+0020D6  move.b  #$2, ($1156,A5)
+0020DC  move.w  #$1, D0
+0020E0  moveq   #$0, D1
+0020E2  movea.l A6, A1
+0020E4  move.w  #$3f, D7
+0020E8  move.l  D1, (A1)+
+0020EA  dbra    D7, $20e8
+0020EE  move.b  #$0, ($11ab,A5)
+0020F4  move.b  #$1, ($12ab,A5)
+0020FA  move.b  #$2, ($22,A6)
+002100  move.w  A6, -(A0)
+002102  lea     ($100,A6), A6
+002106  dbra    D0, $20e2
+00210A  move.w  A0, ($1168,A5)
+00210E  lea     ($d86,A5), A0
+002112  lea     ($198a,A5), A6
+002116  move.b  #$10, ($115c,A5)
+00211C  move.w  #$f, D0
+002120  movea.l A6, A1
+002122  move.w  #$2f, D7
+002126  move.l  D1, (A1)+
+002128  dbra    D7, $2126
+00212C  move.b  #$6, ($22,A6)
+002132  move.w  A6, -(A0)
+002134  lea     ($c0,A6), A6
+002138  dbra    D0, $2120
+00213C  move.w  A0, ($1174,A5)
+002140  lea     ($d66,A5), A0
+002144  lea     ($138a,A5), A6
+002148  move.b  #$8, ($1159,A5)
+00214E  move.w  #$7, D0
+002152  movea.l A6, A1
+002154  move.w  #$2f, D7
+002158  move.l  D1, (A1)+
+00215A  dbra    D7, $2158
+00215E  move.b  #$4, ($22,A6)
+002164  move.w  A6, -(A0)
+002166  lea     ($c0,A6), A6
+00216A  dbra    D0, $2152
+00216E  move.w  A0, ($116e,A5)
+002172  lea     ($dfe,A5), A0
+002176  lea     ($258a,A5), A6
+00217A  move.b  #$3c, ($1160,A5)
+002180  move.w  #$3b, D0
+002184  movea.l A6, A1
+002186  move.w  #$2f, D7
+00218A  move.l  D1, (A1)+
+00218C  dbra    D7, $218a
+002190  move.b  #$8, ($22,A6)
+002196  move.w  A6, -(A0)
+002198  lea     ($c0,A6), A6
+00219C  dbra    D0, $2184
+0021A0  move.w  A0, ($117c,A5)
+0021A4  move.b  D1, ($1157,A5)
+0021A8  move.b  D1, ($1158,A5)
+0021AC  lea     $8e02.w, A0
+0021B0  move.w  A0, ($116a,A5)
+0021B4  lea     $8e06.w, A0
+0021B8  move.w  A0, ($116c,A5)
+0021BC  move.b  D1, ($115a,A5)
+0021C0  move.b  D1, ($115b,A5)
+0021C4  lea     $8e16.w, A0
+0021C8  move.w  A0, ($1170,A5)
+0021CC  lea     $8e26.w, A0
+0021D0  move.w  A0, ($1172,A5)
+0021D4  move.b  D1, ($115d,A5)
+0021D8  move.b  D1, ($115e,A5)
+0021DC  move.b  D1, ($115f,A5)
+0021E0  lea     $8e46.w, A0
+0021E4  move.w  A0, ($1176,A5)
+0021E8  lea     $8e66.w, A0
+0021EC  move.w  A0, ($1178,A5)
+0021F0  lea     $8e86.w, A0
+0021F4  move.w  A0, ($117a,A5)
+0021F8  move.b  D1, ($1161,A5)
+0021FC  move.b  D1, ($1162,A5)
+002200  move.b  D1, ($1163,A5)
+002204  move.b  D1, ($1164,A5)
+002208  move.b  D1, ($1165,A5)
+00220C  move.b  D1, ($1166,A5)
+002210  lea     $8efe.w, A0
+002214  move.w  A0, ($117e,A5)
+002218  lea     $8f76.w, A0
+00221C  move.w  A0, ($1180,A5)
+002220  lea     $8fee.w, A0
+002224  move.w  A0, ($1182,A5)
+002228  lea     $9066.w, A0
+00222C  move.w  A0, ($1184,A5)
+002230  lea     $90de.w, A0
+002234  move.w  A0, ($1186,A5)
+002238  lea     $9156.w, A0
+00223C  move.w  A0, ($1188,A5)
+002240  rts
+002242  lea     ($3c6,A5), A6
+002246  lea     ($6c6,A5), A4
+00224A  move.w  #$9f, D7
+00224E  moveq   #$0, D1
+002250  move.l  D1, (A6)+
+002252  move.l  D1, (A4)+
+002254  dbra    D7, $2250
+002258  rts
+00225A  lea     ($b52,A5), A6
+00225E  move.w  #$5f, D7
+002262  moveq   #$0, D1
+002264  move.l  D1, (A6)+
+002266  dbra    D7, $2264
+00226A  rts
+00226C  lea     ($cd2,A5), A6
+002270  move.w  #$1f, D7
+002274  moveq   #$0, D1
+002276  move.l  D1, (A6)+
+002278  dbra    D7, $2276
+00227C  rts
+00227E  lea     ($5dbe,A5), A6
+002282  move.w  #$f, D7
+002286  moveq   #$0, D1
+002288  move.l  D1, (A6)+
+00228A  dbra    D7, $2288
+00228E  rts
+002290  lea     ($5d36,A5), A0
+002294  lea     ($530a,A5), A6
+002298  move.b  #$14, ($5d0a,A5)
+00229E  move.w  #$13, D0
+0022A2  moveq   #$0, D1
+0022A4  movea.l A6, A1
+0022A6  move.w  #$1f, D7
+0022AA  move.l  D1, (A1)+
+0022AC  dbra    D7, $22aa
+0022B0  move.b  #$c, ($22,A6)
+0022B6  move.w  A6, -(A0)
+0022B8  lea     ($80,A6), A6
+0022BC  dbra    D0, $22a4
+0022C0  move.w  A0, ($5d0c,A5)
+0022C4  rts
+002370  tst.b   ($1160,A5)
+002374  beq     $2388
+002376  movea.w ($117c,A5), A0
+00237A  movea.w (A0)+, A4
+00237C  move.w  A0, ($117c,A5)
+002380  subq.b  #1, ($1160,A5)
+002384  moveq   #$1, D0
+002386  rts
+00238C  moveq   #$0, D0
+00238E  move.l  D0, ($0,A6)
+002392  move.w  D0, ($4,A6)
+002396  move.w  D0, ($e,A6)
+00239A  move.l  D0, ($10,A6)
+00239E  move.w  D0, ($20,A6)
+0023A2  move.w  D0, ($24,A6)
+0023A6  move.w  D0, ($5a,A6)
+0023AA  movea.w ($117c,A5), A0
+0023AE  move.w  A6, -(A0)
+0023B0  move.w  A0, ($117c,A5)
+0023B4  addq.b  #1, ($1160,A5)
+0023B8  rts
+00247A  tst.b   ($2d7,A5)
+00247E  beq     $2496
+002496  move.w  #$1, D0
+00249A  jmp     $cdc.w
+0024BA  move.b  #$1, ($5d59,A5)
+0024C0  move.w  #$c00, D0
+0024C4  move.w  #$3, D1
+0024C8  jsr     $2564.w
+0024CC  move.w  #$1, D0
+0024D0  jsr     $cdc.w
+0024D4  tst.b   ($5d59,A5)
+0024D8  bne     $24cc
+0024DA  rts
+0024EE  move.w  #$1, D0
+0024F2  jsr     $cdc.w
+0024F6  tst.b   ($5d59,A5)
+0024FA  bne     $24ee
+0024FC  rts
+0024FE  move.b  #$1, ($5d59,A5)
+002504  move.w  #$c1c, D0
+002508  move.w  #$3, D1
+00250C  jsr     $2564.w
+002510  move.w  #$1, D0
+002514  jsr     $cdc.w
+002518  tst.b   ($5d59,A5)
+00251C  bne     $2510
+00251E  rts
+002520  move.b  #$1, ($5d59,A5)
+002526  move.w  D0, D1
+002528  move.w  #$c00, D0
+00252C  jsr     $2564.w
+002530  bra     $24cc
+002532  move.b  #$1, ($5d59,A5)
+002538  move.w  D0, D1
+00253A  move.w  #$c10, D0
+00253E  jsr     $2564.w
+002542  bra     $24ee
+002544  moveq   #$0, D0
+002546  move.w  D0, ($20,A5)
+00254A  move.w  D0, ($1e,A5)
+00254E  lea     ($a2,A5), A0
+002552  move.w  #$1f, D0
+002556  moveq   #-$1, D1
+002558  move.l  D1, (A0)+
+00255A  move.l  D1, (A0)+
+00255C  dbra    D0, $2558
+002560  rts
+002562  moveq   #$0, D1
+002564  cmpi.w  #$2, ($0,A5)
+00256A  bne     $258a
+00256C  cmpi.w  #$4, ($4,A5)
+002572  bne     $258a
+002574  cmpi.w  #$a, ($8,A5)
+00257A  bne     $258a
+00258A  lea     ($a2,A5), A4
+00258E  move.w  ($1e,A5), D2
+002592  move.w  D0, (A4,D2.w)
+002596  move.w  D1, ($2,A4,D2.w)
+00259A  addq.w  #4, D2
+00259C  andi.w  #$fc, D2
+0025A0  move.w  D2, ($1e,A5)
+0025A4  rts
+0025A6  move.w  ($658,A5), ($65a,A5)
+0025AC  move.w  ($958,A5), ($95a,A5)
+0025B2  tst.b   ($2da,A5)
+0025B6  bne     $25c6
+0025B8  move.w  ($7e,A5), ($658,A5)
+0025BE  move.w  ($82,A5), ($958,A5)
+0025C4  rts
+0026A2  move.l  ($658,A5), D0
+0026A6  tst.b   ($3d8,A5)
+0026AA  beq     $26ae
+0026AC  bsr     $26c4
+0026AE  move.l  D0, ($66c,A5)
+0026B2  move.l  ($958,A5), D0
+0026B6  tst.b   ($6d8,A5)
+0026BA  beq     $26be
+0026BE  move.l  D0, ($96c,A5)
+0026C2  rts
+0026C4  bsr     $26c8
+0026C8  move.w  D0, D1
+0026CA  andi.w  #$77c, D0
+0026CE  btst    #$0, D1
+0026D2  beq     $26d8
+0026D8  btst    #$1, D1
+0026DC  beq     $26e2
+0026E2  swap    D0
+0026E4  rts
+002700  move.w  ($7e,A5), D0
+002704  move.w  ($84,A5), D1
+002708  bra     $2730
+00270A  tst.b   ($2da,A5)
+00270E  bne     $273e
+002710  clr.b   ($2e1,A5)
+002714  moveq   #$0, D0
+002716  btst    #$0, ($2e4,A5)
+00271C  beq     $2722
+00271E  move.w  ($658,A5), D0
+002722  moveq   #$0, D1
+002724  btst    #$1, ($2e4,A5)
+00272A  beq     $2730
+002730  or.w    D1, D0
+002732  andi.w  #$770, D0
+002736  beq     $273e
+002738  move.b  #$1, ($2e1,A5)
+00273E  rts
+002750  ext.w   D0
+002752  add.b   D0, D0
+002754  move.w  (A0,D0.w), D0
+002758  lea     (A0,D0.w), A0
+00275C  move.l  A0, ($1a,A6)
+002760  move.w  ($0,A0), ($18,A6)
+002766  move.w  ($2,A0), ($14,A6)
+00276C  rts
+00276E  subq.w  #1, ($18,A6)
+002772  bne     $2796
+002774  movea.l ($1a,A6), A0
+002778  move.w  ($2,A0), D1
+00277C  lea     ($18,A0), A0
+002780  tst.w   D1
+002782  bpl     $2786
+002784  movea.l (A0), A0
+002786  move.l  A0, ($1a,A6)
+00278A  move.w  ($0,A0), ($18,A6)
+002790  move.w  ($2,A0), ($14,A6)
+002796  rts
+002798  movea.l ($30,A6), A0
+00279C  move.b  ($11,A6), D0
+0027A0  ext.w   D0
+0027A2  add.w   D0, D0
+0027A4  add.w   D0, D0
+0027A6  lea     (A0,D0.w), A0
+0027AA  move.w  (A0)+, D0
+0027AC  ext.l   D0
+0027AE  asl.l   #8, D0
+0027B0  add.l   D0, ($6,A6)
+0027B4  move.w  (A0), D0
+0027B6  ext.l   D0
+0027B8  asl.l   #8, D0
+0027BA  add.l   D0, ($a,A6)
+0027BE  rts
+002854  moveq   #$0, D2
+002856  moveq   #$0, D3
+002858  moveq   #$0, D6
+00285A  move.w  D1, D3
+00285C  sub.w   ($a,A6), D3
+002860  beq     $283c
+002862  roxr.b  #1, D6
+002864  bpl     $2868
+002866  neg.w   D3
+002868  move.w  D0, D2
+00286A  sub.w   ($6,A6), D2
+00286E  beq     $2846
+002870  roxr.b  #1, D6
+002872  bpl     $2876
+002874  neg.w   D2
+002876  move.w  D3, D1
+002878  sub.w   D2, D1
+00287A  beq     $2848
+00287C  bls     $2880
+002880  roxr.b  #1, D6
+002882  swap    D3
+002884  bsr     $28ac
+002888  lsl.l   #5, D3
+00288A  swap    D3
+00288C  andi.w  #$1f, D3
+002890  rol.b   #3, D6
+002892  move.b  ($10,PC,D6.w), D6
+002896  bclr    #$0, D6
+00289A  bne     $28a0
+0028A0  sub.b   D3, D6
+0028A2  rts
+0028AC  moveq   #$0, D0
+0028AE  moveq   #$1f, D4
+0028B0  add.l   D3, D3
+0028B2  addx.l  D0, D0
+0028B4  cmp.l   D2, D0
+0028B6  bcs     $28bc
+0028B8  sub.l   D2, D0
+0028BA  addq.l  #1, D3
+0028BC  dbra    D4, $28b0
+0028C0  rts
+0028C2  tst.b   ($0,A6)
+0028C6  beq     $296e
+0028CA  clr.b   ($1,A6)
+0028CE  bsr     $29aa
+0028D2  sub.w   ($6,A0), D0
+0028D6  addi.w  #$40, D0
+0028DA  cmpi.w  #$200, D0
+0028DE  bhi     $296e
+0028E2  sub.w   ($a,A0), D1
+0028E6  addi.w  #$40, D1
+0028EA  cmpi.w  #$180, D1
+0028EE  bhi     $296e
+0028F2  addq.b  #1, ($1,A6)
+0028F6  bra     $2960
+002960  moveq   #$0, D0
+002962  move.b  ($22,A6), D0
+002966  move.w  ($8,PC,D0.w), D1
+00296A  jmp     ($4,PC,D1.w)
+00296E  rts
+00297A  tst.b   ($0,A6)
+00297E  beq     $296e
+002980  clr.b   ($1,A6)
+002984  bsr     $29aa
+002988  sub.w   ($6,A0), D0
+00298C  addi.w  #$40, D0
+002990  cmpi.w  #$280, D0
+002994  bhi     $296e
+002996  sub.w   ($a,A0), D1
+00299A  addi.w  #$60, D1
+00299E  cmpi.w  #$280, D1
+0029A2  bhi     $296e
+0029A4  addq.b  #1, ($1,A6)
+0029A8  bra     $2960
+0029AA  moveq   #$0, D0
+0029AC  lea     ($4c,PC) ; ($29fa), A0
+0029B0  move.b  ($25,A6), D0
+0029B4  beq     $29ca
+0029B6  add.w   D0, D0
+0029B8  movea.l (A0,D0.w), A0
+0029BC  move.w  ($6,A6), D0
+0029C0  move.w  D0, ($44,A6)
+0029C4  move.w  ($a,A6), D1
+0029C8  rts
+0029CA  lea     ($bd2,A5), A0
+0029CE  move.w  ($e,A6), D0
+0029D2  beq     $29bc
+0029D4  addq.w  #1, D0
+0029D6  add.w   D0, D0
+0029D8  move.w  #$800, D1
+0029DC  sub.w   D0, D1
+0029DE  movea.l ($2be,A5), A1
+0029E2  move.w  (A1,D1.w), D1
+0029E6  subi.w  #$c0, D1
+0029EA  move.w  ($6,A6), D0
+0029EE  sub.w   D1, D0
+0029F0  move.w  D0, ($44,A6)
+0029F4  move.w  ($a,A6), D1
+0029F8  rts
+002A78  move.b  ($10,A6), D0
+002A7C  move.w  ($6,PC,D0.w), D1
+002A80  jmp     ($2,PC,D1.w)
+002A90  movea.w ($117e,A5), A0
+002A94  move.w  A6, -(A0)
+002A96  move.w  A0, ($117e,A5)
+002A9A  addq.b  #1, ($1161,A5)
+002A9E  rts
+002AA0  movea.w ($1180,A5), A0
+002AA4  move.w  A6, -(A0)
+002AA6  move.w  A0, ($1180,A5)
+002AAA  addq.b  #1, ($1162,A5)
+002AAE  rts
+002AB0  movea.w ($1182,A5), A0
+002AB4  move.w  A6, -(A0)
+002AB6  move.w  A0, ($1182,A5)
+002ABA  addq.b  #1, ($1163,A5)
+002ABE  rts
+002AC0  movea.w ($1184,A5), A0
+002AC4  move.w  A6, -(A0)
+002AC6  move.w  A0, ($1184,A5)
+002ACA  addq.b  #1, ($1164,A5)
+002ACE  rts
+002BDA  bsr     $2c40
+002BDE  bsr     $2be4
+002BE2  rts
+002BE4  movea.l #$95bde, A0
+002BEA  lea     ($1d8,A6), A1
+002BEE  move.b  ($291,A6), D2
+002BF2  ext.w   D2
+002BF4  add.w   D2, D2
+002BF6  move.w  (A0,D2.w), D2
+002BFA  lea     (A0,D2.w), A0
+002BFE  move.w  ($58,A6), D2
+002C02  moveq   #$7, D6
+002C04  move.b  (A0,D2.w), (A1)+
+002C08  lea     ($20,A0), A0
+002C0C  dbra    D6, $2c04
+002C10  lea     ($1d8,A6), A1
+002C14  moveq   #$7, D6
+002C16  jsr     $df8.w
+002C1A  andi.w  #$1f, D0
+002C1E  move.b  (A0,D0.w), D0
+002C22  add.b   D0, (A1)
+002C24  beq     $2c28
+002C26  bpl     $2c2c
+002C2C  addq.l  #1, A1
+002C2E  lea     ($20,A0), A0
+002C32  dbra    D6, $2c16
+002C36  rts
+002C40  tst.b   ($31b,A5)
+002C44  bne     $2c38
+002C46  movea.l #$95b4c, A0
+002C4C  moveq   #$0, D1
+002C4E  move.w  ($2a,A6), D0
+002C52  bmi     $2c64
+002C54  cmpi.w  #$91, D0
+002C58  bcs     $2c5e
+002C5E  move.b  (A0,D0.w), D1
+002C62  ext.w   D1
+002C64  moveq   #$0, D2
+002C66  cmpi.b  #$10, ($ace,A5)
+002C6C  bcs     $2cac
+002C6E  moveq   #$1, D2
+002C70  cmpi.b  #$30, ($ace,A5)
+002C76  bcs     $2cac
+002C78  moveq   #$2, D2
+002C7A  cmpi.b  #$40, ($ace,A5)
+002C80  bcs     $2cac
+002C82  moveq   #$3, D2
+002C84  cmpi.b  #$50, ($ace,A5)
+002C8A  bcs     $2cac
+002C8C  moveq   #$4, D2
+002C8E  cmpi.b  #$60, ($ace,A5)
+002C94  bcs     $2cac
+002C96  moveq   #$5, D2
+002C98  cmpi.b  #$70, ($ace,A5)
+002C9E  bcs     $2cac
+002CA0  moveq   #$6, D2
+002CA2  cmpi.b  #-$80, ($ace,A5)
+002CA8  bcs     $2cac
+002CAA  moveq   #$7, D2
+002CAC  cmp.w   D2, D1
+002CAE  bcs     $2cb2
+002CB0  move.w  D2, D1
+002CB2  move.w  D1, ($1d6,A6)
+002CB6  rts
+002D98  clr.b   ($48,A6)
+002D9C  move.w  ($bd8,A5), D0
+002DA0  add.w   ($1c2,A6), D0
+002DA4  cmp.w   ($6,A6), D0
+002DA8  blt     $2dc8
+002DC8  move.w  #$180, D1
+002DCC  sub.w   ($1c2,A6), D1
+002DD0  move.w  ($bd8,A5), D0
+002DD4  add.w   D1, D0
+002DD6  cmp.w   ($6,A6), D0
+002DDA  bgt     $2dfa
+002DFA  rts
+003378  move.w  ($bd8,A5), ($3cc,A5)
+00337E  move.w  ($bdc,A5), ($3d0,A5)
+003384  move.w  ($bd8,A5), ($6cc,A5)
+00338A  move.w  ($bdc,A5), ($6d0,A5)
+003390  addi.w  #$68, ($3cc,A5)
+003396  addi.w  #$28, ($3d0,A5)
+00339C  addi.w  #$118, ($6cc,A5)
+0033A2  addi.w  #$28, ($6d0,A5)
+0033A8  move.b  #$1, ($3d8,A5)
+0033AE  move.b  #$1, ($584,A5)
+0033B4  move.b  #$0, ($6d8,A5)
+0033BA  move.b  #$0, ($884,A5)
+0033C0  move.w  ($3cc,A5), ($592,A5)
+0033C6  move.w  ($3d0,A5), ($596,A5)
+0033CC  move.w  ($6cc,A5), ($592,A5)
+0033D2  move.w  ($6d0,A5), ($596,A5)
+0033D8  lea     ($38,PC) ; ($3412), A0
+0033DC  cmpi.w  #$c, ($9ca,A5)
+0033E2  beq     $33ec
+0033E4  cmpi.w  #$e, ($9ca,A5)
+0033EA  bne     $33f0
+0033F0  move.b  ($657,A5), D0
+0033F4  ext.w   D0
+0033F6  move.b  (A0,D0.w), D0
+0033FA  ext.w   D0
+0033FC  move.w  D0, ($588,A5)
+003400  move.b  ($957,A5), D0
+003404  ext.w   D0
+003406  move.b  (A0,D0.w), D0
+00340A  ext.w   D0
+00340C  move.w  D0, ($888,A5)
+003410  rts
+00342A  move.b  #$1, ($0,A6)
+003430  move.b  #$1, ($1,A6)
+003436  moveq   #$0, D0
+003438  move.b  ($291,A6), D0
+00343C  lsl.w   #3, D0
+00343E  lea     ($46,PC) ; ($3486), A0
+003442  lea     (A0,D0.w), A0
+003446  move.l  (A0)+, ($34,A6)
+00344A  move.w  (A0)+, ($6c,A6)
+00344E  move.w  (A0)+, ($6e,A6)
+003452  cmpi.b  #$b, ($291,A6)
+003458  bne     $3468
+003468  tst.b   ($31b,A5)
+00346C  bne     $3474
+00346E  tst.b   ($9e0,A5)
+003472  beq     $3480
+003480  jmp     $99c48.l
+0035EE  move.b  ($291,A6), D6
+0035F2  ext.w   D6
+0035F4  lsl.w   #2, D6
+0035F6  movea.l ($4,PC,D6.w), A4
+0035FA  jmp     (A4)
+003C58  bsr     $3c60
+003C5C  jmp     $40f8.w
+003C60  lea     ($9ca,A5), A6
+003C64  move.w  #$5f, D7
+003C68  moveq   #$0, D0
+003C6A  move.l  D0, (A6)+
+003C6C  dbra    D7, $3c6a
+003C70  move.l  D0, ($660,A5)
+003C74  move.l  D0, ($960,A5)
+003C78  rts
+003C7A  moveq   #$0, D0
+003C7C  moveq   #$0, D1
+003C7E  move.b  D0, ($656,A5)
+003C82  move.b  D0, ($956,A5)
+003C86  move.b  D0, ($66b,A5)
+003C8A  move.b  D0, ($96b,A5)
+003C8E  move.b  ($654,A5), D0
+003C92  or.b    ($674,A5), D0
+003C96  move.b  ($954,A5), D1
+003C9A  or.b    ($974,A5), D1
+003C9E  add.b   D1, D1
+003CA0  add.b   D1, D0
+003CA2  move.b  D0, ($2d9,A5)
+003CA6  tst.b   ($9e0,A5)
+003CAA  bne     $3cb0
+003CAC  bsr     $3da6
+003CB0  move.b  ($657,A5), ($968,A5)
+003CB6  move.b  ($957,A5), ($668,A5)
+003CBC  lea     ($a4a,A5), A6
+003CC0  move.w  #$1f, D7
+003CC4  moveq   #$0, D0
+003CC6  move.l  D0, (A6)+
+003CC8  dbra    D7, $3cc6
+003CCC  rts
+003CEA  tst.b   ($2da,A5)
+003CEE  bne     $3cce
+003CF0  tst.b   ($a0f,A5)
+003CF4  beq     $3cfc
+003CFC  tst.b   ($9e0,A5)
+003D00  bne     $3d08
+003D02  move.w  ($9ca,A5), ($a00,A5)
+003D08  clr.b   ($9e0,A5)
+003D0C  tst.b   ($9fa,A5)
+003D10  bne     $3d26
+003D12  move.w  #$c, D0
+003D16  moveq   #$3, D1
+003D18  tst.b   ($307,A5)
+003D1C  beq     $3d20
+003D20  cmp.b   ($9f9,A5), D1
+003D24  beq     $3d54
+003D26  cmpi.b  #$1, ($9fa,A5)
+003D2C  bne     $3d42
+003D42  cmpi.b  #$2, ($9fa,A5)
+003D48  bne     $3d60
+003D60  lea     ($5d7e,A5), A1
+003D64  move.w  ($9cc,A5), D0
+003D68  add.w   D0, D0
+003D6A  move.w  (A1,D0.w), ($9ca,A5)
+003D70  tst.w   ($9ca,A5)
+003D74  bmi     $3ce4
+003D78  move.w  ($2,A1,D0.w), D0
+003D7C  cmpi.w  #$10, D0
+003D80  bne     $3d88
+003D88  cmpi.w  #$7, ($9cc,A5)
+003D8E  bcs     $3da4
+003DA4  rts
+003DA6  tst.b   ($9e0,A5)
+003DAA  bne     $3ddc
+003DAC  cmpi.b  #$3, ($2d9,A5)
+003DB2  beq     $3ddc
+003DB4  move.b  ($9cb,A5), D2
+003DB8  moveq   #$0, D0
+003DBA  move.b  ($674,A5), D0
+003DBE  or.b    ($654,A5), D0
+003DC2  beq     $3dde
+003DC4  cmp.b   ($657,A5), D2
+003DC8  bne     $3dd8
+003DD8  move.b  D2, ($957,A5)
+003DDC  rts
+003DF8  bsr     $3e2e
+003DFA  bsr     $3fdc
+003DFE  lea     ($ace,A5), A6
+003E02  move.w  #$1f, D7
+003E06  clr.b   ($2e6,A5)
+003E0A  clr.b   ($303,A5)
+003E0E  clr.b   ($304,A5)
+003E12  bsr     $3cc4
+003E16  jsr     $413c.w
+003E1A  jmp     $83c3a.l
+003E2E  tst.b   ($2da,A5)
+003E32  bne     $3e20
+003E34  cmpi.b  #$3, ($2d9,A5)
+003E3A  bne     $3ea4
+003EA4  move.b  ($657,A5), D0
+003EA8  lea     ($6c6,A5), A1
+003EAC  move.b  ($674,A5), D0
+003EB0  or.b    ($654,A5), D0
+003EB4  beq     $3ebe
+003EB6  move.b  ($957,A5), D0
+003EBA  lea     ($3c6,A5), A1
+003EBE  ext.w   D0
+003EC0  lsl.w   #3, D0
+003EC2  lea     ($18,PC) ; ($3edc), A0
+003EC6  lea     (A0,D0.w), A0
+003ECA  move.b  ($291,A1), D0
+003ECE  ext.w   D0
+003ED0  move.b  (A0,D0.w), D0
+003ED4  ext.w   D0
+003ED6  move.w  D0, ($58,A1)
+003EDA  rts
+003FDC  move.w  #$90, ($3f0,A5)
+003FE2  move.w  #$90, ($3f2,A5)
+003FE8  move.w  #$90, ($6f0,A5)
+003FEE  move.w  #$90, ($6f2,A5)
+003FF4  move.w  #$90, ($582,A5)
+003FFA  move.w  #$90, ($882,A5)
+004000  rts
+00403A  moveq   #$0, D2
+00403C  move.w  D2, ($9cc,A5)
+004040  move.w  D2, ($9ca,A5)
+004044  movea.l #$956cc, A0
+00404A  tst.b   ($307,A5)
+00404E  beq     $4056
+004056  move.b  ($9dd,A5), D2
+00405A  lsl.w   #4, D2
+00405C  lea     (A0,D0.w), A0
+004060  jsr     $df8.w
+004064  andi.w  #$f, D0
+004068  move.b  (A0,D0.w), D0
+00406C  lsl.w   #4, D0
+00406E  lsl.w   #3, D2
+004070  movea.l #$9574c, A0
+004076  tst.b   ($307,A5)
+00407A  beq     $4082
+004082  lea     (A0,D2.w), A0
+004086  lea     (A0,D0.w), A0
+00408A  lea     ($5d7e,A5), A1
+00408E  move.l  (A0)+, (A1)+
+004090  move.l  (A0)+, (A1)+
+004092  move.l  (A0)+, (A1)+
+004094  move.l  (A0)+, (A1)+
+004096  move.l  (A0)+, (A1)+
+004098  move.l  (A0)+, (A1)+
+00409A  move.l  (A0)+, (A1)+
+00409C  move.l  (A0)+, (A1)+
+00409E  tst.b   ($2d7,A5)
+0040A2  beq     $40e0
+0040E0  rts
+0040F8  tst.b   ($2da,A5)
+0040FC  beq     $4112
+004112  addq.b  #1, ($31c,A5)
+004116  andi.b  #$f, ($31c,A5)
+00411C  bne     $413c
+00413C  tst.b   ($2da,A5)
+004140  bne     $419c
+004142  tst.b   ($a18,A5)
+004146  bne     $40fe
+004148  move.w  ($2c6,A5), D0
+00414C  lsl.w   #6, D0
+00414E  move.w  ($a16,A5), D1
+004152  add.w   D1, D1
+004154  add.w   D1, D1
+004156  add.w   D1, D0
+004158  movea.l #$99a48, A0
+00415E  move.l  (A0,D0.w), ($a06,A5)
+004164  move.w  ($a04,A5), D0
+004168  cmpi.w  #$100, D0
+00416C  bcs     $4176
+004176  move.w  ($a06,A5), D1
+00417A  cmp.w   D1, D0
+00417C  bcc     $4180
+00417E  move.w  D1, D0
+004180  move.w  ($a08,A5), D1
+004184  cmp.w   D1, D0
+004186  bcs     $418a
+00418A  move.w  D0, ($a04,A5)
+00418E  lea     ($4c2,PC) ; ($4652), A0
+004192  move.b  (A0,D0.w), D0
+004196  ext.w   D0
+004198  move.w  D0, ($9ce,A5)
+00419C  rts
+00477E  move.w  ($6,A6), D0
+004782  move.w  ($a,A6), D1
+004786  not.w   D1
+004788  move.w  D1, D2
+00478A  andi.w  #$300, D1
+00478E  lsl.w   #4, D1
+004790  andi.w  #$f0, D2
+004794  lsr.w   #2, D2
+004796  add.w   D2, D1
+004798  andi.w  #$3f0, D0
+00479C  lsl.w   #2, D0
+00479E  add.w   D1, D0
+0047A0  movea.l #$904000, A0
+0047A6  adda.w  D0, A0
+0047A8  rts
+004854  ext.w   D0
+004856  add.w   D0, D0
+004858  move.w  (A0,D0.w), D0
+00485C  lea     (A0,D0.w), A0
+004860  move.l  A0, ($1a,A6)
+004864  move.w  ($0,A0), ($18,A6)
+00486A  move.w  ($2,A0), ($14,A6)
+004870  bra     $489e
+004872  subq.w  #1, ($18,A6)
+004876  bne     $489c
+00489C  rts
+00489E  movea.l ($1a,A6), A1
+0048A2  movea.l ($4,A1), A1
+0048A6  move.w  (A1)+, D3
+0048A8  move.w  (A1)+, D4
+0048AA  move.w  (A1)+, D0
+0048AC  bne     $48d6
+0048D6  move.b  ($25,A6), D0
+0048DA  ext.w   D0
+0048DC  tst.b   ($10,A6)
+0048E0  bne     $48ea
+0048EA  move.w  ($c,PC,D0.w), D1
+0048EE  jmp     ($8,PC,D1.w)
+004994  bsr     $477e
+004998  subq.w  #1, D3
+00499A  subq.w  #1, D4
+00499C  movea.l A0, A2
+00499E  move.w  D4, D2
+0049A0  move.w  (A1)+, D0
+0049A2  bmi     $49bc
+0049A4  addi.w  #$2800, D0
+0049A8  move.w  D0, (A2)+
+0049AA  move.w  (A1)+, (A2)+
+0049AC  dbra    D2, $49a0
+0049B0  lea     ($40,A0), A0
+0049B4  dbra    D3, $499c
+0049B8  moveq   #$0, D0
+0049BA  rts
+004A24  tst.w   D1
+004A26  beq     $4998
+004A2A  move.w  D4, D6
+004A2C  mulu.w  D3, D6
+004A2E  lsl.w   #2, D6
+004A30  lea     (A1,D6.w), A1
+004A34  subq.w  #1, D3
+004A36  subq.w  #1, D4
+004A38  move.w  D4, D6
+004A3A  lsl.w   #2, D6
+004A3C  lea     ($4,A0,D6.w), A0
+004A40  movea.l A0, A2
+004A42  move.w  D4, D6
+004A44  move.l  -(A1), D0
+004A46  bmi     $4a66
+004A48  addi.l  #$28000000, D0
+004A4E  eori.w  #$20, D0
+004A52  move.l  D0, -(A2)
+004A54  dbra    D6, $4a44
+004A58  adda.l  #$40, A0
+004A5E  dbra    D3, $4a40
+004A62  moveq   #$0, D0
+004A64  rts
+004A66  suba.l  #$4, A2
+004A6C  bra     $4a54
+004AB8  rts
+004AF8  lsl.b   #1, D0
+004AFA  bcs     $4b6a
+004AFE  movea.l #$8d6ba, A1
+004B04  move.w  (A1,D0.w), D0
+004B08  lea     (A1,D0.w), A1
+004B0C  moveq   #$0, D0
+004B0E  move.w  (A1)+, D0
+004B10  lea     $910000.l, A0
+004B16  adda.l  D0, A0
+004B18  moveq   #$0, D2
+004B1A  move.l  D2, D1
+004B1C  move.b  (A1)+, D2
+004B1E  lsl.w   #3, D2
+004B20  addi.w  #$40, D2
+004B24  swap    D2
+004B26  move.b  (A1)+, D2
+004B28  add.w   D2, D2
+004B2A  move.b  (A1)+, D1
+004B2C  moveq   #$0, D0
+004B2E  move.b  (A1)+, D0
+004B30  beq     $4ab8
+004B32  cmpi.b  #$2f, D0
+004B36  beq     $4b18
+004B38  cmpi.b  #$20, D0
+004B3C  beq     $4b60
+004B3E  addi.w  #-$8000, D0
+004B42  move.l  D2, ($0,A0)
+004B46  move.w  D0, ($4,A0)
+004B4A  move.w  D1, ($6,A0)
+004B4E  adda.l  #$8000, A0
+004B54  move.l  D2, (A0)+
+004B56  move.w  D0, (A0)+
+004B58  move.w  D1, (A0)+
+004B5A  suba.l  #$8000, A0
+004B60  addi.l  #$80000, D2
+004B66  moveq   #$0, D0
+004B68  bra     $4b2c
+004B6A  movea.l #$8d6ba, A1
+004B70  move.w  (A1,D0.w), D0
+004B74  lea     (A1,D0.w), A1
+004B78  moveq   #$0, D0
+004B7A  move.w  (A1)+, D0
+004B7C  lea     $910000.l, A0
+004B82  adda.l  D0, A0
+004B84  moveq   #$0, D2
+004B86  addq.l  #3, A1
+004B88  moveq   #$0, D0
+004B8A  move.b  (A1)+, D0
+004B8C  beq     $4ab8
+004B90  cmpi.b  #$2f, D0
+004B94  beq     $4b84
+004B96  cmpi.b  #$20, D0
+004B9A  beq     $4bb4
+004B9C  move.l  D2, ($0,A0)
+004BA0  move.l  D2, ($4,A0)
+004BA4  adda.l  #$8000, A0
+004BAA  move.l  D2, (A0)+
+004BAC  move.l  D2, (A0)+
+004BAE  suba.l  #$8000, A0
+004BB4  bra     $4b88
+004BB6  lsl.b   #1, D0
+004BB8  bcs     $4c36
+004BBC  movea.l #$8dfd4, A1
+004BC2  move.w  (A1,D0.w), D0
+004BC6  lea     (A1,D0.w), A1
+004BCA  moveq   #$0, D0
+004BCC  move.w  (A1)+, D0
+004BCE  lea     $910000.l, A0
+004BD4  adda.l  D0, A0
+004BD6  moveq   #$0, D2
+004BD8  move.l  D2, D1
+004BDA  move.b  (A1)+, D2
+004BDC  lsl.w   #8, D2
+004BDE  move.b  (A1)+, D2
+004BE0  addi.w  #$40, D2
+004BE4  swap    D2
+004BE6  move.b  (A1)+, D2
+004BE8  lsl.w   #8, D2
+004BEA  move.b  (A1)+, D2
+004BEC  not.b   D2
+004BEE  addq.w  #1, D2
+004BF0  move.b  (A1)+, D1
+004BF2  andi.w  #$1f, D1
+004BF6  moveq   #$0, D0
+004BF8  move.b  (A1)+, D0
+004BFA  beq     $4ab8
+004BFE  cmpi.b  #$2f, D0
+004C02  beq     $4bd6
+004C04  cmpi.b  #$20, D0
+004C08  beq     $4c2c
+004C0A  addi.w  #-$7f80, D0
+004C0E  move.l  D2, ($0,A0)
+004C12  move.w  D0, ($4,A0)
+004C16  move.w  D1, ($6,A0)
+004C1A  adda.l  #$8000, A0
+004C20  move.l  D2, (A0)+
+004C22  move.w  D0, (A0)+
+004C24  move.w  D1, (A0)+
+004C26  suba.l  #$8000, A0
+004C2C  addi.l  #$c0000, D2
+004C32  moveq   #$0, D0
+004C34  bra     $4bf6
+004C82  lsl.b   #1, D0
+004C84  bcs     $4ce8
+004C88  movea.l #$8e37c, A1
+004C8E  move.w  (A1,D0.w), D0
+004C92  lea     (A1,D0.w), A1
+004C96  moveq   #$0, D0
+004C98  move.w  (A1)+, D0
+004C9A  lea     $910000.l, A0
+004CA0  adda.l  D0, A0
+004CA2  moveq   #$0, D2
+004CA4  move.l  D2, D1
+004CA6  move.w  (A1)+, D2
+004CA8  addi.w  #$40, D2
+004CAC  swap    D2
+004CAE  move.w  (A1)+, D2
+004CB0  not.b   D2
+004CB2  addq.w  #1, D2
+004CB4  move.w  (A1)+, D1
+004CB6  move.w  (A1)+, D0
+004CB8  beq     $4ab8
+004CBC  cmpi.w  #-$1, D0
+004CC0  beq     $4ca2
+004CC2  move.l  D2, ($0,A0)
+004CC6  move.w  D0, ($4,A0)
+004CCA  move.w  D1, ($6,A0)
+004CCE  adda.l  #$8000, A0
+004CD4  move.l  D2, (A0)+
+004CD6  move.w  D0, (A0)+
+004CD8  move.w  D1, (A0)+
+004CDA  suba.l  #$8000, A0
+004CE0  addi.l  #$100000, D2
+004CE6  bra     $4cb6
+004CE8  movea.l #$8e37c, A1
+004CEE  move.w  (A1,D0.w), D0
+004CF2  lea     (A1,D0.w), A1
+004CF6  moveq   #$0, D0
+004CF8  move.w  (A1)+, D0
+004CFA  lea     $910000.l, A0
+004D00  adda.l  D0, A0
+004D02  moveq   #$0, D2
+004D04  addq.l  #6, A1
+004D06  move.w  (A1)+, D0
+004D08  beq     $4ab8
+004D0C  cmpi.w  #-$1, D0
+004D10  beq     $4d02
+004D12  move.l  D2, ($0,A0)
+004D16  move.l  D2, ($4,A0)
+004D1A  adda.l  #$8000, A0
+004D20  move.l  D2, (A0)+
+004D22  move.l  D2, (A0)+
+004D24  suba.l  #$8000, A0
+004D2A  bra     $4d06
+004DE6  movea.l (-$7dfc,A5), A6
+004DEA  clr.b   ($14,A6)
+004DEE  moveq   #$0, D0
+004DF0  move.b  ($11,A6), D0
+004DF4  lsl.b   #1, D0
+004DF6  bcs     $4e60
+004DFA  movea.l #$8d6ba, A1
+004E00  move.w  (A1,D0.w), D0
+004E04  lea     (A1,D0.w), A1
+004E08  addq.l  #2, A1
+004E0A  moveq   #$0, D2
+004E0C  move.l  D2, D1
+004E0E  move.b  (A1)+, D2
+004E10  lsl.w   #7, D2
+004E12  move.b  (A1)+, D1
+004E14  add.w   D1, D2
+004E16  lea     $90c000.l, A0
+004E1C  adda.l  D2, A0
+004E1E  move.b  (A1)+, D1
+004E20  moveq   #$0, D2
+004E22  move.b  (A1)+, D2
+004E24  beq     $4e4a
+004E26  cmpi.b  #$2f, D2
+004E2A  beq     $4e0a
+004E2C  addi.w  #$4000, D2
+004E30  move.w  D2, ($0,A0)
+004E34  move.w  D1, ($2,A0)
+004E38  lea     ($80,A0), A0
+004E3C  moveq   #$0, D0
+004E3E  move.b  ($13,A6), D0
+004E42  beq     $4e20
+004E44  jsr     $cdc.w
+004E48  bra     $4e20
+004E4A  tst.b   ($12,A6)
+004E4E  beq     $4e54
+004E50  clr.b   ($2e0,A5)
+004E54  tst.b   ($14,A6)
+004E58  bne     $4e5e
+004E5A  jmp     $bd2.w
+004E5E  rts
+00507E  movea.l (-$7dfc,A5), A6
+005082  clr.b   ($14,A6)
+005086  moveq   #$0, D0
+005088  move.b  ($11,A6), D0
+00508C  lsl.b   #1, D0
+00508E  bcs     $50fe
+005092  movea.l #$8e37c, A1
+005098  move.w  (A1,D0.w), D0
+00509C  lea     (A1,D0.w), A1
+0050A0  moveq   #$0, D0
+0050A2  move.w  (A1)+, D0
+0050A4  lea     $910000.l, A0
+0050AA  adda.l  D0, A0
+0050AC  moveq   #$0, D2
+0050AE  move.l  D2, D1
+0050B0  move.w  (A1)+, D2
+0050B2  addi.w  #$40, D2
+0050B6  swap    D2
+0050B8  move.w  (A1)+, D2
+0050BA  not.b   D2
+0050BC  addq.w  #1, D2
+0050BE  move.w  (A1)+, D1
+0050C0  move.w  (A1)+, D0
+0050C2  beq     $4e4a
+0050C6  cmpi.w  #-$1, D0
+0050CA  beq     $50ac
+0050CC  move.l  D2, ($0,A0)
+0050D0  move.w  D0, ($4,A0)
+0050D4  move.w  D1, ($6,A0)
+0050D8  adda.l  #$8000, A0
+0050DE  move.l  D2, (A0)+
+0050E0  move.w  D0, (A0)+
+0050E2  move.w  D1, (A0)+
+0050E4  suba.l  #$8000, A0
+0050EA  addi.l  #$100000, D2
+0050F0  moveq   #$0, D0
+0050F2  move.b  ($13,A6), D0
+0050F6  beq     $50c0
+00524E  jsr     $5d0e.w
+005252  move.w  (A1)+, D6
+005254  tst.w   (A1)
+005256  beq     $527e
+005258  move.l  D5, ($0,A0)
+00525C  move.w  (A1), ($4,A0)
+005260  move.w  D6, ($6,A0)
+005264  adda.l  #$8000, A0
+00526A  move.l  D5, (A0)+
+00526C  move.w  (A1)+, (A0)+
+00526E  move.w  D6, (A0)+
+005270  suba.l  #$8000, A0
+005276  addi.l  #$100000, D5
+00527C  bra     $5254
+00527E  rts
+00537C  lea     $90c000.l, A0
+005382  move.w  #$3ff, D0
+005386  move.w  #$4020, D1
+00538A  moveq   #$0, D2
+00538C  bsr     $53da
+005390  lea     $904000.l, A0
+005396  move.w  #$3ff, D0
+00539A  move.w  #$2800, D1
+00539E  moveq   #$0, D2
+0053A0  bsr     $53da
+0053A4  lea     $908000.l, A0
+0053AA  move.w  #$3ff, D0
+0053AE  move.w  #$400, D1
+0053B2  moveq   #$0, D2
+0053B4  bsr     $53da
+0053B8  bsr     $54ec
+0053BC  moveq   #$0, D0
+0053BE  move.w  D0, ($2b8,A5)
+0053C2  move.w  D0, ($2ba,A5)
+0053C6  lea     $910000.l, A0
+0053CC  bsr     $5428
+0053D0  lea     $918000.l, A0
+0053D6  bra     $5428
+0053DA  move.w  D1, (A0)+
+0053DC  move.w  D2, (A0)+
+0053DE  move.w  D1, (A0)+
+0053E0  move.w  D2, (A0)+
+0053E2  move.w  D1, (A0)+
+0053E4  move.w  D2, (A0)+
+0053E6  move.w  D1, (A0)+
+0053E8  move.w  D2, (A0)+
+0053EA  dbra    D0, $53da
+0053EE  rts
+005428  move.w  #$ff, D0
+00542C  moveq   #$0, D1
+00542E  move.l  D1, (A0)+
+005430  move.l  D1, (A0)+
+005432  dbra    D0, $542e
+005436  rts
+0054EC  lea     $920000.l, A0
+0054F2  move.w  #$7f, D0
+0054F6  moveq   #$0, D1
+0054F8  moveq   #$0, D2
+0054FA  bsr     $53da
+0054FE  lea     $921000.l, A0
+005504  move.w  #$7f, D0
+005508  moveq   #$0, D1
+00550A  moveq   #$0, D2
+00550C  bsr     $53da
+005510  lea     $922000.l, A0
+005516  move.w  #$7f, D0
+00551A  moveq   #$0, D1
+00551C  moveq   #$0, D2
+00551E  bsr     $53da
+005522  lea     $923000.l, A0
+005528  move.w  #$7f, D0
+00552C  moveq   #$0, D1
+00552E  moveq   #$0, D2
+005530  bra     $53da
+005740  movea.l (-$7dfc,A5), A6
+005744  move.w  ($10,A6), D0
+005748  move.w  ($6,PC,D0.w), D1
+00574C  jmp     ($2,PC,D1.w)
+005772  move.w  #$1a, D0
+005776  moveq   #$0, D1
+005778  move.b  ($13,A6), D1
+00577C  jsr     $2564.w
+005780  move.w  #$1, D0
+005784  jsr     $cdc.w
+005788  tst.w   ($5d56,A5)
+00578C  beq     $5780
+00578E  lea     $90c000.l, A0
+005794  move.w  #$fff, D0
+005798  move.w  #$4020, D1
+00579C  moveq   #$0, D2
+00579E  bsr     $58d8
+0057A2  lea     $904000.l, A0
+0057A8  move.w  #$fff, D0
+0057AC  move.w  #$2800, D1
+0057B0  moveq   #$0, D2
+0057B2  bsr     $58d8
+0057B6  lea     $908000.l, A0
+0057BC  move.w  #$fff, D0
+0057C0  move.w  #$400, D1
+0057C4  moveq   #$0, D2
+0057C6  bsr     $58d8
+0057CA  moveq   #$0, D0
+0057CC  move.w  D0, ($2b8,A5)
+0057D0  move.w  D0, ($2ba,A5)
+0057D4  lea     $910000.l, A0
+0057DA  bsr     $5914
+0057DE  lea     $918000.l, A0
+0057E4  bsr     $5914
+0057E8  move.w  #$1, D0
+0057EC  jsr     $cdc.w
+0057F0  bsr     $54ec
+0057F4  moveq   #$0, D0
+0057F6  move.b  ($13,A6), D0
+0057FA  addq.w  #4, D0
+0057FC  jsr     $cdc.w
+005800  clr.b   ($5d59,A5)
+005804  jmp     $bd2.w
+005808  move.w  #$0, D0
+00580C  moveq   #$0, D1
+00580E  move.b  ($13,A6), D1
+005812  jsr     $2564.w
+005816  move.w  #$1, D0
+00581A  jsr     $cdc.w
+00581E  tst.w   ($5d56,A5)
+005822  beq     $5816
+005824  lea     $90c000.l, A0
+00582A  move.w  #$fff, D0
+00582E  move.w  #$4020, D1
+005832  moveq   #$0, D2
+005834  bsr     $58d8
+005838  lea     $904000.l, A0
+00583E  move.w  #$fff, D0
+005842  move.w  #$2800, D1
+005846  moveq   #$0, D2
+005848  bsr     $58d8
+00584C  lea     $908000.l, A0
+005852  move.w  #$fff, D0
+005856  move.w  #$400, D1
+00585A  moveq   #$0, D2
+00585C  bsr     $58d8
+005860  moveq   #$0, D0
+005862  move.w  D0, ($2b8,A5)
+005866  move.w  D0, ($2ba,A5)
+00586A  lea     $910000.l, A0
+005870  bsr     $5904
+005874  lea     $918000.l, A0
+00587A  bsr     $5904
+00587E  move.w  #$1, D0
+005882  jsr     $cdc.w
+005886  bsr     $54ec
+00588A  moveq   #$0, D0
+00588C  move.b  ($13,A6), D0
+005890  addq.w  #4, D0
+005892  jsr     $cdc.w
+005896  clr.b   ($5d59,A5)
+00589A  jmp     $bd2.w
+0058D8  move.w  D1, (A0)+
+0058DA  move.w  D2, (A0)+
+0058DC  dbra    D0, $58d8
+0058E0  rts
+005904  move.w  #$ff, D0
+005908  moveq   #$0, D1
+00590A  move.l  D1, (A0)+
+00590C  move.l  D1, (A0)+
+00590E  dbra    D0, $590a
+005912  rts
+005914  moveq   #$0, D1
+005916  adda.l  #$38, A0
+00591C  tst.b   ($646,A5)
+005920  beq     $592e
+005922  suba.l  #$38, A0
+005928  move.w  #$6, D0
+00592C  bsr     $594a
+00592E  adda.l  #$38, A0
+005934  tst.b   ($946,A5)
+005938  beq     $5946
+005946  move.w  #$f1, D0
+00594A  move.l  D1, (A0)+
+00594C  move.l  D1, (A0)+
+00594E  dbra    D0, $594a
+005952  rts
+0059C6  move.w  #$2, D0
+0059CA  moveq   #$0, D1
+0059CC  move.b  ($13,A6), D1
+0059D0  jsr     $2564.w
+0059D4  move.w  #$1, D0
+0059D8  jsr     $cdc.w
+0059DC  tst.w   ($5d56,A5)
+0059E0  bne     $59d4
+0059E2  moveq   #$0, D0
+0059E4  move.b  ($13,A6), D0
+0059E8  jsr     $cdc.w
+0059EC  clr.b   ($5d59,A5)
+0059F0  jmp     $bd2.w
+005B9C  movea.l (-$7dfc,A5), A6
+005BA0  move.b  #$1, ($14,A6)
+005BA6  move.b  ($12,A6), ($16,A6)
+005BAC  move.b  ($13,A6), ($15,A6)
+005BB2  eori.b  #$80, ($11,A6)
+005BB8  eori.b  #$80, ($11,A6)
+005BBE  bsr     $5bda
+005BC2  moveq   #$18, D0
+005BC4  jsr     $cdc.w
+005BC8  eori.b  #$80, ($11,A6)
+005BCE  bsr     $5bda
+005BD2  moveq   #$18, D0
+005BD4  jsr     $cdc.w
+005BD8  bra     $5bb8
+005BDA  move.b  ($15,A6), D0
+005BDE  ext.w   D0
+005BE0  lsl.w   #2, D0
+005BE2  movea.l ($8,PC,D0.w), A1
+005BE6  move.b  ($11,A6), D0
+005BEA  jmp     (A1)
+005C00  movea.l (-$7dfc,A5), A6
+005C04  move.w  ($10,A6), D0
+005C08  move.w  ($6,PC,D0.w), D1
+005C0C  jmp     ($2,PC,D1.w)
+005C14  move.b  #$1, ($14,A6)
+005C1A  clr.b   ($12,A6)
+005C1E  clr.b   ($13,A6)
+005C22  move.b  #$7, ($11,A6)
+005C28  tst.b   ($2d4,A5)
+005C2C  beq     $5c34
+005C34  bsr     $4dee
+005C38  movea.l #$90d670, A0
+005C3E  moveq   #$0, D0
+005C40  move.b  ($2dd,A5), D0
+005C44  moveq   #$0, D2
+005C46  move.w  #$0, D3
+005C4A  bsr     $5cd4
+005C4E  jmp     $bd2.w
+005CD4  move.b  D0, D1
+005CD6  lsr.b   #4, D0
+005CD8  bsr     $5cdc
+005CDA  move.b  D1, D0
+005CDC  tst.b   D2
+005CDE  beq     $5cf6
+005CE0  andi.w  #$f, D0
+005CE4  addi.w  #$4000, D0
+005CE8  move.w  D0, ($0,A0)
+005CEC  move.w  D3, ($2,A0)
+005CF0  lea     ($80,A0), A0
+005CF4  rts
+005CF6  moveq   #$1, D2
+005CF8  andi.w  #$f, D0
+005CFC  bne     $5cdc
+005CFE  moveq   #$0, D2
+005D00  move.w  #$4020, (A0)
+005D04  move.w  D3, ($2,A0)
+005D08  lea     ($80,A0), A0
+005D0C  rts
+005D0E  addi.w  #$40, D5
+005D12  swap    D5
+005D14  not.b   D6
+005D16  addq.w  #1, D6
+005D18  move.w  D6, D5
+005D1A  rts
+005D4E  bsr     $5d0e
+005D50  move.b  D0, D1
+005D52  lsr.b   #4, D0
+005D54  bsr     $5d58
+005D56  move.b  D1, D0
+005D58  tst.b   D2
+005D5A  beq     $5d8a
+005D5C  andi.w  #$f, D0
+005D60  addi.w  #-$8000, D0
+005D64  move.l  D5, ($0,A0)
+005D68  move.w  D0, ($4,A0)
+005D6C  move.w  D3, ($6,A0)
+005D70  adda.l  #$8000, A0
+005D76  move.l  D5, (A0)+
+005D78  move.w  D0, (A0)+
+005D7A  move.w  D3, (A0)+
+005D7C  suba.l  #$8000, A0
+005D82  addi.l  #$80000, D5
+005D88  rts
+005DC4  move.b  D0, D1
+005DC6  lsr.b   #4, D0
+005DC8  bsr     $5dcc
+005DCA  move.b  D1, D0
+005DCC  tst.b   D2
+005DCE  beq     $5dfe
+005DD0  andi.w  #$f, D0
+005DD4  addi.w  #-$7f50, D0
+005DD8  move.l  D5, ($0,A0)
+005DDC  move.w  D0, ($4,A0)
+005DE0  move.w  D3, ($6,A0)
+005DE4  adda.l  #$8000, A0
+005DEA  move.l  D5, (A0)+
+005DEC  move.w  D0, (A0)+
+005DEE  move.w  D3, (A0)+
+005DF0  suba.l  #$8000, A0
+005DF6  addi.l  #$c0000, D5
+005DFC  rts
+005DFE  moveq   #$1, D2
+005E00  andi.w  #$f, D0
+005E04  bne     $5dd0
+005E06  moveq   #$0, D2
+005E08  addi.l  #$c0000, D5
+005E0E  rts
+005E1C  tst.b   D2
+005E1E  beq     $5e4e
+005E20  andi.w  #$f, D0
+005E24  addi.w  #-$7f00, D0
+005E28  move.l  D5, ($0,A0)
+005E2C  move.w  D0, ($4,A0)
+005E30  move.w  D3, ($6,A0)
+005E34  adda.l  #$8000, A0
+005E3A  move.l  D5, (A0)+
+005E3C  move.w  D0, (A0)+
+005E3E  move.w  D3, (A0)+
+005E40  suba.l  #$8000, A0
+005E46  addi.l  #$100000, D5
+005E4C  rts
+005EC2  move.w  #$b0, D5
+005EC6  move.w  #$d0, D6
+005ECA  move.w  #$d, D3
+005ECE  moveq   #$1, D2
+005ED0  bsr     $5d0e
+005ED4  move.b  ($ace,A5), D0
+005ED8  lea     $910070.l, A0
+005EDE  move.b  D0, D1
+005EE0  lsr.b   #4, D0
+005EE2  bsr     $5e1c
+005EE6  move.b  D1, D0
+005EE8  bra     $5e1c
+005F48  moveq   #$0, D1
+005F4A  move.l  D1, (-$75be,A5)
+005F4E  lea     (-$75ba,A5), A0
+005F52  lea     ($2c,PC) ; ($5f80), A1
+005F56  move.w  #$f, D2
+005F5A  lsr.w   #1, D0
+005F5C  bcc     $5f62
+005F5E  bsr     $5f6a
+005F62  addq.l  #4, A1
+005F64  dbra    D2, $5f5a
+005F68  rts
+005F6A  andi    #$ef, CCR
+005F6E  abcd    -(A1), -(A0)
+005F70  abcd    -(A1), -(A0)
+005F72  abcd    -(A1), -(A0)
+005F74  abcd    -(A1), -(A0)
+005F76  addq.l  #4, A0
+005F78  addq.l  #4, A1
+005F7A  rts
+00611C  moveq   #$0, D2
+00611E  bsr     $5d0e
+006122  move.l  ($0,A2), D0
+006126  beq     $6152
+006128  move.b  (A2)+, D0
+00612A  move.w  #$d, D3
+00612E  bsr     $5dcc
+006132  move.b  (A2)+, D0
+006134  move.w  #$d, D3
+006138  bsr     $5dc4
+00613C  move.b  (A2)+, D0
+00613E  move.w  #$d, D3
+006142  bsr     $5dc4
+006146  move.b  (A2)+, D0
+006148  move.w  #$d, D3
+00614C  bra     $5dc4
+006152  addi.l  #$480000, D5
+006158  moveq   #$1, D2
+00615A  bra     $5dcc
+0061B2  jsr     $933c.l
+0061B8  move.w  #$a4, D5
+0061BC  move.w  #$f0, D6
+0061C0  lea     $910098.l, A0
+0061C6  lea     ($5302,A5), A2
+0061CA  bsr     $611c
+0061CE  tst.b   ($646,A5)
+0061D2  beq     $61f6
+0061D4  moveq   #$0, D0
+0061D6  bsr     $4bb6
+0061DA  tst.b   ($2da,A5)
+0061DE  bne     $61f6
+0061E0  move.w  #$20, D5
+0061E4  move.w  #$f0, D6
+0061E8  lea     $910000.l, A0
+0061EE  lea     ($660,A5), A2
+0061F2  bsr     $611c
+0061F6  tst.b   ($946,A5)
+0061FA  beq     $621e
+00621E  move.w  #$4e71, D3
+006222  rts
+006264  move.w  ($24,A5), D0
+006268  cmp.w   ($22,A5), D0
+00626C  beq     $6290
+00626E  lea     ($1a2,A5), A4
+006272  move.w  ($24,A5), D0
+006276  move.b  (A4,D0.w), $800189.l
+00627E  move.b  ($1,A4,D0.w), $800181.l
+006286  addq.w  #2, D0
+006288  andi.w  #$7e, D0
+00628C  move.w  D0, ($24,A5)
+006290  rts
+006292  tst.b   ($2d1,A5)
+006296  bne     $62a4
+0062A4  lea     ($1a2,A5), A4
+0062A8  move.w  ($22,A5), D1
+0062AC  move.w  D0, (A4,D1.w)
+0062B0  addq.w  #2, D1
+0062B2  andi.w  #$7e, D1
+0062B6  move.w  D1, ($22,A5)
+0062BA  rts
+0062BC  bsr     $6292
+0062BE  move.w  #$ff, D0
+0062C2  bra     $6292
+0062C4  bsr     $62a4
+0062C6  move.w  #$ff, D0
+0062CA  bra     $62a4
+0062CC  move.w  #$f0, D0
+0062D0  bsr     $62c4
+0062D2  move.w  #$f7, D0
+0062D6  bra     $62c4
+0062E4  move.w  #$f7, D0
+0062E8  bra     $62c4
+0062EA  bra     $62bc
+006352  move.w  #$20, D0
+006356  bra     $62c4
+00636A  move.w  ($9ca,A5), D0
+00636E  add.w   D0, D0
+006370  move.w  ($6,PC,D0.w), D0
+006374  bra     $6292
+006396  jsr     $24ba.w
+00639A  move.w  ($0,A5), D0
+00639E  move.w  ($10,PC,D0.w), D0
+0063A2  jsr     ($c,PC,D0.w)
+0063A6  move.w  #$1, D0
+0063AA  jsr     $cdc.w
+0063AE  bra     $639a
+0063C2  addq.w  #2, ($0,A5)
+0063C6  move.w  #$1c3, ($2c4,A5)
+0063CC  clr.b   ($2e1,A5)
+0063D0  movea.l #$1684, A0
+0063D6  cmpi.w  #$52, ($2,A0)
+0063DC  bne     $63e6
+0063DE  cmpi.w  #$166, ($6,A0)
+0063E4  beq     $63ec
+0063EC  rts
+0063EE  addq.w  #2, ($0,A5)
+0063F2  bsr     $185a
+0063F6  bsr     $18b0
+0063FA  bsr     $18d6
+0063FE  move.b  #$1, ($2da,A5)
+006404  move.w  #$100, ($2b8,A5)
+00640A  jsr     $1c02.w
+00640E  jmp     $91e.w
+006412  tst.b   ($2e0,A5)
+006416  bne     $641c
+006418  addq.w  #2, ($0,A5)
+00641C  rts
+00641E  subq.w  #1, ($2,A5)
+006422  bne     $6430
+006424  addq.w  #2, ($0,A5)
+006428  clr.b   ($2e1,A5)
+00642C  jmp     $24ba.w
+006430  jmp     $2700.w
+006434  tst.b   ($2e0,A5)
+006438  bne     $6442
+00643A  clr.b   ($2e1,A5)
+00643E  addq.w  #2, ($0,A5)
+006442  jmp     $2700.w
+006446  addq.w  #2, ($0,A5)
+00644A  move.w  #$b4, ($2,A5)
+006450  move.w  #$2, D0
+006454  move.w  #$5, D1
+006458  jsr     $2564.w
+00645C  move.w  ($2c2,A5), D0
+006460  move.w  ($10,PC,D0.w), D0
+006464  move.b  #$1, ($2e0,A5)
+00646A  move.w  #$100, D1
+00646E  jmp     $2564.w
+006478  addq.w  #2, ($0,A5)
+00647C  move.w  #$3c, ($2,A5)
+006482  move.w  #$2, D0
+006486  move.w  #$5, D1
+00648A  jsr     $2564.w
+00648E  move.w  ($2c2,A5), D0
+006492  move.w  ($10,PC,D0.w), D0
+006496  move.b  #$1, ($2e0,A5)
+00649C  move.w  #$101, D1
+0064A0  jmp     $2564.w
+0064AA  moveq   #$0, D0
+0064AC  move.w  D0, ($0,A5)
+0064B0  move.w  D0, ($2,A5)
+0064B4  move.w  D0, ($4,A5)
+0064B8  move.w  D0, ($6,A5)
+0064BC  move.w  D0, ($8,A5)
+0064C0  move.w  D0, ($a,A5)
+0064C4  move.w  D0, ($c,A5)
+0064C8  move.w  D0, ($e,A5)
+0064CC  move.w  D0, ($10,A5)
+0064D0  move.w  D0, ($12,A5)
+0064D4  btst    #$6, ($76,A5)
+0064DA  bne     $6510
+0064DC  tst.b   ($323,A5)
+0064E0  bne     $6510
+0064E2  move.w  #$20, D0
+0064E6  movea.l #$6550, A0
+0064EC  jsr     $b44.w
+0064F0  move.w  #$401, D1
+0064F4  move.w  #$3000, D0
+0064F8  moveq   #$2, D2
+0064FA  dbra    D0, $64f8
+0064FE  move.w  ($5e,A5), D2
+006502  andi.w  #$fc3f, D2
+006506  cmp.w   D1, D2
+006508  bne     $6522
+00650C  jmp     $bae.w
+006550  move.b  #$1, ($2da,A5)
+006556  move.w  #$12f8, ($52,A5)
+00655C  jsr     $24ba.w
+006560  jsr     $62cc.w
+006564  btst    #$6, ($76,A5)
+00656A  bne     $659e
+00656C  tst.b   ($2d7,A5)
+006570  beq     $657a
+00657A  tst.b   ($2d6,A5)
+00657E  bne     $6598
+006580  move.w  ($0,A5), D0
+006584  move.w  ($1c,PC,D0.w), D1
+006588  jsr     ($18,PC,D1.w)
+00658C  jsr     $91e.w
+006590  bsr     $65b6
+006594  jsr     $163e.w
+006598  jsr     $247a.w
+00659C  bra     $6564
+0065B6  tst.b   ($2d3,A5)
+0065BA  bne     $6624
+0065BC  tst.b   ($2dd,A5)
+0065C0  beq     $6622
+0065C2  moveq   #$0, D0
+0065C4  move.b  ($324,A5), D0
+0065C8  move.w  D0, ($0,A5)
+0065CC  move.w  D0, ($2,A5)
+0065D0  move.w  D0, ($4,A5)
+0065D4  move.w  D0, ($6,A5)
+0065D8  move.w  D0, ($8,A5)
+0065DC  move.w  D0, ($a,A5)
+0065E0  move.w  D0, ($c,A5)
+0065E4  move.w  D0, ($e,A5)
+0065E8  move.w  D0, ($10,A5)
+0065EC  move.w  D0, ($12,A5)
+0065F0  move.w  D0, ($14,A5)
+0065F4  move.w  D0, ($16,A5)
+0065F8  jsr     $2544.w
+0065FC  jsr     $c80.w
+006600  jsr     $62e4.w
+006604  move.w  #$40, D0
+006608  movea.l #$6b98, A0
+00660E  lea     (-$4c,PC) ; ($65c4), A1
+006612  cmpi.l  #$102d0324, (A1)
+006618  bne     $661e
+00661A  jsr     $b44.w
+00661E  jmp     $bae.w
+006622  rts
+006628  addq.w  #2, ($0,A5)
+00662C  move.w  #$0, ($36,A5)
+006632  move.w  #$100, ($38,A5)
+006638  jmp     $20aa.w
+006674  move.w  ($4,A5), D0
+006678  move.w  ($18,PC,D0.w), D1
+00667C  jsr     ($14,PC,D1.w)
+006680  jsr     $101ae.l
+006686  jsr     $83554.l
+00668C  jmp     $7e92a.l
+00669C  addq.w  #2, ($4,A5)
+0066A0  moveq   #$0, D0
+0066A2  move.b  D0, ($9e1,A5)
+0066A6  move.w  #$10, ($9e4,A5)
+0066AC  move.w  D0, ($9e2,A5)
+0066B0  jsr     $20aa.w
+0066B4  bsr     $6746
+0066B8  jsr     $830e8.l
+0066BE  jsr     $1b9c.w
+0066C2  jsr     $83af0.l
+0066C8  move.w  #$7b8, ($52,A5)
+0066CE  lea     ($bd2,A5), A6
+0066D2  move.w  #$0, ($6,A6)
+0066D8  move.w  #$500, ($a,A6)
+0066DE  jsr     $84016.l
+0066E4  lea     ($c52,A5), A6
+0066E8  move.w  #$0, ($6,A6)
+0066EE  move.w  #$600, ($a,A6)
+0066F4  jsr     $840ac.l
+0066FA  move.b  #$1, ($2dc,A5)
+006700  move.w  #$809, D0
+006704  tst.b   ($2d3,A5)
+006708  beq     $670c
+00670C  move.w  #$101, D1
+006710  jsr     $2564.w
+006714  move.w  #$2, D0
+006718  move.w  #$3, D1
+00671C  jsr     $ed2.w
+006720  move.w  #$16, D0
+006724  jsr     $62ea.w
+006728  movea.l #$14b5, A0
+00672E  adda.l  #$1d5, A0
+006734  cmpi.w  #$166, (A0)
+006738  beq     $6744
+006744  rts
+006746  jsr     $2370.w
+00674A  beq     $6778
+00674C  move.b  #$1, ($0,A4)
+006752  move.b  #$12, ($20,A4)
+006758  move.b  #$4, ($25,A4)
+00675E  move.w  #$c0, ($6,A4)
+006764  move.w  #$7a4, ($a,A4)
+00676A  jsr     $df8.w
+00676E  andi.w  #$f, D0
+006772  move.b  ($6,PC,D0.w), ($21,A4)
+006778  rts
+00678A  tst.b   ($9e1,A5)
+00678E  beq     $6794
+006794  rts
+006B98  clr.w   ($5d56,A5)
+006B9C  move.w  #$0, D0
+006BA0  move.w  #$1, D1
+006BA4  jsr     $2564.w
+006BA8  move.w  #$1, D0
+006BAC  jsr     $cdc.w
+006BB0  tst.w   ($5d56,A5)
+006BB4  beq     $6ba8
+006BB6  jsr     $537c.w
+006BBA  move.w  #$1, D0
+006BBE  jsr     $cdc.w
+006BC2  move.w  #$0, ($36,A5)
+006BC8  move.w  #$100, ($38,A5)
+006BCE  jsr     $20aa.w
+006BD2  jsr     $62e4.w
+006BD6  jsr     $1b9c.w
+006BDA  jsr     $2370.w
+006BDE  beq     $6c16
+006BE0  move.b  #$1, ($0,A4)
+006BE6  move.b  #$12, ($20,A4)
+006BEC  jsr     $2370.w
+006BF0  beq     $6c16
+006BF2  move.b  #$1, ($0,A4)
+006BF8  move.b  #$29, ($20,A4)
+006BFE  move.b  #$1, ($21,A4)
+006C04  jsr     $2370.w
+006C08  beq     $6c16
+006C0A  move.b  #$1, ($0,A4)
+006C10  move.b  #$3e, ($20,A4)
+006C16  btst    #$6, ($76,A5)
+006C1C  bne     $6c60
+006C1E  tst.b   ($2d7,A5)
+006C22  beq     $6c2c
+006C2C  tst.b   ($2d6,A5)
+006C30  bne     $6c52
+006C32  move.w  ($0,A5), D0
+006C36  move.w  ($2c,PC,D0.w), D1
+006C3A  jsr     ($28,PC,D1.w)
+006C3E  jsr     $101ae.l
+006C44  jsr     $7e95e.l
+006C4A  jsr     $91e.w
+006C4E  bsr     $6c6a
+006C52  jsr     $163e.w
+006C56  move.w  #$1, D0
+006C5A  jsr     $cdc.w
+006C5E  bra     $6c16
+006C6A  tst.b   ($2d4,A5)
+006C6E  bne     $6c9e
+006C70  move.b  ($2dd,A5), D0
+006C74  cmp.b   ($2de,A5), D0
+006C78  beq     $6c9c
+006C7A  move.b  D0, ($2de,A5)
+006C7E  cmpi.b  #$1, ($2dd,A5)
+006C84  bhi     $6c94
+006C94  move.w  #$40c, D0
+006C98  jmp     $2562.w
+006C9C  rts
+006CEA  addq.w  #2, ($0,A5)
+006CEE  move.b  ($2dd,A5), ($2de,A5)
+006CF4  tst.b   ($2d4,A5)
+006CF8  bne     $6cae
+006CFA  bra     $6c7e
+006CFC  addq.w  #2, ($0,A5)
+006D00  move.w  #$1000, D0
+006D04  jsr     $2564.w
+006D08  moveq   #$1, D0
+006D0A  jmp     $2532.w
+006D0E  move.b  ($77,A5), D0
+006D12  not.b   D0
+006D14  and.b   ($76,A5), D0
+006D18  andi.b  #$30, D0
+006D1C  beq     $6d64
+006D1E  tst.b   ($302,A5)
+006D22  beq     $6d28
+006D28  btst    #$5, D0
+006D2C  beq     $6d66
+006D64  rts
+006D66  btst    #$4, D0
+006D6A  beq     $6d64
+006D6C  moveq   #$1, D2
+006D6E  tst.b   ($2d3,A5)
+006D72  beq     $6d7a
+006D7A  move.b  ($2dd,A5), D1
+006D7E  moveq   #$1, D3
+006D80  add.b   ($2d4,A5), D3
+006D84  andi    #$ef, CCR
+006D88  sbcd    D3, D1
+006D8A  bcs     $6d64
+006D8C  clr.b   ($31e,A5)
+006D90  move.b  D1, ($2dd,A5)
+006D94  move.b  D2, ($2e4,A5)
+006D98  move.w  #$a0, D0
+006D9C  jsr     $c04.w
+006DA0  jsr     $2544.w
+006DA4  jsr     $c80.w
+006DA8  jsr     $62e4.w
+006DAC  moveq   #$0, D0
+006DAE  move.w  D0, ($0,A5)
+006DB2  move.w  D0, ($2,A5)
+006DB6  move.w  D0, ($4,A5)
+006DBA  move.w  D0, ($6,A5)
+006DBE  move.w  D0, ($8,A5)
+006DC2  move.w  D0, ($a,A5)
+006DC6  move.w  D0, ($c,A5)
+006DCA  move.w  D0, ($e,A5)
+006DCE  move.w  D0, ($10,A5)
+006DD2  move.w  D0, ($12,A5)
+006DD6  move.w  D0, ($14,A5)
+006DDA  move.w  D0, ($16,A5)
+006DDE  move.b  D0, ($31f,A5)
+006DE2  move.b  D0, ($2eb,A5)
+006DE6  move.b  D0, ($31b,A5)
+006DEA  move.b  D0, ($2ed,A5)
+006DEE  move.b  D0, ($31b,A5)
+006DF2  move.b  D0, ($2ec,A5)
+006DF6  move.b  D0, ($2da,A5)
+006DFA  move.b  D0, ($2d9,A5)
+006DFE  move.b  D0, ($2de,A5)
+006E02  move.b  #$1, ($2e5,A5)
+006E08  move.l  D0, ($648,A5)
+006E0C  move.l  D0, ($948,A5)
+006E10  move.b  D0, ($646,A5)
+006E14  move.b  D0, ($946,A5)
+006E18  move.b  D0, ($654,A5)
+006E1C  move.b  D0, ($954,A5)
+006E20  move.b  D0, ($674,A5)
+006E24  move.b  D0, ($974,A5)
+006E28  move.b  D0, ($655,A5)
+006E2C  move.b  D0, ($955,A5)
+006E30  move.b  D0, ($647,A5)
+006E34  move.b  #$1, ($947,A5)
+006E3A  lea     ($6c6,A5), A0
+006E3E  move.w  A0, ($664,A5)
+006E42  lea     ($3c6,A5), A0
+006E46  move.w  A0, ($964,A5)
+006E4A  move.b  D0, ($657,A5)
+006E4E  move.b  D0, ($957,A5)
+006E52  move.b  D0, ($66b,A5)
+006E56  move.b  D0, ($96b,A5)
+006E5A  btst    #$1, ($2e4,A5)
+006E60  beq     $6e74
+006E74  move.b  #$2, ($646,A5)
+006E7A  move.b  #$4, ($648,A5)
+006E80  move.b  #$1, ($654,A5)
+006E86  jsr     $24ba.w
+006E8A  move.w  #$60, D0
+006E8E  movea.l #$6eaa, A0
+006E94  jsr     $b44.w
+006E98  move.w  #$80, D0
+006E9C  movea.l #$7de2, A0
+006EA2  jsr     $b44.w
+006EA6  jmp     $bae.w
+006EAA  movea.l (-$7dfc,A5), A6
+006EAE  move.b  #$1, ($1f,A6)
+006EB4  jsr     $91e.w
+006EB8  tst.b   ($2d6,A5)
+006EBC  bne     $6ece
+006EBE  lea     ($3c6,A5), A6
+006EC2  bsr     $6eea
+006EC6  lea     ($6c6,A5), A6
+006ECA  bsr     $6eea
+006ECE  jsr     $247a.w
+006ED2  bra     $6eb4
+006ED4  tst.b   ($9de,A5)
+006ED8  bne     $6ede
+006EDA  jmp     $4c82.w
+006EEA  tst.b   ($280,A6)
+006EEE  bne     $6efe
+006EF0  moveq   #$0, D0
+006EF2  move.b  ($282,A6), D0
+006EF6  move.w  ($8,PC,D0.w), D1
+006EFA  jmp     ($4,PC,D1.w)
+006EFE  rts
+006F0A  tst.b   ($31d,A5)
+006F0E  bne     $6efe
+006F10  tst.b   ($2eb,A5)
+006F14  bne     $76a6
+006F18  move.b  ($283,A6), D0
+006F1C  move.w  ($6,PC,D0.w), D1
+006F20  jmp     ($2,PC,D1.w)
+006F2A  move.b  ($2d3,A5), D0
+006F2E  or.b    ($2dd,A5), D0
+006F32  bne     $6f46
+006F46  addq.b  #2, ($282,A6)
+006F4A  clr.b   ($283,A6)
+006F4E  rts
+006F90  tst.b   ($31d,A5)
+006F94  bne     $6efe
+006F98  tst.b   ($2eb,A5)
+006F9C  bne     $76a6
+006FA0  move.b  ($2d3,A5), D1
+006FA4  or.b    ($2dd,A5), D1
+006FA8  beq     $6fb6
+006FAA  move.b  ($283,A6), D0
+006FAE  move.w  ($c,PC,D0.w), D1
+006FB2  jmp     ($8,PC,D1.w)
+006FC0  addq.b  #2, ($283,A6)
+006FC4  clr.b   ($2aa,A6)
+006FC8  moveq   #$0, D0
+006FCA  bra     $7080
+006FCE  bsr     $705e
+006FD2  tst.b   ($9de,A5)
+006FD6  bne     $705c
+006FDA  bsr     $72a4
+006FDE  beq     $705c
+00705C  rts
+00705E  addq.b  #1, ($2aa,A6)
+007062  move.b  ($2aa,A6), D0
+007066  andi.w  #$7, D0
+00706A  bne     $707e
+00706C  moveq   #$0, D0
+00706E  btst    #$4, ($2aa,A6)
+007074  beq     $707a
+007076  move.w  #$80, D0
+00707A  bra     $7080
+00707E  rts
+007080  tst.b   ($2d3,A5)
+007084  bne     $7098
+007086  tst.b   ($2d4,A5)
+00708A  bne     $70a4
+00708E  addq.b  #4, D0
+007090  add.b   ($281,A6), D0
+007094  jmp     $6ed4.w
+0072A4  moveq   #$4, D1
+0072A6  tst.b   ($281,A6)
+0072AA  beq     $72ae
+0072AC  moveq   #$5, D1
+0072AE  move.b  ($76,A5), D0
+0072B2  btst    D1, D0
+0072B4  beq     $72b8
+0072B8  rts
+0076B8  move.b  ($5dbe,A5), D0
+0076BC  move.w  ($6,PC,D0.w), D1
+0076C0  jmp     ($2,PC,D1.w)
+0076CC  move.b  ($5dbf,A5), D0
+0076D0  move.w  ($6,PC,D0.w), D1
+0076D4  jmp     ($2,PC,D1.w)
+0076DE  addq.b  #2, ($5dbf,A5)
+0076E2  move.b  #$1, ($2ea,A5)
+0076E8  clr.b   ($672,A5)
+0076EC  clr.b   ($972,A5)
+0076F0  move.b  #$1, ($2e5,A5)
+0076F6  move.b  #$1e, ($5dca,A5)
+0076FC  clr.b   ($9db,A5)
+007700  clr.b   ($5dc9,A5)
+007704  clr.b   ($9e1,A5)
+007708  move.w  #$12f8, ($52,A5)
+00770E  move.w  #$11, ($9e4,A5)
+007714  jsr     $1bb4.w
+007718  jsr     $83af0.l
+00771E  move.w  #$0, ($3a,A5)
+007724  move.w  #$0, ($3c,A5)
+00772A  lea     ($c52,A5), A6
+00772E  move.w  #$0, ($6,A6)
+007734  move.w  #$700, ($a,A6)
+00773A  jsr     $840ac.l
+007740  move.w  #$0, ($36,A5)
+007746  move.w  #$100, ($38,A5)
+00774C  move.w  #$203c, ($5dc2,A5)
+007752  move.w  #$1, ($9e2,A5)
+007758  lea     $900240.l, A1
+00775E  lea     ($52,PC) ; ($77b2), A0
+007762  jsr     $1dd4.w
+007766  move.w  #$e, D0
+00776A  jsr     $62ea.w
+00776E  move.w  #$1c16, D0
+007772  move.w  #$0, D1
+007776  jsr     $2564.w
+00777A  jsr     $830e8.l
+007780  move.w  #$3400, D0
+007784  dbra    D0, $7784
+007788  move.w  $800172.l, D0
+00778E  movea.l #$7f516, A0
+007794  move.w  ($4,A0), D1
+007798  and.w   D1, D0
+00779A  move.w  ($5e,A5), D2
+00779E  and.w   D1, D2
+0077A0  cmp.w   D2, D0
+0077A2  beq     $77b0
+0077B0  rts
+0077D2  addq.b  #2, ($5dbf,A5)
+0077D6  tst.b   ($9da,A5)
+0077DA  bne     $780a
+0077DC  tst.b   ($654,A5)
+0077E0  beq     $77e8
+0077E2  move.b  #$0, ($657,A5)
+0077E8  tst.b   ($954,A5)
+0077EC  beq     $77f4
+0077F4  cmpi.b  #$3, ($2e4,A5)
+0077FA  bne     $7808
+007808  rts
+0078E4  addq.b  #2, ($5dbe,A5)
+0078E8  clr.b   ($5dbf,A5)
+0078EC  clr.b   ($2e5,A5)
+0078F0  move.w  #$2, D0
+0078F4  move.w  #$1, D1
+0078F8  jmp     $ed2.w
+0078FC  tst.b   ($5dca,A5)
+007900  beq     $7906
+007902  subq.b  #1, ($5dca,A5)
+007906  bsr     $7b32
+00790A  bsr     $7b8c
+00790E  tst.b   ($654,A5)
+007912  beq     $7938
+007914  move.b  ($657,A5), (-$75ae,A5)
+00791A  lea     ($3c6,A5), A4
+00791E  lea     ($6c6,A5), A3
+007922  bsr     $7992
+007926  move.b  (-$75ae,A5), D0
+00792A  cmp.b   ($657,A5), D0
+00792E  beq     $7938
+007938  tst.b   ($954,A5)
+00793C  beq     $7962
+007962  move.b  ($655,A5), D0
+007966  tst.b   ($654,A5)
+00796A  bne     $7970
+007970  move.b  ($955,A5), D1
+007974  tst.b   ($954,A5)
+007978  bne     $797e
+00797A  move.b  #$1, D1
+00797E  and.b   D1, D0
+007980  beq     $7986
+007982  addq.b  #2, ($5dbe,A5)
+007986  jsr     $101ae.l
+00798C  jmp     $7e8f6.l
+007992  tst.b   ($5dca,A5)
+007996  bne     $7a46
+00799A  tst.b   ($28f,A4)
+00799E  bne     $7a46
+0079A2  tst.b   ($2ac,A4)
+0079A6  beq     $79ba
+0079A8  subq.b  #1, ($2ac,A4)
+0079AC  bne     $7a46
+0079B0  move.b  #$1, ($28f,A4)
+0079B6  bra     $7a46
+0079BA  bsr     $7bba
+0079BE  tst.b   ($5dc4,A5)
+0079C2  bne     $79fa
+0079C4  tst.b   ($2da,A5)
+0079C8  bne     $79f2
+0079CA  tst.b   ($5dc9,A5)
+0079CE  beq     $79d6
+0079D6  move.b  ($77,A5), D0
+0079DA  not.b   D0
+0079DC  and.b   ($76,A5), D0
+0079E0  move.b  #$10, D1
+0079E4  tst.b   ($281,A4)
+0079E8  beq     $79ee
+0079EE  and.b   D1, D0
+0079F0  bne     $79fa
+0079F2  andi.l  #$770, D6
+0079F8  beq     $7a46
+0079FA  bsr     $7dd0
+0079FE  move.b  ($281,A4), D0
+007A02  move.b  ($5dc5,A5), D1
+007A06  beq     $7a12
+007A12  move.b  #$2d, ($2ac,A4)
+007A18  tst.b   ($2da,A5)
+007A1C  bne     $7a30
+007A1E  lea     ($308,A5), A0
+007A22  moveq   #$0, D0
+007A24  move.b  ($291,A4), D0
+007A28  add.w   D0, D0
+007A2A  lea     (A0,D0.w), A0
+007A2E  addq.w  #1, (A0)
+007A30  tst.b   ($9dc,A5)
+007A34  bne     $7a46
+007A36  move.b  #$1, ($9dc,A5)
+007A3C  move.b  ($291,A4), ($9dd,A5)
+007A42  jsr     $403a.w
+007A46  move.w  #$17, D0
+007A4A  tst.b   ($281,A4)
+007A4E  beq     $7a54
+007A54  jsr     $4c82.w
+007A58  move.b  ($281,A4), D0
+007A5C  move.b  ($291,A4), D3
+007A60  jmp     $1546c.l
+007A66  jsr     $270a.w
+007A6A  moveq   #$0, D0
+007A6C  move.b  ($5dbf,A5), D0
+007A70  move.w  ($6,PC,D0.w), D1
+007A74  jmp     ($2,PC,D1.w)
+007A7E  addq.b  #2, ($5dbf,A5)
+007A82  jsr     $3cea.w
+007A86  tst.b   ($9e0,A5)
+007A8A  bne     $7ab8
+007A8C  jsr     $2370.w
+007A90  beq     $7ab6
+007A92  move.b  #$1, ($0,A4)
+007A98  move.b  #$2e, ($20,A4)
+007A9E  move.b  ($9cb,A5), ($81,A4)
+007AA4  move.b  ($9dd,A5), ($80,A4)
+007AAA  tst.b   ($5dc5,A5)
+007AAE  beq     $7ab6
+007AB6  rts
+007AC0  tst.b   ($9e1,A5)
+007AC4  bpl     $7ad0
+007AC6  addq.b  #2, ($5dbf,A5)
+007ACA  move.w  #$3c, ($5dc6,A5)
+007AD0  jsr     $101ae.l
+007AD6  jmp     $7e8f6.l
+007ADC  subq.w  #1, ($5dc6,A5)
+007AE0  bne     $7af0
+007AE2  move.b  #$0, ($2e1,A5)
+007AE8  addq.b  #2, ($5dbe,A5)
+007AEC  clr.b   ($5dbf,A5)
+007AF0  jsr     $101ae.l
+007AF6  jmp     $7e8f6.l
+007AFC  moveq   #$1, D3
+007AFE  move.b  D3, ($9db,A5)
+007B02  tst.b   ($2da,A5)
+007B06  bne     $7b16
+007B08  tst.b   ($2d7,A5)
+007B0C  beq     $7b2e
+007B2E  jmp     $24fe.w
+007B32  tst.b   ($9da,A5)
+007B36  beq     $7b8a
+007B8A  rts
+007B8C  tst.b   ($5dc4,A5)
+007B90  bne     $7bb0
+007B92  subq.b  #1, ($5dc3,A5)
+007B96  bne     $7bb0
+007B98  move.b  #$3c, ($5dc3,A5)
+007B9E  moveq   #$1, D1
+007BA0  move.b  ($5dc2,A5), D0
+007BA4  andi    #$ef, CCR
+007BA8  sbcd    D1, D0
+007BAA  bcs     $7bb2
+007BAC  move.b  D0, ($5dc2,A5)
+007BB0  rts
+007BBA  move.w  ($294,A4), D6
+007BBE  not.w   D6
+007BC0  and.w   ($292,A4), D6
+007BC4  move.b  ($291,A4), D0
+007BC8  bsr     $7c30
+007BCC  bsr     $7c48
+007BD0  move.b  D0, D3
+007BD2  add.b   D1, D0
+007BD4  btst    #$2, D3
+007BD8  bne     $7be2
+007BDA  btst    #$2, D0
+007BDE  bne     $7be8
+007BE0  bra     $7bec
+007BEC  add.b   D2, D0
+007BEE  cmpi.b  #$8, D0
+007BF2  bcs     $7bf6
+007BF6  tst.b   ($28e,A3)
+007BFA  beq     $7c2a
+007C2A  move.b  D0, ($291,A4)
+007C2E  rts
+007C30  moveq   #$0, D1
+007C32  btst    #$0, D6
+007C36  beq     $7c3c
+007C3C  btst    #$1, D6
+007C40  beq     $7c46
+007C46  rts
+007C48  moveq   #$0, D2
+007C4A  btst    #$3, D6
+007C4E  beq     $7c54
+007C54  btst    #$2, D6
+007C58  beq     $7c5e
+007C5E  rts
+007DD0  movem.l A4, -(A7)
+007DD4  move.w  #$22, D0
+007DD8  jsr     $62ea.w
+007DDC  movem.l (A7)+, A4
+007DE0  rts
+007DE2  moveq   #$1, D0
+007DE4  jsr     $2520.w
+007DE8  st      ($2e2,A5)
+007DEC  tst.b   ($2d6,A5)
+007DF0  bne     $7e06
+007DF2  addq.b  #1, ($1d,A5)
+007DF6  jsr     $25a6.w
+007DFA  jsr     $26a2.w
+007DFE  bsr     $7e50
+007E02  jsr     $163e.w
+007E06  btst    #$6, ($76,A5)
+007E0C  bne     $7e22
+007E0E  tst.b   ($2d7,A5)
+007E12  beq     $7e1c
+007E1C  bsr     $7e26
+007E20  bra     $7de8
+007E26  tst.b   ($2d7,A5)
+007E2A  beq     $7e44
+007E42  rts
+007E44  tst.b   ($2e2,A5)
+007E48  beq     $7e42
+007E4A  moveq   #$1, D0
+007E4C  jmp     $cdc.w
+007E50  move.w  ($0,A5), D0
+007E54  move.w  ($6,PC,D0.w), D0
+007E58  jmp     ($2,PC,D0.w)
+007E60  addq.w  #2, ($0,A5)
+007E64  clr.b   ($321,A5)
+007E68  cmpi.b  #$3, ($2e4,A5)
+007E6E  bne     $7e76
+007E76  movea.l #$1a966, A0
+007E7C  move.w  ($4,A0), D1
+007E80  movea.l ($0,A0), A0
+007E84  move.w  #$3580, D0
+007E88  dbra    D0, $7e88
+007E8C  move.w  ($0,A0), D0
+007E90  and.w   D1, D0
+007E92  cmpi.w  #$401, D0
+007E96  beq     $7eb6
+007EB6  jsr     $62cc.w
+007EBA  jsr     $20aa.w
+007EBE  jsr     $3c58.w
+007EC2  jmp     $537c.w
+007EC6  move.w  ($4,A5), D0
+007ECA  move.w  ($6,PC,D0.w), D0
+007ECE  jmp     ($2,PC,D0.w)
+007EE0  jsr     $76b8.l
+007EE6  tst.b   ($9db,A5)
+007EEA  beq     $7ef0
+007EEC  addq.w  #2, ($4,A5)
+007EF0  rts
+007EF2  addq.w  #2, ($4,A5)
+007EF6  movea.l #$1a9b, A0
+007EFC  lea     (-$417,A0), A0
+007F00  move.w  #$d5, D0
+007F04  addi.w  #$91, D0
+007F08  cmp.w   ($6,A0), D0
+007F0C  beq     $7f12
+007F12  rts
+007F14  move.w  ($8,A5), D0
+007F18  move.w  ($6,PC,D0.w), D1
+007F1C  jmp     ($2,PC,D1.w)
+007F34  addq.w  #2, ($8,A5)
+007F38  jmp     $3c7a.w
+007F3C  tst.b   ($9e0,A5)
+007F40  bne     $7f4e
+007F42  tst.b   ($2ea,A5)
+007F46  bne     $7f4e
+007F4E  addq.w  #2, ($8,A5)
+007F52  clr.b   ($2ea,A5)
+007F56  rts
+007F58  tst.b   ($9e0,A5)
+007F5C  bne     $7f64
+007F5E  jmp     $8766.l
+007F6A  move.w  ($c,A5), D0
+007F6E  move.w  ($6,PC,D0.w), D1
+007F72  jmp     ($2,PC,D1.w)
+007F80  addq.w  #2, ($c,A5)
+007F84  jsr     $20aa.w
+007F88  jmp     $3df8.w
+007F8C  addq.w  #2, ($c,A5)
+007F90  jsr     $1c08.w
+007F94  jmp     $2052.w
+007F98  addq.w  #2, ($c,A5)
+007F9C  move.w  #$9928, ($ace,A5)
+007FA2  tst.b   ($9e0,A5)
+007FA6  beq     $7fca
+007FCA  jsr     $92f4.l
+007FD0  jsr     $5ec2.w
+007FD4  jsr     $1ac9a.l
+007FDA  jmp     $826a4.l
+007FE6  tst.b   ($a4b,A5)
+007FEA  bne     $7ff2
+007FEC  jmp     $83564.l
+007FF2  addq.w  #2, ($c,A5)
+007FF6  jmp     $3378.w
+007FFA  move.w  ($bd8,A5), ($e,A5)
+008000  jsr     $83564.l
+008006  move.w  ($e,A5), D0
+00800A  cmp.w   ($bd8,A5), D0
+00800E  bne     $7ffa
+008010  addq.w  #2, ($8,A5)
+008014  clr.w   ($c,A5)
+008018  rts
+00801A  jmp     $885c.l
+008600  tst.b   ($9da,A5)
+008604  beq     $8624
+008624  rts
+00873C  jsr     $283f2.l
+008742  jsr     $7bfba.l
+008748  jsr     $241fa.l
+00874E  jsr     $24b44.l
+008754  jsr     $101ae.l
+00875A  jsr     $82e2c.l
+008760  jmp     $83564.l
+008766  jsr     $270a.w
+00876A  move.w  ($c,A5), D0
+00876E  move.w  ($6,PC,D0.w), D0
+008772  jmp     ($2,PC,D0.w)
+00877C  addq.w  #2, ($c,A5)
+008780  move.w  #$b4, ($e,A5)
+008786  move.w  #$12f8, ($52,A5)
+00878C  move.w  #$11, ($9e4,A5)
+008792  jsr     $20aa.w
+008796  move.w  #$12, ($9e2,A5)
+00879C  jsr     $830e8.l
+0087A2  jsr     $83af0.l
+0087A8  lea     ($c52,A5), A6
+0087AC  move.w  #$200, ($c58,A5)
+0087B2  move.w  #$700, ($c5c,A5)
+0087B8  move.w  #$0, ($3a,A5)
+0087BE  move.w  #$0, ($3c,A5)
+0087C4  jsr     $840ac.l
+0087CA  jsr     $1553a.l
+0087D0  jsr     $1b7c.w
+0087D4  movea.l #$68, A0
+0087DA  move.l  ($0,A0), D0
+0087DE  cmpi.l  #$ab8, D0
+0087E4  beq     $8802
+008802  move.w  #$f, D0
+008806  jsr     $62ea.w
+00880A  move.w  #$2, D0
+00880E  moveq   #$2, D1
+008810  jsr     $ed2.w
+008814  move.w  #$4142, ($0,A6)
+00881A  rts
+00881C  subq.w  #1, ($e,A5)
+008820  bne     $8836
+008822  addq.w  #2, ($c,A5)
+008826  move.b  #$1, ($5d59,A5)
+00882C  move.w  #$c1c, D0
+008830  moveq   #$2, D1
+008832  jmp     $ed2.w
+008836  jsr     $101ae.l
+00883C  jsr     $7e95e.l
+008842  jmp     $8600.l
+008848  tst.b   ($5d59,A5)
+00884C  bne     $885a
+00884E  addq.w  #2, ($8,A5)
+008852  clr.w   ($c,A5)
+008856  clr.b   ($2e1,A5)
+00885A  rts
+00885C  move.w  ($c,A5), D0
+008860  move.w  ($20,PC,D0.w), D1
+008864  jsr     ($1c,PC,D1.w)
+008868  tst.b   ($2e7,A5)
+00886C  bne     $8876
+008876  jsr     $873c.l
+00887C  jmp     $7e95e.l
+008886  addq.w  #2, ($c,A5)
+00888A  jsr     $636a.w
+00888E  move.b  #$1, ($2e7,A5)
+008894  move.b  #$1, ($305,A5)
+00889A  move.b  #$1, ($306,A5)
+0088A0  move.w  #$2, D0
+0088A4  moveq   #$2, D1
+0088A6  jmp     $ed2.w
+0088AA  jmp     $8600.l
+0092F4  tst.b   ($9e0,A5)
+0092F8  bne     $9312
+0092FA  bsr     $93b6
+0092FE  bsr     $9456
+009302  bsr     $96be
+009306  jsr     $115fe.l
+00930C  jsr     $61b2.w
+009310  bra     $931e
+00931E  movea.l #$166a, A0
+009324  movea.l #$1832, A1
+00932A  cmp.w   ($0,A0), D3
+00932E  beq     $9338
+009330  addq.l  #2, A0
+009332  cmpa.l  A0, A1
+009334  bne     $932a
+009336  rts
+00933C  move.l  ($5302,A5), D0
+009340  cmp.l   ($660,A5), D0
+009344  bls     $934c
+009346  cmp.l   ($960,A5), D0
+00934A  bhi     $9368
+009368  lea     $910080.l, A0
+00936E  move.w  #$7c, D5
+009372  move.w  #$f0, D6
+009376  jsr     $5d0e.w
+00937A  lea     ($528e,A5), A1
+00937E  moveq   #$2, D6
+009380  moveq   #$0, D0
+009382  move.l  D5, ($0,A0)
+009386  move.b  (A1)+, D0
+009388  addi.w  #-$7f80, D0
+00938C  move.w  D0, ($4,A0)
+009390  move.w  #$d, ($6,A0)
+009396  adda.l  #$8000, A0
+00939C  move.l  D5, (A0)+
+00939E  move.w  D0, (A0)+
+0093A0  move.w  #$d, (A0)+
+0093A4  addi.l  #$c0000, D5
+0093AA  suba.l  #$8000, A0
+0093B0  dbra    D6, $9380
+0093B4  rts
+0093B6  lea     $910000.l, A1
+0093BC  move.b  ($656,A5), D0
+0093C0  beq     $93e6
+0093E6  move.b  ($956,A5), D0
+0093EA  beq     $940c
+00940C  rts
+00943A  move.w  ($1bc,A2), D0
+00943E  move.w  ($2a,A2), D1
+009442  tst.b   ($ad5,A5)
+009446  beq     $944c
+00944C  cmp.w   D1, D0
+00944E  beq     $9454
+009454  rts
+009456  tst.b   ($9e0,A5)
+00945A  bne     $9826
+00945E  lea     $910000.l, A1
+009464  move.w  #$10, D5
+009468  move.w  #$dc, D6
+00946C  lea     ($160,A1), A0
+009470  jsr     $5d0e.w
+009474  move.l  D5, ($0,A0)
+009478  move.w  #$81ff, ($4,A0)
+00947E  move.w  #$2c, ($6,A0)
+009484  adda.l  #$8000, A0
+00948A  move.l  D5, (A0)+
+00948C  move.w  #$81ff, (A0)+
+009490  move.w  #$2c, (A0)+
+009494  move.w  #$160, D5
+009498  move.w  #$dc, D6
+00949C  lea     ($1b0,A1), A0
+0094A0  jsr     $5d0e.w
+0094A4  move.l  D5, ($0,A0)
+0094A8  move.w  #$81ff, ($4,A0)
+0094AE  move.w  #$c, ($6,A0)
+0094B4  adda.l  #$8000, A0
+0094BA  move.l  D5, (A0)+
+0094BC  move.w  #$81ff, (A0)+
+0094C0  move.w  #$c, (A0)+
+0094C4  bsr     $933c
+0094C8  tst.b   ($9e0,A5)
+0094CC  bne     $988c
+0094D0  lea     ($3c6,A5), A2
+0094D4  bsr     $943a
+0094D8  move.w  ($1bc,A2), D1
+0094DC  move.w  #$a0, D5
+0094E0  move.w  #$dc, D6
+0094E4  lea     $910000.l, A1
+0094EA  lea     ($168,A1), A0
+0094EE  jsr     $5d0e.w
+0094F2  moveq   #$8, D3
+0094F4  tst.w   D1
+0094F6  bmi     $9588
+0094FA  cmpi.w  #$90, D1
+0094FE  bcs     $9504
+009500  move.w  #$90, D1
+009504  andi.w  #$fff0, D1
+009508  lsr.w   #4, D1
+00950A  subq.w  #1, D1
+00950C  bmi     $9548
+009510  move.l  D5, ($0,A0)
+009514  move.w  #$81de, ($4,A0)
+00951A  move.w  #$c, ($6,A0)
+009520  adda.l  #$8000, A0
+009526  move.l  D5, (A0)+
+009528  move.w  #$81de, (A0)+
+00952C  move.w  #$c, (A0)+
+009530  subi.l  #$100000, D5
+009536  suba.l  #$8000, A0
+00953C  subq.w  #1, D3
+00953E  dbra    D1, $9510
+009542  tst.w   D3
+009544  bmi     $95b8
+0095B8  lea     ($6c6,A5), A2
+0095BC  bsr     $943a
+0095C0  move.w  ($1bc,A2), D1
+0095C4  move.w  #$d0, D5
+0095C8  move.w  #$dc, D6
+0095CC  lea     $910000.l, A1
+0095D2  lea     ($1b8,A1), A0
+0095D6  jsr     $5d0e.w
+0095DA  moveq   #$8, D3
+0095DC  tst.w   D1
+0095DE  bmi     $966c
+0095E2  cmpi.w  #$90, D1
+0095E6  bcs     $95ec
+0095E8  move.w  #$90, D1
+0095EC  andi.w  #$fff0, D1
+0095F0  lsr.w   #4, D1
+0095F2  subq.w  #1, D1
+0095F4  bmi     $9630
+0095F8  move.l  D5, ($0,A0)
+0095FC  move.w  #$81de, ($4,A0)
+009602  move.w  #$c, ($6,A0)
+009608  adda.l  #$8000, A0
+00960E  move.l  D5, (A0)+
+009610  move.w  #$81de, (A0)+
+009614  move.w  #$c, (A0)+
+009618  addi.l  #$100000, D5
+00961E  suba.l  #$8000, A0
+009624  subq.w  #1, D3
+009626  dbra    D1, $95f8
+00962A  tst.w   D3
+00962C  bmi     $969c
+00969C  rts
+0096BE  tst.b   ($9e0,A5)
+0096C2  beq     $96ca
+0096CA  lea     ($76,PC) ; ($9742), A2
+0096CE  lea     ($8a,PC) ; ($975a), A3
+0096D2  tst.w   ($2c2,A5)
+0096D6  beq     $96e0
+0096D8  lea     ($98,PC) ; ($9772), A2
+0096DC  lea     ($ac,PC) ; ($978a), A3
+0096E0  lea     $9100e0.l, A0
+0096E6  move.w  #$20, D5
+0096EA  move.w  #$d0, D6
+0096EE  move.b  ($657,A5), D0
+0096F2  bsr     $9730
+0096F6  tst.b   ($9e0,A5)
+0096FA  beq     $9702
+009702  lea     ($3e,PC) ; ($9742), A2
+009706  lea     ($52,PC) ; ($975a), A3
+00970A  tst.w   ($2c2,A5)
+00970E  beq     $9718
+009710  lea     ($60,PC) ; ($9772), A2
+009714  lea     ($74,PC) ; ($978a), A3
+009718  lea     $910128.l, A0
+00971E  move.b  ($957,A5), D0
+009722  ext.w   D0
+009724  add.w   D0, D0
+009726  move.w  (A2,D0.w), D5
+00972A  move.w  #$d0, D6
+00972E  bra     $9734
+009730  ext.w   D0
+009732  add.w   D0, D0
+009734  move.w  (A3,D0.w), D0
+009738  lea     (A3,D0.w), A1
+00973C  jmp     $524e.w
+00D778  tst.b   ($21,A6)
+00D77C  bne     $d886
+00D780  move.b  ($2,A6), D0
+00D784  move.w  ($6,PC,D0.w), D1
+00D788  jmp     ($2,PC,D1.w)
+00D794  addq.b  #2, ($2,A6)
+00D798  lea     ($80,A6), A2
+00D79C  move.w  #$3, D2
+00D7A0  jsr     $2370.w
+00D7A4  beq     $d7c6
+00D7A6  move.b  #$1, ($0,A4)
+00D7AC  move.b  #$7, ($20,A4)
+00D7B2  move.b  D2, ($21,A4)
+00D7B6  addq.b  #1, ($21,A4)
+00D7BA  move.w  A4, (A2)+
+00D7BC  move.b  #$2, ($10,A4)
+00D7C2  dbra    D2, $d7a0
+00D7C6  rts
+00D7C8  move.b  ($3,A6), D0
+00D7CC  move.w  ($16,PC,D0.w), D1
+00D7D0  jsr     ($12,PC,D1.w)
+00D7D4  tst.b   ($ae1,A5)
+00D7D8  beq     $d7e2
+00D7E2  rts
+00D7E8  addq.b  #2, ($3,A6)
+00D7EC  jsr     $df8.w
+00D7F0  andi.w  #$e, D0
+00D7F4  move.w  ($6,PC,D0.w), ($1e,A6)
+00D7FA  rts
+00D80C  subq.w  #1, ($1e,A6)
+00D810  bne     $d834
+00D812  clr.b   ($3,A6)
+00D816  jsr     $df8.w
+00D81A  andi.w  #$3, D0
+00D81E  lea     ($80,A6), A2
+00D822  add.w   D0, D0
+00D824  movea.w (A2,D0.w), A2
+00D828  tst.b   ($80,A2)
+00D82C  bne     $d834
+00D82E  move.b  #$1, ($81,A2)
+00D834  rts
+00D886  move.b  ($2,A6), D0
+00D88A  move.w  ($6,PC,D0.w), D1
+00D88E  jmp     ($2,PC,D1.w)
+00D89A  addq.b  #2, ($2,A6)
+00D89E  clr.b   ($80,A6)
+00D8A2  clr.b   ($81,A6)
+00D8A6  move.b  ($21,A6), D0
+00D8AA  subq.b  #1, D0
+00D8AC  move.b  ($14,PC,D0.w), ($25,A6)
+00D8B2  lsl.w   #2, D0
+00D8B4  move.w  ($10,PC,D0.w), ($6,A6)
+00D8BA  move.w  ($c,PC,D0.w), ($a,A6)
+00D8C0  rts
+00D8D6  move.b  ($3,A6), D0
+00D8DA  move.w  ($6,PC,D0.w), D1
+00D8DE  jmp     ($2,PC,D1.w)
+00D8EA  tst.b   ($81,A6)
+00D8EE  beq     $d91a
+00D8F0  addq.b  #2, ($3,A6)
+00D8F4  clr.b   ($81,A6)
+00D8F8  move.b  #$70, ($1e,A6)
+00D8FE  move.b  #$1, ($80,A6)
+00D904  move.b  ($21,A6), D0
+00D908  subq.b  #1, D0
+00D90A  lea     ($6a,PC) ; ($d976), A0
+00D90E  jsr     $4854.w
+00D912  move.w  #$39, D0
+00D916  jmp     $62ea.w
+00D91A  rts
+00D91C  subq.b  #1, ($1e,A6)
+00D920  bne     $d92a
+00D92A  jmp     $4872.w
+0101AE  moveq   #$2, D0
+0101B0  jsr     $15da.w
+0101B4  lea     ($258a,A5), A6
+0101B8  move.w  #$3b, D7
+0101BC  tst.b   ($0,A6)
+0101C0  beq     $101d2
+0101C2  moveq   #$0, D0
+0101C4  move.b  ($20,A6), D0
+0101C8  lsl.w   #2, D0
+0101CA  movea.l ($10,PC,D0.w), A0
+0101CE  moveq   #$0, D0
+0101D0  jsr     (A0)
+0101D2  lea     ($c0,A6), A6
+0101D6  dbra    D7, $101bc
+0101DA  rts
+01143E  move.b  ($21,A6), D0
+011442  add.w   D0, D0
+011444  move.w  ($6,PC,D0.w), D1
+011448  jmp     ($2,PC,D1.w)
+011452  move.b  ($2,A6), D0
+011456  move.w  ($6,PC,D0.w), D1
+01145A  jmp     ($2,PC,D1.w)
+011466  addq.b  #2, ($2,A6)
+01146A  move.b  #$ff, ($25,A6)
+011470  move.b  #$6, ($10,A6)
+011476  move.w  #$c0, ($6,A6)
+01147C  move.w  #$98, ($a,A6)
+011482  moveq   #$1, D0
+011484  lea     ($250,PC) ; ($116d6), A0
+011488  jsr     $2750.w
+01148C  jmp     $2960.w
+011490  move.b  ($2,A6), D0
+011494  move.w  ($6,PC,D0.w), D1
+011498  jmp     ($2,PC,D1.w)
+0114A4  addq.b  #2, ($2,A6)
+0114A8  move.b  #$6, ($10,A6)
+0114AE  moveq   #$0, D0
+0114B0  move.b  D0, ($80,A6)
+0114B4  lea     ($220,PC) ; ($116d6), A0
+0114B8  jmp     $2750.w
+0114BC  move.b  ($3,A6), D0
+0114C0  move.w  ($e,PC,D0.w), D1
+0114C4  jsr     ($a,PC,D1.w)
+0114C8  bsr     $115ea
+0114CC  jmp     $28c2.w
+0114D8  tst.b   ($9e1,A5)
+0114DC  bpl     $114fa
+0114FA  rts
+0115EA  tst.b   ($80,A6)
+0115EE  beq     $115fc
+0115FC  rts
+0115FE  jsr     $2370.w
+011602  beq     $11610
+011604  move.b  #$1, ($0,A4)
+01160A  move.b  #$21, ($20,A4)
+011610  rts
+011612  move.b  ($2,A6), D0
+011616  move.w  ($6,PC,D0.w), D1
+01161A  jmp     ($2,PC,D1.w)
+011626  addq.b  #2, ($2,A6)
+01162A  clr.b   (-$75a2,A5)
+01162E  move.b  #$ff, ($25,A6)
+011634  move.b  #$2, ($10,A6)
+01163A  move.w  #$c0, ($6,A6)
+011640  move.w  #$cf, ($a,A6)
+011646  lea     ($236,PC) ; ($1187e), A0
+01164A  jsr     $275c.w
+01164E  move.b  ($3,A6), D0
+011652  move.w  ($1a,PC,D0.w), D1
+011656  jsr     ($16,PC,D1.w)
+01165A  bsr     $118cc
+01165E  bsr     $118f4
+011662  tst.b   (-$75a2,A5)
+011666  bne     $1166c
+011668  jmp     $2960.w
+011674  cmpi.w  #$30, ($3f0,A5)
+01167A  blt     $11684
+01167C  cmpi.w  #$30, ($6f0,A5)
+011682  bgt     $1168c
+01168C  rts
+0118CC  tst.b   ($2d7,A5)
+0118D0  beq     $118f2
+0118F2  rts
+0118F4  tst.b   ($2d7,A5)
+0118F8  beq     $118f2
+013760  jmp     $238c.w
+0137E4  move.b  ($21,A6), D0
+0137E8  add.w   D0, D0
+0137EA  move.w  ($6,PC,D0.w), D1
+0137EE  jmp     ($2,PC,D1.w)
+013810  move.b  ($2,A6), D0
+013814  move.w  ($6,PC,D0.w), D1
+013818  jmp     ($2,PC,D1.w)
+013824  move.b  #$6, ($2,A6)
+01382A  rts
+01382C  addq.b  #2, ($2,A6)
+013830  move.b  #$3c, ($1e,A6)
+013836  clr.b   ($84,A6)
+01383A  lea     (-$759a,A5), A1
+01383E  move.b  ($46,A6), D0
+013842  move.b  #$0, (A1,D0.w)
+013848  lea     ($4a8,PC) ; ($13cf2), A0
+01384C  move.l  A0, ($80,A6)
+013850  jsr     $2750.w
+013854  cmpi.b  #$8, ($46,A6)
+01385A  bcs     $13888
+01385C  tst.b   ($9fb,A5)
+013860  beq     $13824
+013888  cmpi.b  #$2, ($21,A6)
+01388E  beq     $138a2
+013890  cmpi.w  #$a, ($9ca,A5)
+013896  bne     $138a0
+0138A0  rts
+0138C2  cmpi.w  #$a, ($9ca,A5)
+0138C8  beq     $138ec
+0138CA  tst.b   ($46,A6)
+0138CE  bne     $138ec
+0138D0  tst.b   ($11,A6)
+0138D4  bne     $138ec
+0138EC  move.b  ($3,A6), D0
+0138F0  move.w  ($12,PC,D0.w), D1
+0138F4  jsr     ($e,PC,D1.w)
+0138F8  tst.b   ($84,A6)
+0138FC  bne     $13902
+0138FE  jmp     $2960.w
+013916  move.l  #$13cf2, ($80,A6)
+01391E  lea     ($9e9,A5), A1
+013922  move.b  ($46,A6), D0
+013926  move.b  (A1,D0.w), D1
+01392A  beq     $13934
+013934  lea     ($3c6,A5), A4
+013938  bsr     $13962
+01393A  lea     ($6c6,A5), A4
+01393E  bsr     $13962
+013940  move.b  ($46,A6), D0
+013944  movea.l ($80,A6), A0
+013948  jsr     $2750.w
+01394C  lea     (-$759a,A5), A1
+013950  move.b  ($46,A6), D0
+013954  ext.w   D0
+013956  move.b  (A1,D0.w), D0
+01395A  beq     $13960
+01395C  addq.b  #2, ($3,A6)
+013960  rts
+013962  tst.b   ($28e,A4)
+013966  beq     $1398e
+013968  move.b  ($291,A4), D0
+01396C  cmp.b   ($46,A6), D0
+013970  bne     $1398e
+013972  tst.b   ($28f,A4)
+013976  beq     $13990
+013978  move.l  #$13d22, ($80,A6)
+013980  tst.b   ($281,A4)
+013984  beq     $1398e
+01398E  rts
+013990  move.l  #$13d0a, ($80,A6)
+013998  rts
+01399A  jmp     $276e.w
+013A46  lea     ($3c6,A5), A4
+013A4A  tst.b   ($21,A6)
+013A4E  beq     $13a54
+013A50  lea     ($6c6,A5), A4
+013A54  move.b  ($2,A6), D0
+013A58  move.w  ($6,PC,D0.w), D1
+013A5C  jmp     ($2,PC,D1.w)
+013A68  tst.b   ($28e,A4)
+013A6C  beq     $13a7e
+013A6E  addq.b  #2, ($2,A6)
+013A72  move.b  ($21,A6), D0
+013A76  lea     ($125c,PC) ; ($14cd4), A0
+013A7A  jmp     $2750.w
+013A7E  rts
+013AA0  move.b  ($3,A6), D0
+013AA4  move.w  ($1e,PC,D0.w), D1
+013AA8  jsr     ($1a,PC,D1.w)
+013AAC  moveq   #$0, D0
+013AAE  move.b  ($291,A4), D0
+013AB2  lsl.w   #2, D0
+013AB4  move.w  (-$36,PC,D0.w), ($6,A6)
+013ABA  move.w  (-$3a,PC,D0.w), ($a,A6)
+013AC0  jmp     $2960.w
+013AC8  jsr     $276e.w
+013ACC  tst.b   ($28f,A4)
+013AD0  bne     $13ad8
+013AD2  tst.b   ($2ac,A4)
+013AD6  beq     $13ae8
+013AD8  addq.b  #2, ($3,A6)
+013ADC  move.b  ($21,A6), D0
+013AE0  lea     ($11f2,PC) ; ($14cd4), A0
+013AE4  jmp     $2750.w
+013AE8  rts
+013AEA  move.b  ($21,A6), D0
+013AEE  add.w   D0, D0
+013AF0  move.w  ($6,PC,D0.w), D1
+013AF4  jmp     ($2,PC,D1.w)
+013AFC  move.b  ($2,A6), D0
+013B00  move.w  ($6,PC,D0.w), D1
+013B04  jmp     ($2,PC,D1.w)
+013B10  addq.b  #2, ($2,A6)
+013B14  move.b  #$6, ($10,A6)
+013B1A  move.b  ($46,A6), D0
+013B1E  lea     ($12a8,PC) ; ($14dc8), A0
+013B22  jmp     $2750.w
+013B26  move.b  ($46,A6), D0
+013B2A  lea     ($9e9,A5), A1
+013B2E  move.b  (A1,D0.w), D1
+013B32  beq     $13b58
+013B58  rts
+013B5A  move.b  ($2,A6), D0
+013B5E  move.w  ($6,PC,D0.w), D1
+013B62  jmp     ($2,PC,D1.w)
+013B6E  move.b  ($3,A6), D0
+013B72  move.w  ($6,PC,D0.w), D1
+013B76  jmp     ($2,PC,D1.w)
+013B7E  addq.b  #2, ($3,A6)
+013B82  move.b  #$32, ($1e,A6)
+013B88  move.b  #$2, ($10,A6)
+013B8E  move.l  #$cfe74, ($30,A6)
+013B96  move.b  ($80,A6), D0
+013B9A  cmp.b   ($81,A6), D0
+013B9E  beq     $13be6
+013BA0  ext.w   D0
+013BA2  lsl.w   #2, D0
+013BA4  move.w  ($62,PC,D0.w), ($6,A6)
+013BAA  move.w  ($5e,PC,D0.w), ($a,A6)
+013BB0  move.b  ($81,A6), D0
+013BB4  ext.w   D0
+013BB6  lsl.w   #2, D0
+013BB8  move.w  ($4e,PC,D0.w), ($82,A6)
+013BBE  move.w  ($4a,PC,D0.w), ($84,A6)
+013BC4  move.w  ($82,A6), D0
+013BC8  move.w  ($84,A6), D1
+013BCC  jsr     $2854.w
+013BD0  addq.b  #2, D6
+013BD2  lsr.b   #2, D6
+013BD4  move.b  D6, D0
+013BD6  addq.b  #1, D0
+013BD8  lsr.b   #3, D0
+013BDA  move.b  D6, ($11,A6)
+013BDE  lea     ($f8a,PC) ; ($14b6a), A0
+013BE2  jmp     $2750.w
+013C50  subq.b  #1, ($1e,A6)
+013C54  bne     $13c66
+013C56  addq.b  #2, ($2,A6)
+013C5A  clr.b   ($3,A6)
+013C5E  move.w  #$3d, D0
+013C62  jmp     $62ea.w
+013C66  rts
+013C68  tst.b   ($3,A6)
+013C6C  bne     $13cd8
+013C6E  move.w  ($82,A6), D0
+013C72  move.w  ($84,A6), D1
+013C76  jsr     $2854.w
+013C7A  addq.b  #2, D6
+013C7C  lsr.b   #2, D6
+013C7E  move.b  D6, ($11,A6)
+013C82  move.w  ($6,A6), D0
+013C86  sub.w   ($82,A6), D0
+013C8A  addi.w  #$3, D0
+013C8E  cmpi.w  #$6, D0
+013C92  bhi     $13cea
+013C94  move.w  ($a,A6), D0
+013C98  sub.w   ($84,A6), D0
+013C9C  addi.w  #$3, D0
+013CA0  cmpi.w  #$6, D0
+013CA4  bhi     $13cea
+013CA6  addq.b  #2, ($3,A6)
+013CAA  move.b  #$ff, ($9e1,A5)
+013CB0  lea     (-$759a,A5), A1
+013CB4  move.b  ($81,A6), D0
+013CB8  ext.w   D0
+013CBA  move.b  #$1, (A1,D0.w)
+013CC0  add.w   D0, D0
+013CC2  lea     (-$8c,PC) ; ($13c38), A0
+013CC6  move.w  (A0,D0.w), D0
+013CCA  move.w  D0, ($96,A6)
+013CCE  move.b  #$32, ($1e,A6)
+013CD4  jmp     $2960.w
+013CD8  subq.b  #1, ($1e,A6)
+013CDC  bne     $13ce6
+013CDE  move.w  ($96,A6), D0
+013CE2  jsr     $62ea.w
+013CE6  jmp     $2960.w
+013CEA  jsr     $2798.w
+013CEE  jmp     $2960.w
+01534A  move.l  D5, ($0,A0)
+01534E  move.w  #$7fd4, ($4,A0)
+015354  move.w  #$3f, ($6,A0)
+01535A  adda.l  #$8000, A0
+015360  move.l  D5, (A0)+
+015362  move.w  #$7fd4, (A0)+
+015366  move.w  #$3f, (A0)+
+01536A  addi.l  #$500000, D5
+015370  move.l  D5, ($0,A0)
+015374  move.w  #$7fd4, ($4,A0)
+01537A  move.w  #$1f, ($6,A0)
+015380  suba.l  #$8000, A0
+015386  move.l  D5, (A0)+
+015388  move.w  #$7fd4, (A0)+
+01538C  move.w  #$1f, (A0)+
+015390  rts
+015392  move.l  D5, ($0,A0)
+015396  move.w  #$7fd5, ($4,A0)
+01539C  move.w  #$3f, ($6,A0)
+0153A2  adda.l  #$8000, A0
+0153A8  move.l  D5, (A0)+
+0153AA  move.w  #$7fd5, (A0)+
+0153AE  move.w  #$3f, (A0)+
+0153B2  addi.l  #$700000, D5
+0153B8  move.l  D5, ($0,A0)
+0153BC  move.w  #$7fd5, ($4,A0)
+0153C2  move.w  #$1f, ($6,A0)
+0153C8  suba.l  #$8000, A0
+0153CE  move.l  D5, (A0)+
+0153D0  move.w  #$7fd5, (A0)+
+0153D4  move.w  #$1f, (A0)+
+0153D8  rts
+0153DA  lea     ($10,PC) ; ($153ec), A1
+0153DE  ext.w   D3
+0153E0  move.w  D3, D4
+0153E2  lsl.w   #4, D4
+0153E4  lea     (A1,D4.w), A1
+0153E8  jmp     $524e.w
+01546C  tst.w   D0
+01546E  beq     $154c0
+0154C0  lea     $910070.l, A0
+0154C6  move.w  #$0, D5
+0154CA  move.w  #$20, D6
+0154CE  jsr     $5d0e.w
+0154D2  bsr     $1534a
+0154D6  move.b  D3, D6
+0154D8  ext.w   D6
+0154DA  add.w   D6, D6
+0154DC  move.w  ($28,PC,D6.w), D5
+0154E0  move.w  #$80, D6
+0154E4  lea     $9101c0.l, A0
+0154EA  bsr     $153da
+0154EE  move.w  #$0, D0
+0154F2  move.w  #$68, D1
+0154F6  jsr     $4786.w
+0154FA  suba.l  #$40, A0
+015500  moveq   #$1, D1
+015502  bra     $15516
+015516  ext.w   D3
+015518  add.w   D3, D3
+01551A  lea     ($e,PC) ; ($1552a), A1
+01551E  move.w  (A1,D3.w), D2
+015522  lea     (A1,D2.w), A1
+015526  bra     $155b8
+01553A  lea     $910080.l, A0
+015540  move.w  #$f0, D5
+015544  move.w  #$70, D6
+015548  jsr     $5d0e.w
+01554C  bsr     $15392
+015550  move.w  #$f0, D0
+015554  move.w  #$c0, D1
+015558  jsr     $4786.w
+01555C  move.b  ($957,A5), D3
+015560  moveq   #$0, D1
+015562  bsr     $1558c
+015564  lea     $910070.l, A0
+01556A  move.w  #$10, D5
+01556E  move.w  #$70, D6
+015572  jsr     $5d0e.w
+015576  bsr     $15392
+01557A  move.w  #$10, D0
+01557E  move.w  #$c0, D1
+015582  jsr     $4786.w
+015586  move.b  ($657,A5), D3
+01558A  moveq   #$1, D1
+01558C  ext.w   D3
+01558E  add.w   D3, D3
+015590  lea     ($e,PC) ; ($155a0), A1
+015594  move.w  (A1,D3.w), D2
+015598  lea     (A1,D2.w), A1
+01559C  bra     $155b8
+0155B8  move.w  (A1)+, D3
+0155BA  move.w  (A1)+, D4
+0155BC  move.w  (A1)+, D2
+0155BE  jmp     $4a24.w
+01AC9A  jsr     $2370.w
+01AC9E  beq     $1acac
+01ACA0  move.b  #$1, ($0,A4)
+01ACA6  move.b  #$22, ($20,A4)
+01ACAC  cmpi.w  #$8, ($9ca,A5)
+01ACB2  bne     $1acc8
+01ACC8  rts
+01ACEA  move.b  ($2,A6), D0
+01ACEE  move.w  ($6,PC,D0.w), D1
+01ACF2  jmp     ($2,PC,D1.w)
+01ACFE  addq.b  #2, ($2,A6)
+01AD02  move.b  #$2, ($10,A6)
+01AD08  move.b  #$ff, ($25,A6)
+01AD0E  move.w  #$c0, ($6,A6)
+01AD14  move.w  #$90, ($a,A6)
+01AD1A  move.b  #$ff, ($13,A6)
+01AD20  move.w  #$0, ($16,A6)
+01AD26  move.b  #$0, ($11,A6)
+01AD2C  tst.b   ($9e0,A5)
+01AD30  bne     $1ad6c
+01AD32  move.w  #$14, D0
+01AD36  jsr     $4af8.w
+01AD3A  move.b  ($a15,A5), D0
+01AD3E  cmpi.b  #$63, D0
+01AD42  bcs     $1ad48
+01AD48  andi.w  #$ff, D0
+01AD4C  addq.w  #1, D0
+01AD4E  jsr     $5f48.w
+01AD52  move.w  #$d8, D5
+01AD56  move.w  #$78, D6
+01AD5A  moveq   #$d, D3
+01AD5C  moveq   #$1, D2
+01AD5E  lea     $910230.l, A0
+01AD64  move.w  (-$75bc,A5), D0
+01AD68  jmp     $5d4e.w
+01AD6E  bsr     $1ad7e
+01AD72  tst.b   ($9da,A5)
+01AD76  bne     $1ad7c
+01AD78  jmp     $2960.w
+01AD7E  tst.b   ($9e0,A5)
+01AD82  bne     $1ada0
+01AD86  move.b  ($3,A6), D0
+01AD8A  move.w  ($6,PC,D0.w), D1
+01AD8E  jmp     ($2,PC,D1.w)
+01ADB4  addq.b  #2, ($3,A6)
+01ADB8  move.w  #$fff0, ($16,A6)
+01ADBE  move.w  ($a4c,A5), D0
+01ADC2  lea     ($12a,PC) ; ($1aeee), A0
+01ADC6  jmp     $2750.w
+01ADCA  tst.w   ($16,A6)
+01ADCE  beq     $1add6
+01ADD0  addq.w  #2, ($16,A6)
+01ADD4  rts
+01ADD6  addq.b  #2, ($3,A6)
+01ADDA  cmpi.w  #$9, ($a4c,A5)
+01ADE0  beq     $1adf0
+01ADE2  move.b  #$28, ($1e,A6)
+01ADE8  move.w  #$5f, D0
+01ADEC  jmp     $62ea.w
+01ADFE  subq.b  #1, ($1e,A6)
+01AE02  bne     $1ae30
+01AE04  addq.b  #2, ($3,A6)
+01AE08  cmpi.w  #$9, ($a4c,A5)
+01AE0E  beq     $1ae22
+01AE10  move.b  #$1e, ($1e,A6)
+01AE16  move.w  ($a4c,A5), D0
+01AE1A  addi.w  #$60, D0
+01AE1E  jmp     $62ea.w
+01AE30  rts
+01AE32  subq.b  #1, ($1e,A6)
+01AE36  bne     $1ae3c
+01AE38  addq.b  #2, ($3,A6)
+01AE3C  rts
+01AE3E  subq.w  #1, ($16,A6)
+01AE42  cmpi.w  #-$10, ($16,A6)
+01AE48  bne     $1ae3c
+01D246  move.b  ($21,A6), D0
+01D24A  move.w  ($6,PC,D0.w), D1
+01D24E  jmp     ($2,PC,D1.w)
+01D25C  move.b  ($2,A6), D0
+01D260  move.w  ($6,PC,D0.w), D1
+01D264  jmp     ($2,PC,D1.w)
+01D270  addq.b  #2, ($2,A6)
+01D274  moveq   #$0, D0
+01D276  move.b  D0, (-$758c,A5)
+01D27A  move.b  #$f0, (-$758b,A5)
+01D280  move.b  #$4, ($10,A6)
+01D286  move.w  ($a,A6), ($80,A6)
+01D28C  lea     ($348,PC) ; ($1d5d6), A0
+01D290  jsr     $2750.w
+01D294  jmp     $297a.w
+01D298  move.b  ($3,A6), D0
+01D29C  move.w  ($6,PC,D0.w), D1
+01D2A0  jmp     ($2,PC,D1.w)
+01D2AA  subq.b  #1, (-$758b,A5)
+01D2AE  beq     $1d2c8
+01D2B0  move.w  ($80,A6), ($a,A6)
+01D2B6  move.b  (-$758b,A5), D0
+01D2BA  andi.w  #$10, D0
+01D2BE  lsr.w   #3, D0
+01D2C0  or.w    D0, ($a,A6)
+01D2C4  jmp     $297a.w
+01D336  move.b  ($2,A6), D0
+01D33A  move.w  ($6,PC,D0.w), D1
+01D33E  jmp     ($2,PC,D1.w)
+01D34A  addq.b  #2, ($2,A6)
+01D34E  move.b  #$4, ($10,A6)
+01D354  move.w  ($a,A6), ($80,A6)
+01D35A  moveq   #$1, D0
+01D35C  lea     ($278,PC) ; ($1d5d6), A0
+01D360  jsr     $2750.w
+01D364  jmp     $297a.w
+01D368  move.b  ($3,A6), D0
+01D36C  move.w  ($6,PC,D0.w), D1
+01D370  jmp     ($2,PC,D1.w)
+01D37C  tst.b   (-$758c,A5)
+01D380  bne     $1d39a
+01D382  move.w  ($80,A6), ($a,A6)
+01D388  move.b  (-$758b,A5), D0
+01D38C  andi.w  #$20, D0
+01D390  lsr.w   #4, D0
+01D392  or.w    D0, ($a,A6)
+01D396  jmp     $297a.w
+01D3EE  move.b  ($2,A6), D0
+01D3F2  move.w  ($6,PC,D0.w), D1
+01D3F6  jmp     ($2,PC,D1.w)
+01D402  addq.b  #2, ($2,A6)
+01D406  move.b  #$4, ($10,A6)
+01D40C  moveq   #$5, D0
+01D40E  lea     ($1c6,PC) ; ($1d5d6), A0
+01D412  jmp     $2750.w
+01D416  move.b  ($3,A6), D0
+01D41A  move.w  ($6,PC,D0.w), D1
+01D41E  jmp     ($2,PC,D1.w)
+01D42A  tst.b   (-$758c,A5)
+01D42E  beq     $1d434
+01D434  rts
+01D47A  move.b  ($2,A6), D0
+01D47E  move.w  ($6,PC,D0.w), D1
+01D482  jmp     ($2,PC,D1.w)
+01D48E  addq.b  #2, ($2,A6)
+01D492  move.b  #$6, ($10,A6)
+01D498  moveq   #$6, D0
+01D49A  lea     ($13a,PC) ; ($1d5d6), A0
+01D49E  jmp     $2750.w
+01D4A2  move.b  ($3,A6), D0
+01D4A6  move.w  ($6,PC,D0.w), D1
+01D4AA  jmp     ($2,PC,D1.w)
+01D4B4  tst.b   (-$758c,A5)
+01D4B8  beq     $1d4be
+01D4BE  rts
+01D500  move.b  ($2,A6), D0
+01D504  move.w  ($6,PC,D0.w), D1
+01D508  jmp     ($2,PC,D1.w)
+01D514  addq.b  #2, ($2,A6)
+01D518  move.b  #$4, ($10,A6)
+01D51E  move.l  #$0, ($86,A6)
+01D526  move.l  #$ffffc000, ($8a,A6)
+01D52E  moveq   #$7, D0
+01D530  lea     ($a4,PC) ; ($1d5d6), A0
+01D534  jmp     $2750.w
+01D538  move.b  ($3,A6), D0
+01D53C  move.w  ($6,PC,D0.w), D1
+01D540  jmp     ($2,PC,D1.w)
+01D54A  tst.b   (-$758c,A5)
+01D54E  beq     $1d554
+01D554  rts
+01E072  move.b  ($2,A6), D0
+01E076  move.w  ($6,PC,D0.w), D1
+01E07A  jmp     ($2,PC,D1.w)
+01E086  addq.b  #2, ($2,A6)
+01E08A  move.b  ($11,A6), ($12,A6)
+01E090  move.b  ($46,A6), ($10,A6)
+01E096  cmpi.b  #$5, ($21,A6)
+01E09C  bne     $1e0b2
+01E0B2  lea     ($32,PC) ; ($1e0e6), A0
+01E0B6  move.b  ($21,A6), D0
+01E0BA  jmp     $2750.w
+01E0DE  jmp     $28c2.w
+01FD58  move.b  ($2,A6), D0
+01FD5C  move.w  ($6,PC,D0.w), D1
+01FD60  jmp     ($2,PC,D1.w)
+01FD6C  addq.b  #2, ($2,A6)
+01FD70  move.w  ($c58,A5), D0
+01FD74  add.w   D0, ($6,A6)
+01FD78  move.w  ($c5c,A5), D0
+01FD7C  add.w   D0, ($a,A6)
+01FD80  move.b  #$6, ($10,A6)
+01FD86  lea     ($12,PC) ; ($1fd9a), A0
+01FD8A  jsr     $275c.w
+01FD8E  jsr     $276e.w
+01FD92  jmp     $28c2.w
+01FFE4  move.b  ($2,A6), D0
+01FFE8  move.w  ($6,PC,D0.w), D0
+01FFEC  jmp     ($2,PC,D0.w)
+01FFF8  addq.b  #2, ($2,A6)
+01FFFC  lea     ($3c6,A5), A1
+020000  tst.b   ($21,A6)
+020004  beq     $2000a
+020006  lea     ($6c6,A5), A1
+02000A  move.b  ($291,A1), D0
+02000E  add.w   D0, D0
+020010  add.b   ($281,A1), D0
+020014  lea     ($2c,PC) ; ($20042), A2
+020018  tst.w   ($2c2,A5)
+02001C  beq     $20022
+02001E  lea     ($3a,PC) ; ($2005a), A2
+020022  move.b  (A2,D0.w), D1
+020026  ext.w   D1
+020028  add.w   D1, ($6,A6)
+02002C  lea     ($4c,PC) ; ($2007a), A0
+020030  tst.w   ($2c2,A5)
+020034  beq     $2003a
+020036  lea     ($5a,PC) ; ($20092), A0
+02003A  move.b  ($291,A1), D0
+02003E  jmp     $2750.w
+020072  jmp     $28c2.w
+020D56  move.b  ($2,A6), D0
+020D5A  move.w  ($6,PC,D0.w), D1
+020D5E  jmp     ($2,PC,D1.w)
+020D6A  addq.b  #2, ($2,A6)
+020D6E  move.b  #$ff, ($25,A6)
+020D74  move.b  #$4, ($10,A6)
+020D7A  move.w  #$c0, ($6,A6)
+020D80  move.w  #$50, ($a,A6)
+020D86  move.b  #$0, ($1e,A6)
+020D8C  move.l  #$b00000, ($3c,A6)
+020D94  move.w  ($6,A6), ($80,A6)
+020D9A  tst.b   ($21,A6)
+020D9E  beq     $20da4
+020DA0  addq.b  #2, ($3,A6)
+020DA4  lea     ($2f2,PC) ; ($21098), A0
+020DA8  jsr     $275c.w
+020DAC  move.b  ($3,A6), D0
+020DB0  move.w  ($a,PC,D0.w), D1
+020DB4  jsr     ($6,PC,D1.w)
+020DB8  jmp     $2960.w
+020DFE  rts
+020E00  move.b  ($2,A6), D0
+020E04  move.w  ($6,PC,D0.w), D1
+020E08  jmp     ($2,PC,D1.w)
+020E14  addq.b  #2, ($2,A6)
+020E18  move.b  #$ff, ($25,A6)
+020E1E  move.b  #$2, ($10,A6)
+020E24  move.w  #$c0, ($6,A6)
+020E2A  move.w  #$20, ($a,A6)
+020E30  moveq   #$0, D0
+020E32  cmpi.w  #$2, ($2c2,A5)
+020E38  bne     $20e3c
+020E3C  lea     ($2bc,PC) ; ($210fa), A0
+020E40  jsr     $2750.w
+020E44  jmp     $2960.w
+0241FA  moveq   #$8, D0
+0241FC  jsr     $15da.w
+024200  lea     ($138a,A5), A6
+024204  move.w  #$7, D7
+024208  tst.b   ($0,A6)
+02420C  beq     $2421e
+02421E  lea     ($c0,A6), A6
+024222  dbra    D7, $24208
+024226  rts
+024B44  moveq   #$1, D0
+024B46  jsr     $15da.w
+024B4A  lea     ($198a,A5), A6
+024B4E  move.w  #$f, D7
+024B52  tst.b   ($0,A6)
+024B56  beq     $24b68
+024B68  lea     ($c0,A6), A6
+024B6C  dbra    D7, $24b52
+024B70  rts
+0283F2  move.w  #$0, D0
+0283F6  jsr     $15da.w
+0283FA  move.l  ($596,A5), ($57e,A5)
+028400  move.l  ($896,A5), ($87e,A5)
+028406  move.l  ($3cc,A5), ($592,A5)
+02840C  move.l  ($3d0,A5), ($596,A5)
+028412  move.l  ($6cc,A5), ($892,A5)
+028418  move.l  ($6d0,A5), ($896,A5)
+02841E  bsr     $28746
+028422  tst.b   ($557,A5)
+028426  beq     $2842c
+02842C  tst.b   ($857,A5)
+028430  beq     $28436
+028436  tst.b   ($ade,A5)
+02843A  bne     $284d4
+02843E  lea     ($3c6,A5), A0
+028442  lea     ($6c6,A5), A1
+028446  jsr     $df8.w
+02844A  move.l  #$55555555, D1
+028450  andi.w  #$1f, D0
+028454  btst    D0, D1
+028456  beq     $2845a
+028458  exg     A0, A1
+02845A  move.w  A0, (-$753c,A5)
+02845E  move.w  A1, (-$753a,A5)
+028462  movea.w (-$753c,A5), A6
+028466  bsr     $284e4
+02846A  tst.b   ($63,A6)
+02846E  bne     $284a4
+028470  movea.w (-$753a,A5), A6
+028474  bsr     $284e4
+028478  tst.b   ($63,A6)
+02847C  bne     $284bc
+02847E  clr.w   (-$74ee,A5)
+028482  tst.b   ($ae0,A5)
+028486  beq     $2848e
+02848E  bsr     $28566
+028492  bsr     $285c0
+028496  bsr     $2866e
+02849A  jsr     $7e516.l
+0284A0  bra     $28694
+0284E4  tst.b   ($28e,A6)
+0284E8  beq     $284fa
+0284EA  moveq   #$0, D0
+0284EC  jsr     $2ab98.l
+0284F2  jsr     $2d98.w
+0284F6  bra     $28526
+0284FA  tst.b   ($9e0,A5)
+0284FE  beq     $2850e
+02850E  bsr     $2873c
+028512  moveq   #$0, D0
+028514  move.b  D0, ($194,A6)
+028518  jsr     $287ba.l
+02851E  jsr     $2d98.w
+028522  bra     $28526
+028526  clr.b   ($1a2,A6)
+02852A  tst.b   ($0,A6)
+02852E  beq     $28564
+028530  tst.b   ($14c,A6)
+028534  beq     $28564
+028564  rts
+028566  tst.b   ($a5c,A5)
+02856A  bne     $285aa
+02856E  clr.b   ($2e9,A5)
+028572  tst.b   ($3c6,A5)
+028576  beq     $2859a
+028578  movea.l ($3e0,A5), A0
+02857C  move.b  ($f,A0), D0
+028580  tst.b   ($6c6,A5)
+028584  beq     $2859a
+028586  movea.l ($6e0,A5), A0
+02858A  move.b  ($f,A0), D1
+02858E  cmp.b   D1, D0
+028590  beq     $285a2
+0285A2  move.b  ($adf,A5), ($2e9,A5)
+0285A8  rts
+0285C0  tst.b   ($9e0,A5)
+0285C4  bne     $28638
+0285C8  moveq   #$0, D2
+0285CA  move.w  ($6cc,A5), D0
+0285CE  sub.w   ($3cc,A5), D0
+0285D2  bpl     $285d6
+0285D6  addi.w  #$18, D0
+0285DA  cmpi.w  #$30, D0
+0285DE  bls     $285fc
+0285E0  move.b  #$1, ($584,A5)
+0285E6  move.b  #$0, ($884,A5)
+0285EC  tst.b   D2
+0285EE  beq     $285fc
+0285FC  rts
+02866E  lea     ($3c6,A5), A6
+028672  bsr     $2867a
+028676  lea     ($6c6,A5), A6
+02867A  move.l  ($6,A6), D0
+02867E  sub.l   ($1cc,A6), D0
+028682  move.l  D0, ($1c4,A6)
+028686  move.l  ($a,A6), D0
+02868A  sub.l   ($1d0,A6), D0
+02868E  move.l  D0, ($1c8,A6)
+028692  rts
+028694  move.w  ($6d0,A5), D1
+028698  sub.w   ($3d0,A5), D1
+02869C  bpl     $286a0
+0286A0  move.w  D1, ($54a,A5)
+0286A4  move.w  D1, ($84a,A5)
+0286A8  cmpi.w  #$e, ($9ca,A5)
+0286AE  beq     $286fa
+0286B2  cmpi.w  #$c, ($9ca,A5)
+0286B8  beq     $28708
+0286BC  cmpi.w  #$d, ($9ca,A5)
+0286C2  bne     $286ca
+0286CA  lea     ($3c6,A5), A0
+0286CE  lea     ($6c6,A5), A1
+0286D2  bsr     $286de
+0286D6  lea     ($6c6,A5), A0
+0286DA  lea     ($3c6,A5), A1
+0286DE  move.w  ($6,A1), D0
+0286E2  move.w  ($1c2,A1), D1
+0286E6  sub.w   ($6,A0), D0
+0286EA  bpl     $286ee
+0286EC  neg.w   D0
+0286EE  sub.w   D1, D0
+0286F0  bpl     $286f4
+0286F4  move.w  D0, ($182,A0)
+0286F8  rts
+02873C  move.w  ($9ce,A5), ($58,A6)
+028742  jmp     $2bda.w
+028746  lea     ($3c6,A5), A0
+02874A  bsr     $28750
+02874C  lea     ($6c6,A5), A0
+028750  cmpi.w  #$28, ($a,A0)
+028756  bne     $287b0
+028758  move.w  ($292,A0), D0
+02875C  andi.w  #$f, D0
+028760  beq     $2877e
+02877E  tst.b   ($193,A0)
+028782  beq     $28790
+028784  subq.b  #1, ($193,A0)
+028788  bne     $2879e
+028790  jsr     $df8.w
+028794  andi.w  #$f, D0
+028798  move.b  ($6,PC,D0.w), ($193,A0)
+02879E  rts
+0287BA  move.b  ($2,A6), D0
+0287BE  move.w  ($6,PC,D0.w), D1
+0287C2  jmp     ($2,PC,D1.w)
+0287CC  addq.b  #2, ($2,A6)
+0287D0  jsr     $342a.w
+0287D4  move.b  #$2, ($273,A6)
+0287DA  bsr     $2936c
+0287DE  moveq   #$2, D0
+0287E0  move.b  D0, ($11,A6)
+0287E4  move.b  D0, ($57,A6)
+0287E8  moveq   #$0, D0
+0287EA  move.b  ($291,A6), D0
+0287EE  lsl.w   #2, D0
+0287F0  movea.l #$9a0b4, A0
+0287F6  lea     (A0,D0.w), A0
+0287FA  move.w  ($0,A0), ($23a,A6)
+028800  move.w  ($2,A0), ($23c,A6)
+028806  move.w  #$2, D1
+02880A  jmp     $35ee.w
+028822  tst.w   ($a4c,A5)
+028826  bne     $2883c
+028828  cmpi.b  #$8, ($291,A6)
+02882E  bne     $2883c
+02883C  tst.b   ($2e7,A5)
+028840  beq     $28846
+028842  jmp     $276e.w
+02936C  move.w  ($1d6,A6), ($140,A6)
+029372  bsr     $2937a
+029376  bra     $293ba
+02937A  movea.l #$9a144, A0
+029380  moveq   #$0, D0
+029382  move.b  ($291,A6), D0
+029386  lsl.w   #2, D0
+029388  movea.l (A0,D0.w), A0
+02938C  move.w  ($0,A0), D0
+029390  lea     (A0,D0.w), A1
+029394  move.w  ($2,A0), D0
+029398  lea     (A0,D0.w), A2
+02939C  moveq   #$0, D0
+02939E  move.b  ($2a2,A6), D0
+0293A2  andi.w  #$7, D0
+0293A6  add.w   D0, D0
+0293A8  move.w  (A1,D0.w), D1
+0293AC  lea     (A1,D1.w), A1
+0293B0  move.w  (A2,D0.w), D1
+0293B4  lea     (A2,D1.w), A2
+0293B8  rts
+0293BA  move.w  ($1d6,A6), D0
+0293BE  add.w   D0, D0
+0293C0  move.w  (A1,D0.w), D1
+0293C4  lea     (A1,D1.w), A1
+0293C8  move.l  A1, ($130,A6)
+0293CC  move.b  (A1), ($20e,A6)
+0293D0  move.w  #$1, ($138,A6)
+0293D6  move.w  ($1d6,A6), D0
+0293DA  add.w   D0, D0
+0293DC  move.w  (A2,D0.w), D1
+0293E0  lea     (A2,D1.w), A2
+0293E4  jsr     $df8.w
+0293E8  andi.b  #$1f, D0
+0293EC  move.b  (A2,D0.w), D0
+0293F0  move.b  D0, ($23e,A6)
+0293F4  ext.w   D0
+0293F6  add.w   D0, D0
+0293F8  movea.l A2, A1
+0293FA  lea     ($20,A2), A2
+0293FE  move.w  (A2,D0.w), D0
+029402  lea     (A1,D0.w), A2
+029406  move.l  A2, ($134,A6)
+02940A  move.b  (A2), ($20f,A6)
+02940E  move.w  #$1, ($13a,A6)
+029414  rts
+02AB98  move.b  ($2,A6), D0
+02AB9C  move.w  ($6,PC,D0.w), D1
+02ABA0  jmp     ($2,PC,D1.w)
+02ABAA  addq.b  #2, ($2,A6)
+02ABAE  jsr     $342a.w
+02ABB2  moveq   #$2, D0
+02ABB4  move.b  D0, ($11,A6)
+02ABB8  move.b  D0, ($57,A6)
+02ABBC  move.w  #$2, D1
+02ABC0  jmp     $35ee.w
+02ABC4  tst.b   ($9e0,A5)
+02ABC8  beq     $2abe6
+02ABE6  tst.b   ($14b,A6)
+02ABEA  beq     $2abf0
+02ABF0  moveq   #$0, D0
+02ABF2  bsr     $2ce20
+02ABF6  tst.b   ($2e7,A5)
+02ABFA  beq     $2ac00
+02ABFC  jmp     $276e.w
+02CE20  move.b  ($291,A6), D0
+02CE24  ext.w   D0
+02CE26  lsl.w   #2, D0
+02CE28  movea.l ($6,PC,D0.w), A0
+02CE2C  moveq   #$0, D0
+02CE2E  jmp     (A0)
+032AC6  tst.b   ($1a0,A6)
+032ACA  bne     $32aec
+032ACC  lea     ($15a,PC) ; ($32c28), A0
+032AD0  lea     ($186,PC) ; ($32c58), A1
+032AD4  lea     ($98,A6), A2
+032AD8  bsr     $32b3a
+032ADC  tst.b   ($2,A2)
+032AE0  beq     $32af0
+032AF0  lea     ($13e,PC) ; ($32c30), A0
+032AF4  lea     ($184,PC) ; ($32c7a), A1
+032AF8  lea     ($a0,A6), A2
+032AFC  bsr     $32b3a
+032B00  tst.b   ($2,A2)
+032B04  beq     $32b10
+032B10  lea     ($10e,PC) ; ($32c20), A0
+032B14  lea     ($122,PC) ; ($32c38), A1
+032B18  lea     ($90,A6), A2
+032B1C  bsr     $32b3a
+032B1E  tst.b   ($2,A2)
+032B22  beq     $32b34
+032B34  clr.b   ($2,A2)
+032B38  rts
+032B3A  move.b  ($0,A2), D0
+032B3E  ext.w   D0
+032B40  move.w  ($6,PC,D0.w), D1
+032B44  jmp     ($2,PC,D1.w)
+032B50  clr.b   ($0,A2)
+032B54  clr.b   ($2,A2)
+032B58  rts
+032B5A  move.b  ($2a7,A6), D0
+032B5E  andi.w  #$f, D0
+032B62  cmp.w   ($0,A0), D0
+032B66  bne     $32b50
+049342  move.w  ($e,PC,D1.w), D1
+049346  lea     ($a,PC,D1.w), A0
+04934A  jmp     $2750.w
+04934E  moveq   #$0, D0
+049350  bra     $49342
+076BE6  move.w  ($e,PC,D1.w), D1
+076BEA  lea     ($a,PC,D1.w), A0
+076BEE  jmp     $2750.w
+076BF2  moveq   #$0, D0
+076BF4  bra     $76be6
+07BFBA  lea     ($118a,A5), A6
+07BFBE  lea     ($3c6,A5), A4
+07BFC2  bsr     $7bfce
+07BFC6  lea     ($128a,A5), A6
+07BFCA  lea     ($6c6,A5), A4
+07BFCE  tst.b   ($2,A6)
+07BFD2  bne     $7bfe4
+07BFD4  addq.b  #2, ($2,A6)
+07BFD8  move.b  #$1, ($0,A6)
+07BFDE  move.b  ($281,A4), ($1e,A6)
+07BFE4  tst.b   ($0,A4)
+07BFE8  beq     $7c018
+07BFEA  move.b  #$1, ($1,A6)
+07BFF0  move.w  ($6,A4), ($6,A6)
+07BFF6  move.w  #$28, ($a,A6)
+07BFFC  move.b  ($12,A4), ($12,A6)
+07C002  movea.l ($1a,A4), A3
+07C006  move.b  ($e,A3), D0
+07C00A  beq     $7c018
+07C00C  andi.w  #$7f, D0
+07C010  lea     ($e,PC) ; ($7c020), A0
+07C014  jmp     $2750.w
+07E43C  moveq   #$a, D1
+07E43E  movea.l ($1a,A2), A4
+07E442  move.b  ($d,A4), D0
+07E446  beq     $7e460
+07E44A  ext.w   D0
+07E44C  movea.l ($34,A2), A4
+07E450  move.w  (A4,D1.w), D1
+07E454  lea     (A4,D1.w), A4
+07E458  lsl.w   #2, D0
+07E45A  lea     (A4,D0.w), A4
+07E45E  moveq   #$1, D0
+07E460  rts
+07E46E  move.b  ($0,A3), D0
+07E472  ext.w   D0
+07E474  tst.b   ($12,A6)
+07E478  beq     $7e47c
+07E47A  neg.w   D0
+07E47C  add.w   ($6,A6), D0
+07E480  move.w  D0, (-$7526,A5)
+07E484  move.b  ($0,A4), D2
+07E488  ext.w   D2
+07E48A  tst.b   ($12,A2)
+07E48E  beq     $7e492
+07E492  add.w   ($6,A2), D2
+07E496  move.w  D2, (-$7522,A5)
+07E49A  move.b  ($2,A3), D4
+07E49E  ext.w   D4
+07E4A0  move.b  ($2,A4), D5
+07E4A4  ext.w   D5
+07E4A6  add.w   D5, D4
+07E4A8  sub.w   D2, D0
+07E4AA  move.w  D0, D5
+07E4AC  add.w   D4, D0
+07E4AE  move.w  D4, D6
+07E4B0  add.w   D4, D4
+07E4B2  cmp.w   D4, D0
+07E4B4  bhi     $7e506
+07E506  moveq   #$0, D4
+07E508  rts
+07E516  tst.b   ($31b,A5)
+07E51A  bne     $7e524
+07E51C  tst.b   ($9de,A5)
+07E520  bne     $7e552
+07E524  clr.w   (-$74ee,A5)
+07E528  lea     ($3c6,A5), A6
+07E52C  tst.b   ($0,A6)
+07E530  beq     $7e552
+07E532  movea.w A6, A2
+07E534  bsr     $7e43c
+07E538  beq     $7e552
+07E53A  movea.l A4, A3
+07E53C  lea     ($6c6,A5), A2
+07E540  tst.b   ($0,A2)
+07E544  beq     $7e552
+07E546  bsr     $7e43c
+07E54A  beq     $7e552
+07E54C  bsr     $7e46e
+07E550  bne     $7e554
+07E552  rts
+07E8F6  moveq   #$5, D0
+07E8F8  jsr     $15da.w
+07E8FC  lea     $910280.l, A0
+07E902  tst.b   ($2bc,A5)
+07E906  bne     $7e916
+07E908  btst    #$7, ($2b,A5)
+07E90E  bne     $7e916
+07E910  lea     $918280.l, A0
+07E916  move.w  #$b0, D7
+07E91A  move.w  D7, ($2b6,A5)
+07E91E  bsr     $7ea1e
+07E922  bsr     $7ea0c
+07E926  bra     $7e9f6
+07E92A  moveq   #$5, D0
+07E92C  jsr     $15da.w
+07E930  lea     $9100d0.l, A0
+07E936  tst.b   ($2bc,A5)
+07E93A  bne     $7e94a
+07E93C  btst    #$7, ($2b,A5)
+07E942  bne     $7e94a
+07E944  lea     $9180d0.l, A0
+07E94A  move.w  #$e6, D7
+07E94E  move.w  D7, ($2b6,A5)
+07E952  bsr     $7ea1e
+07E956  bsr     $7ea0c
+07E95A  bra     $7e9f6
+07E95E  moveq   #$5, D0
+07E960  jsr     $15da.w
+07E964  lea     $910240.l, A0
+07E96A  tst.b   ($2bc,A5)
+07E96E  bne     $7e97e
+07E970  btst    #$7, ($2b,A5)
+07E976  bne     $7e97e
+07E978  lea     $918240.l, A0
+07E97E  move.w  #$b8, D7
+07E982  move.w  D7, ($2b6,A5)
+07E986  bsr     $7ea1e
+07E98A  bsr     $7ea0c
+07E98E  bra     $7e9f6
+07E9F6  tst.b   ($2bc,A5)
+07E9FA  beq     $7ea04
+07EA04  bchg    #$7, ($2b,A5)
+07EA0A  rts
+07EA0C  move.l  #$100, ($0,A0)
+07EA14  move.l  #$ff00, ($4,A0)
+07EA1C  rts
+07EA1E  cmpi.w  #$d, ($9ca,A5)
+07EA24  beq     $7ea52
+07EA26  cmpi.w  #$e, ($9ca,A5)
+07EA2C  beq     $7ea76
+07EA2E  bsr     $7eb8a
+07EA32  bsr     $7eb6e
+07EA36  bsr     $7eb36
+07EA3A  bsr     $7eab6
+07EA3E  bsr     $7eb0c
+07EA42  bsr     $7ec32
+07EA46  bsr     $7eba6
+07EA4A  bsr     $7ec16
+07EA4E  bra     $7ebc2
+07EAB6  tst.b   ($2e9,A5)
+07EABA  bne     $7eada
+07EABC  bsr     $7ebde
+07EAC0  lea     ($3c6,A5), A1
+07EAC4  bsr     $7f0ea
+07EAC8  bsr     $7eaf4
+07EACA  bsr     $7ebfa
+07EACE  lea     ($6c6,A5), A1
+07EAD2  bsr     $7f0ea
+07EAD6  bra     $7eaf4
+07EAF4  tst.b   ($0,A1)
+07EAF8  beq     $7eb0a
+07EAFA  tst.b   ($1,A1)
+07EAFE  beq     $7eb0a
+07EB00  move.b  ($181,A1), ($5a,A1)
+07EB06  bra     $7f190
+07EB0A  rts
+07EB0C  lea     ($118a,A5), A1
+07EB10  tst.b   ($0,A1)
+07EB14  beq     $7eb20
+07EB16  tst.b   ($1,A1)
+07EB1A  beq     $7eb20
+07EB1C  bsr     $7f190
+07EB20  lea     ($128a,A5), A1
+07EB24  tst.b   ($0,A1)
+07EB28  beq     $7eb34
+07EB2A  tst.b   ($1,A1)
+07EB2E  beq     $7eb34
+07EB30  bra     $7f190
+07EB34  rts
+07EB36  move.b  ($115a,A5), D0
+07EB3A  beq     $7eb50
+07EB50  rts
+07EB6E  move.b  ($1161,A5), D0
+07EB72  beq     $7eb88
+07EB74  movea.w ($117e,A5), A4
+07EB78  movea.w (A4)+, A1
+07EB7A  bsr     $7f190
+07EB7E  subq.b  #1, ($1161,A5)
+07EB82  bne     $7eb78
+07EB84  move.w  A4, ($117e,A5)
+07EB88  rts
+07EB8A  move.b  ($1162,A5), D0
+07EB8E  beq     $7eba4
+07EB90  movea.w ($1180,A5), A4
+07EB94  movea.w (A4)+, A1
+07EB96  bsr     $7f190
+07EB9A  subq.b  #1, ($1162,A5)
+07EB9E  bne     $7eb94
+07EBA0  move.w  A4, ($1180,A5)
+07EBA4  rts
+07EBA6  move.b  ($1163,A5), D0
+07EBAA  beq     $7ebc0
+07EBAC  movea.w ($1182,A5), A4
+07EBB0  movea.w (A4)+, A1
+07EBB2  bsr     $7f190
+07EBB6  subq.b  #1, ($1163,A5)
+07EBBA  bne     $7ebb0
+07EBBC  move.w  A4, ($1182,A5)
+07EBC0  rts
+07EBC2  move.b  ($1164,A5), D0
+07EBC6  beq     $7ebdc
+07EBC8  movea.w ($1184,A5), A4
+07EBCC  movea.w (A4)+, A1
+07EBCE  bsr     $7f190
+07EBD2  subq.b  #1, ($1164,A5)
+07EBD6  bne     $7ebcc
+07EBD8  move.w  A4, ($1184,A5)
+07EBDC  rts
+07EBDE  move.b  ($1165,A5), D0
+07EBE2  beq     $7ebf8
+07EBF8  rts
+07EBFA  move.b  ($1166,A5), D0
+07EBFE  beq     $7ec14
+07EC14  rts
+07EC16  move.b  ($115d,A5), D0
+07EC1A  beq     $7ec30
+07EC30  rts
+07EC32  move.b  ($115e,A5), D0
+07EC36  beq     $7ec4c
+07EC4C  rts
+07F0EA  tst.b   ($0,A1)
+07F0EE  beq     $7f280
+07F0F2  tst.b   ($1,A1)
+07F0F6  beq     $7f280
+07F0FA  tst.b   ($1a2,A1)
+07F0FE  beq     $7f280
+07F190  tst.b   ($2d7,A5)
+07F194  beq     $7f1a2
+07F1A2  bsr     $7f546
+07F1A6  movea.l ($1a,A1), A2
+07F1AA  movea.l ($4,A2), A2
+07F1AE  move.w  (A2)+, D3
+07F1B0  beq     $7f280
+07F1B4  bmi     $7f62a
+07F1B8  move.w  ($2b6,A5), D6
+07F1BC  sub.w   D3, D6
+07F1BE  bcs     $7f280
+07F1C2  move.w  D6, ($2b6,A5)
+07F1C6  move.w  (A2)+, D2
+07F1C8  move.w  D2, D4
+07F1CA  andi.w  #$ff00, D4
+07F1CE  beq     $7f1d2
+07F1D0  moveq   #$1, D3
+07F1D2  sub.w   D3, D7
+07F1D4  subq.w  #1, D3
+07F1D6  move.w  (A2)+, D4
+07F1D8  bsr     $7f60a
+07F1DC  move.w  (A2)+, (-$7508,A5)
+07F1E0  move.w  (A2)+, (-$7506,A5)
+07F1E4  movea.l ($1a,A1), A2
+07F1E8  move.b  ($13,A2), D4
+07F1EC  andi.w  #$3, D4
+07F1F0  beq     $7f202
+07F202  movea.l ($4,A2), A2
+07F206  lea     ($a,A2), A2
+07F20A  move.w  ($52,A1), D4
+07F20E  sub.w   D4, (-$7508,A5)
+07F212  tst.b   ($13,A1)
+07F216  beq     $7f222
+07F218  bmi     $7f222
+07F222  move.b  ($12,A1), D4
+07F226  andi.w  #$3, D4
+07F22A  lsl.w   #5, D4
+07F22C  eor.w   D4, D2
+07F22E  btst    #$5, D2
+07F232  bne     $7f310
+07F236  btst    #$6, D2
+07F23A  bne     $7f36c
+07F23E  sub.w   (-$7508,A5), D0
+07F242  add.w   (-$7506,A5), D1
+07F246  tst.b   ($13,A1)
+07F24A  bmi     $7f288
+07F24E  move.w  (A2), D4
+07F250  beq     $7f282
+07F252  move.w  (A3)+, D4
+07F254  add.w   D0, D4
+07F256  cmpi.w  #$200, D4
+07F25A  bcs     $7f26c
+07F26C  move.w  D4, (A0)+
+07F26E  move.w  (A3)+, D4
+07F270  add.w   D1, D4
+07F272  andi.w  #$1ff, D4
+07F276  move.w  D4, (A0)+
+07F278  move.w  (A2)+, (A0)+
+07F27A  move.w  D2, (A0)+
+07F27C  dbra    D3, $7f24e
+07F280  rts
+07F282  addq.l  #2, A2
+07F284  addq.l  #4, A3
+07F286  bra     $7f24e
+07F288  moveq   #$0, D5
+07F28A  move.b  ($11,A1), D5
+07F28E  lsl.w   #3, D5
+07F290  lea     ($184,PC) ; ($7f416), A6
+07F294  lea     (A6,D5.w), A6
+07F298  move.w  (A2), D4
+07F29A  beq     $7f30a
+07F29E  move.w  ($16,A1), D5
+07F2A2  move.w  (A3), D4
+07F2A4  addq.w  #8, D4
+07F2A6  muls.w  D5, D4
+07F2A8  asr.w   #4, D4
+07F2AA  add.w   (A3)+, D4
+07F2AC  addq.w  #8, D4
+07F2AE  move.w  D4, (-$74f2,A5)
+07F2B2  move.w  ($0,A6), D5
+07F2B6  muls.w  D5, D4
+07F2B8  asr.l   #8, D4
+07F2BA  add.w   D0, D4
+07F2BC  move.w  D4, (A0)
+07F2BE  move.w  (-$74f2,A5), D4
+07F2C2  move.w  ($2,A6), D5
+07F2C6  muls.w  D5, D4
+07F2C8  asr.l   #8, D4
+07F2CA  add.w   D1, D4
+07F2CC  move.w  D4, ($2,A0)
+07F2D0  move.w  ($16,A1), D5
+07F2D4  move.w  (A3), D4
+07F2D6  addq.w  #8, D4
+07F2D8  muls.w  D5, D4
+07F2DA  asr.w   #4, D4
+07F2DC  add.w   (A3)+, D4
+07F2DE  addq.w  #8, D4
+07F2E0  move.w  D4, (-$74f0,A5)
+07F2E4  move.w  ($4,A6), D5
+07F2E8  muls.w  D5, D4
+07F2EA  asr.l   #8, D4
+07F2EC  subq.w  #8, (A0)
+07F2EE  add.w   D4, (A0)+
+07F2F0  move.w  (-$74f0,A5), D4
+07F2F4  move.w  ($6,A6), D5
+07F2F8  muls.w  D5, D4
+07F2FA  asr.l   #8, D4
+07F2FC  subq.w  #8, (A0)
+07F2FE  add.w   D4, (A0)+
+07F300  move.w  (A2)+, (A0)+
+07F302  move.w  D2, (A0)+
+07F304  dbra    D3, $7f298
+07F308  rts
+07F310  move.w  D2, D5
+07F312  andi.w  #$f00, D5
+07F316  lsr.w   #4, D5
+07F318  addi.w  #$10, D5
+07F31C  btst    #$6, D2
+07F320  bne     $7f3be
+07F324  add.w   (-$7508,A5), D0
+07F328  add.w   (-$7506,A5), D1
+07F32C  move.w  (A2), D4
+07F32E  beq     $7f366
+07F332  move.w  (A3)+, D4
+07F334  neg.w   D4
+07F336  sub.w   D5, D4
+07F338  add.w   D0, D4
+07F33A  cmpi.w  #$200, D4
+07F33E  bcs     $7f350
+07F350  move.w  D4, (A0)+
+07F352  move.w  (A3)+, D4
+07F354  add.w   D1, D4
+07F356  andi.w  #$1ff, D4
+07F35A  move.w  D4, (A0)+
+07F35C  move.w  (A2)+, (A0)+
+07F35E  move.w  D2, (A0)+
+07F360  dbra    D3, $7f32c
+07F364  rts
+07F534  move.w  ($6,A1), D0
+07F538  addi.w  #$40, D0
+07F53C  move.w  ($a,A1), D1
+07F540  not.b   D1
+07F542  addq.w  #1, D1
+07F544  rts
+07F546  moveq   #$0, D0
+07F548  move.b  ($25,A1), D0
+07F54C  bmi     $7f534
+07F54E  move.w  ($6,PC,D0.w), D0
+07F552  jmp     ($2,PC,D0.w)
+07F580  move.w  ($e,A1), D0
+07F584  bne     $7f5aa
+07F586  move.w  ($6,A1), D0
+07F58A  sub.w   ($bd8,A5), D0
+07F58E  addi.w  #$40, D0
+07F592  move.w  ($a,A1), D1
+07F596  sub.w   ($bdc,A5), D1
+07F59A  tst.b   ($5a,A1)
+07F59E  beq     $7f5a4
+07F5A4  not.b   D1
+07F5A6  addq.w  #1, D1
+07F5A8  rts
+07F5E6  move.w  ($6,A1), D0
+07F5EA  sub.w   ($c58,A5), D0
+07F5EE  addi.w  #$40, D0
+07F5F2  move.w  ($a,A1), D1
+07F5F6  sub.w   ($c5c,A5), D1
+07F5FA  tst.b   ($5a,A1)
+07F5FE  beq     $7f604
+07F604  not.b   D1
+07F606  addq.w  #1, D1
+07F608  rts
+07F60A  move.w  D4, D5
+07F60C  andi.w  #$7f80, D5
+07F610  lsr.w   #5, D5
+07F612  movea.l ($e,PC,D5.w), A3
+07F616  andi.w  #$7f, D4
+07F61A  add.w   D4, D4
+07F61C  adda.w  (A3,D4.w), A3
+07F620  rts
+07F62A  andi.w  #$7fff, D3
+07F62E  move.w  ($2b6,A5), D6
+07F632  sub.w   D3, D6
+07F634  bcs     $7f40e
+07F638  move.w  D6, ($2b6,A5)
+07F63C  sub.w   D3, D7
+07F63E  subq.w  #1, D3
+07F640  move.w  (A2)+, D2
+07F642  andi.w  #$e0, D2
+07F646  move.w  (A2)+, D4
+07F648  bsr     $7f60a
+07F64A  move.w  (A2)+, (-$7508,A5)
+07F64E  move.w  (A2)+, (-$7506,A5)
+07F652  movea.l ($1a,A1), A2
+07F656  move.b  ($13,A2), D4
+07F65A  andi.w  #$3, D4
+07F65E  beq     $7f670
+07F670  movea.l ($4,A2), A2
+07F674  lea     ($a,A2), A2
+07F678  move.w  ($52,A1), D4
+07F67C  sub.w   D4, (-$7508,A5)
+07F680  tst.b   ($13,A1)
+07F684  beq     $7f690
+07F690  move.b  ($12,A1), D4
+07F694  andi.w  #$3, D4
+07F698  lsl.w   #5, D4
+07F69A  eor.w   D4, D2
+07F69C  btst    #$5, D2
+07F6A0  bne     $7f788
+07F6A4  btst    #$6, D2
+07F6A8  bne     $7f7de
+07F6AC  sub.w   (-$7508,A5), D0
+07F6B0  add.w   (-$7506,A5), D1
+07F6B4  tst.b   ($13,A1)
+07F6B8  bmi     $7f6fc
+07F6BC  move.w  (A2), D4
+07F6BE  beq     $7f6f6
+07F6C2  move.w  (A3)+, D4
+07F6C4  add.w   D0, D4
+07F6C6  cmpi.w  #$200, D4
+07F6CA  bcs     $7f6dc
+07F6DC  move.w  D4, (A0)+
+07F6DE  move.w  (A3)+, D4
+07F6E0  add.w   D1, D4
+07F6E2  andi.w  #$1ff, D4
+07F6E6  move.w  D4, (A0)+
+07F6E8  move.w  (A2)+, (A0)+
+07F6EA  move.w  (A2)+, D4
+07F6EC  eor.w   D2, D4
+07F6EE  move.w  D4, (A0)+
+07F6F0  dbra    D3, $7f6bc
+07F6F4  rts
+07F6F6  addq.l  #4, A2
+07F6F8  addq.l  #4, A3
+07F6FA  bra     $7f6bc
+07F788  btst    #$6, D2
+07F78C  bne     $7f82c
+07F790  add.w   (-$7508,A5), D0
+07F794  add.w   (-$7506,A5), D1
+07F798  move.w  (A2), D4
+07F79A  beq     $7f7d8
+07F79E  move.w  (A3)+, D4
+07F7A0  neg.w   D4
+07F7A2  subi.w  #$10, D4
+07F7A6  add.w   D0, D4
+07F7A8  cmpi.w  #$200, D4
+07F7AC  bcs     $7f7be
+07F7BE  move.w  D4, (A0)+
+07F7C0  move.w  (A3)+, D4
+07F7C2  add.w   D1, D4
+07F7C4  andi.w  #$1ff, D4
+07F7C8  move.w  D4, (A0)+
+07F7CA  move.w  (A2)+, (A0)+
+07F7CC  move.w  (A2)+, D4
+07F7CE  eor.w   D2, D4
+07F7D0  move.w  D4, (A0)+
+07F7D2  dbra    D3, $7f798
+07F7D6  rts
+0826A4  move.w  ($9ca,A5), D0
+0826A8  lsl.w   #2, D0
+0826AA  movea.l (-$48,PC,D0.w), A1
+0826AE  move.w  (A1)+, D7
+0826B0  bmi     $826f0
+0826B2  moveq   #$0, D1
+0826B4  move.b  (A1)+, D1
+0826B6  add.w   D1, D1
+0826B8  movea.l #$2084, A0
+0826BE  movea.l (A0,D1.w), A0
+0826C2  jsr     (A0)
+0826C4  beq     $826f2
+0826C6  move.b  #$1, ($0,A4)
+0826CC  move.b  (A1)+, ($21,A4)
+0826D0  move.b  (A1)+, ($20,A4)
+0826D4  move.b  (A1)+, ($11,A4)
+0826D8  move.b  (A1)+, ($25,A4)
+0826DC  move.b  (A1)+, ($46,A4)
+0826E0  move.w  (A1)+, ($e,A4)
+0826E4  move.w  (A1)+, ($6,A4)
+0826E8  move.w  (A1)+, ($a,A4)
+0826EC  dbra    D7, $826b2
+0826F0  rts
+082E2C  moveq   #$3, D0
+082E2E  jsr     $15da.w
+082E32  lea     ($530a,A5), A6
+082E36  move.w  #$13, D7
+082E3A  tst.b   ($0,A6)
+082E3E  beq     $82e4e
+082E4E  lea     ($80,A6), A6
+082E52  dbra    D7, $82e3a
+082E56  rts
+0830E8  move.w  ($9e2,A5), D0
+0830EC  lsl.w   #2, D0
+0830EE  movea.l (-$58,PC,D0.w), A1
+0830F2  move.w  (A1)+, D7
+0830F4  bmi     $83134
+0830F6  moveq   #$0, D1
+0830F8  move.b  (A1)+, D1
+0830FA  add.w   D1, D1
+0830FC  movea.l #$2084, A0
+083102  movea.l (A0,D1.w), A0
+083106  jsr     (A0)
+083108  beq     $83136
+08310A  move.b  #$1, ($0,A4)
+083110  move.b  (A1)+, ($21,A4)
+083114  move.b  (A1)+, ($20,A4)
+083118  move.b  (A1)+, ($11,A4)
+08311C  move.b  (A1)+, ($25,A4)
+083120  move.b  (A1)+, ($46,A4)
+083124  move.w  (A1)+, ($e,A4)
+083128  move.w  (A1)+, ($6,A4)
+08312C  move.w  (A1)+, ($a,A4)
+083130  dbra    D7, $830f6
+083134  rts
+083554  lea     ($bd2,A5), A6
+083558  bsr     $8404a
+08355C  lea     ($c52,A5), A6
+083560  bra     $840e0
+083564  moveq   #$4, D0
+083566  jsr     $15da.w
+08356A  tst.b   ($9e0,A5)
+08356E  bne     $8358c
+083570  lea     ($bd2,A5), A6
+083574  bsr     $835a4
+083578  bsr     $8485a
+08357C  lea     ($b52,A5), A6
+083580  bsr     $83814
+083584  lea     ($c52,A5), A6
+083588  bra     $839c6
+0835A4  moveq   #$0, D0
+0835A6  move.b  ($2,A6), D0
+0835AA  move.w  ($6,PC,D0.w), D1
+0835AE  jmp     ($2,PC,D1.w)
+0835B6  move.b  ($3,A6), D0
+0835BA  move.w  ($6,PC,D0.w), D1
+0835BE  jmp     ($2,PC,D1.w)
+0835CA  addq.b  #2, ($3,A6)
+0835CE  bsr     $83b06
+0835D2  bsr     $83b5e
+0835D6  bsr     $83bb6
+0835DA  bsr     $83c70
+0835DE  bsr     $83ca4
+0835E2  bsr     $83c1e
+0835E6  moveq   #$0, D0
+0835E8  move.b  D0, ($1e,A6)
+0835EC  move.b  D0, ($1f,A6)
+0835F0  move.b  D0, ($24,A6)
+0835F4  move.b  D0, ($25,A6)
+0835F8  clr.b   (-$75b5,A6)
+0835FC  btst    #$0, D1
+083600  rts
+083602  addq.b  #2, ($3,A6)
+083606  rts
+083608  addq.b  #2, ($3,A6)
+08360C  bra     $83eba
+083610  addq.b  #2, ($2,A6)
+083614  clr.b   ($3,A6)
+083618  move.b  #$1, ($a4b,A5)
+08361E  rts
+083620  clr.w   ($30,A6)
+083624  clr.w   ($32,A6)
+083628  bsr     $8364a
+08362C  bsr     $83750
+083630  move.w  ($6,A6), D0
+083634  tst.b   ($9e0,A5)
+083638  bne     $8363e
+08363A  subi.w  #$c0, D0
+08363E  move.w  D0, ($3a,A5)
+083642  move.w  ($a,A6), ($3c,A5)
+083648  rts
+08364A  moveq   #$0, D0
+08364C  move.b  ($2a,A6), D0
+083650  move.w  ($6,PC,D0.w), D1
+083654  jmp     ($2,PC,D1.w)
+08365E  move.w  ($3cc,A5), D2
+083662  move.w  ($6cc,A5), D3
+083666  lea     ($3c6,A5), A1
+08366A  lea     ($6c6,A5), A2
+08366E  cmp.w   D2, D3
+083670  bgt     $83676
+083676  sub.w   ($1c2,A1), D2
+08367A  add.w   ($1c2,A2), D3
+08367E  move.w  D2, D0
+083680  move.w  D3, D1
+083682  sub.w   D0, D1
+083684  cmpi.w  #$100, D1
+083688  bcc     $836a6
+0836A6  cmpi.w  #$180, D1
+0836AA  bcc     $836a4
+0836AC  move.w  ($6,A1), D0
+0836B0  sub.w   ($1c2,A1), D0
+0836B4  add.w   ($6,A2), D0
+0836B8  add.w   ($1c2,A2), D0
+0836BC  lsr.w   #1, D0
+0836BE  sub.w   ($6,A6), D0
+0836C2  subi.w  #$c0, D0
+0836C6  bmi     $8370e
+0836CA  move.w  D0, D1
+0836CC  moveq   #$6, D6
+0836CE  tst.w   (-$74ee,A5)
+0836D2  beq     $836d6
+0836D6  cmp.w   D6, D1
+0836D8  bcs     $836dc
+0836DC  move.w  ($6,A6), D3
+0836E0  add.w   D1, ($6,A6)
+0836E4  move.w  ($9d2,A5), D2
+0836E8  cmp.w   ($6,A6), D2
+0836EC  bcc     $83702
+083702  move.w  D1, ($30,A6)
+083706  move.b  #$4, ($24,A6)
+08370C  rts
+083750  moveq   #$0, D0
+083752  move.b  ($2b,A6), D0
+083756  move.w  ($6,PC,D0.w), D1
+08375A  jmp     ($2,PC,D1.w)
+083762  tst.b   ($ade,A5)
+083766  bne     $83812
+08376A  tst.w   ($adc,A5)
+08376E  bne     $83812
+083772  move.w  ($3d0,A5), D0
+083776  tst.b   ($529,A5)
+08377A  beq     $83780
+083780  move.w  ($6d0,A5), D1
+083784  tst.b   ($829,A5)
+083788  beq     $8378e
+08378E  cmp.w   D0, D1
+083790  bcs     $83794
+083792  move.w  D1, D0
+083794  cmpi.w  #$a8, D0
+083798  bcs     $8379e
+08379E  subi.w  #$28, D0
+0837A2  lsr.w   #3, D0
+0837A4  sub.w   ($a,A6), D0
+0837A8  bmi     $837e0
+0837AC  move.b  #$0, ($25,A6)
+0837B2  cmpi.w  #$3, D0
+0837B6  blt     $837ba
+0837BA  move.w  ($a,A6), D2
+0837BE  add.w   D0, ($a,A6)
+0837C2  move.w  ($9d6,A5), D1
+0837C6  cmp.w   ($a,A6), D1
+0837CA  bhi     $837da
+0837DA  move.w  D0, ($32,A6)
+0837DE  rts
+083814  moveq   #$0, D0
+083816  move.b  ($2,A6), D0
+08381A  move.w  ($6,PC,D0.w), D1
+08381E  jmp     ($2,PC,D1.w)
+083826  move.b  ($3,A6), D0
+08382A  move.w  ($6,PC,D0.w), D1
+08382E  jmp     ($2,PC,D1.w)
+08383A  addq.b  #2, ($3,A6)
+08383E  bra     $83f52
+083842  addq.b  #2, ($3,A6)
+083846  moveq   #$0, D0
+083848  move.b  D0, ($1e,A6)
+08384C  move.b  D0, ($1f,A6)
+083850  move.b  D0, ($24,A6)
+083854  move.b  D0, ($25,A6)
+083858  bra     $83872
+08385A  addq.b  #2, ($3,A6)
+08385E  rts
+083860  addq.b  #2, ($2,A6)
+083864  clr.b   ($3,A6)
+083868  rts
+08386A  bsr     $838aa
+08386E  bsr     $83932
+083872  move.w  ($6,A6), ($36,A5)
+083878  move.w  ($a,A6), ($38,A5)
+08387E  move.b  ($7,A6), D0
+083882  andi.b  #$20, D0
+083886  move.b  ($1e,A6), D1
+08388A  eor.b   D1, D0
+08388C  bne     $838a8
+08388E  eori.b  #$20, ($1e,A6)
+083894  move.b  ($24,A6), D0
+083898  bsr     $84142
+08389C  bsr     $841c6
+0838A0  bsr     $84236
+0838A4  bra     $8431a
+0838A8  rts
+0838AA  move.b  ($bf6,A5), ($24,A6)
+0838B0  moveq   #$0, D0
+0838B2  move.b  ($2a,A6), D0
+0838B6  move.w  ($6,PC,D0.w), D1
+0838BA  jmp     ($2,PC,D1.w)
+0838C6  move.w  ($6,A6), D1
+0838CA  move.w  ($bd8,A5), ($6,A6)
+0838D0  move.w  ($ce6,A5), D0
+0838D4  subi.w  #$c0, D0
+0838D8  add.w   D0, ($6,A6)
+0838DC  move.w  ($6,A6), D0
+0838E0  sub.w   D1, D0
+0838E2  move.w  D0, (-$74ec,A5)
+0838E6  rts
+083932  tst.w   ($adc,A5)
+083936  bne     $83962
+083938  move.b  ($bf7,A5), ($25,A6)
+08393E  moveq   #$0, D0
+083940  move.b  ($2b,A6), D0
+083944  move.w  ($6,PC,D0.w), D1
+083948  jmp     ($2,PC,D1.w)
+0839BC  move.w  ($c04,A5), D0
+0839C0  add.w   D0, ($a,A6)
+0839C4  rts
+0839C6  moveq   #$0, D0
+0839C8  move.b  ($2,A6), D0
+0839CC  move.w  ($6,PC,D0.w), D1
+0839D0  jmp     ($2,PC,D1.w)
+0839D8  move.b  ($3,A6), D0
+0839DC  move.w  ($6,PC,D0.w), D1
+0839E0  jmp     ($2,PC,D1.w)
+0839EC  addq.b  #2, ($3,A6)
+0839F0  moveq   #$0, D0
+0839F2  move.b  D0, ($1e,A6)
+0839F6  move.b  D0, ($1f,A6)
+0839FA  move.b  D0, ($24,A6)
+0839FE  move.b  D0, ($25,A6)
+083A02  rts
+083A04  addq.b  #2, ($3,A6)
+083A08  bra     $83f04
+083A0C  addq.b  #2, ($3,A6)
+083A10  rts
+083A12  addq.b  #2, ($2,A6)
+083A16  clr.b   ($3,A6)
+083A1A  rts
+083A1C  bsr     $83a32
+083A20  bsr     $83a66
+083A24  move.w  ($6,A6), ($3e,A5)
+083A2A  move.w  ($a,A6), ($40,A5)
+083A30  rts
+083A32  move.b  ($bf6,A5), ($24,A6)
+083A38  moveq   #$0, D0
+083A3A  move.b  ($2a,A6), D0
+083A3E  move.w  ($6,PC,D0.w), D1
+083A42  jmp     ($2,PC,D1.w)
+083A4A  move.b  ($bf6,A5), ($24,A6)
+083A50  move.w  ($bd8,A5), ($6,A6)
+083A56  move.w  ($cea,A5), D0
+083A5A  subi.w  #$c0, D0
+083A5E  add.w   D0, ($6,A6)
+083A62  rts
+083A66  tst.w   ($adc,A5)
+083A6A  bne     $83a94
+083A6C  move.b  ($bf7,A5), ($25,A6)
+083A72  moveq   #$0, D0
+083A74  move.b  ($2b,A6), D0
+083A78  move.w  ($6,PC,D0.w), D0
+083A7C  jmp     ($2,PC,D0.w)
+083A8E  move.w  ($bdc,A5), ($a,A6)
+083A94  rts
+083AF0  move.w  ($9e4,A5), D0
+083AF4  bsr     $83b0a
+083AF6  move.w  ($9e4,A5), D0
+083AFA  bsr     $83b62
+083AFE  move.w  ($9e4,A5), D0
+083B02  bra     $83bba
+083B06  move.w  ($9ca,A5), D0
+083B0A  movea.l #$8a2ca, A1
+083B10  add.w   D0, D0
+083B12  move.w  ($22,PC,D0.w), D1
+083B16  move.w  D1, ($b60,A5)
+083B1A  lsl.w   #2, D1
+083B1C  lea     ($f0,PC) ; ($83c0e), A0
+083B20  move.l  (A0,D1.w), ($b68,A5)
+083B26  move.l  ($4,A0,D1.w), ($b6c,A5)
+083B2C  add.w   D0, D0
+083B2E  move.l  (A1,D0.w), ($b64,A5)
+083B34  rts
+083B5E  move.w  ($9ca,A5), D0
+083B62  movea.l #$8a31a, A1
+083B68  add.w   D0, D0
+083B6A  move.w  ($22,PC,D0.w), D1
+083B6E  move.w  D1, ($be0,A5)
+083B72  lsl.w   #2, D1
+083B74  lea     ($98,PC) ; ($83c0e), A0
+083B78  move.l  (A0,D1.w), ($be8,A5)
+083B7E  move.l  ($4,A0,D1.w), ($bec,A5)
+083B84  add.w   D0, D0
+083B86  move.l  (A1,D0.w), ($be4,A5)
+083B8C  rts
+083BB6  move.w  ($9ca,A5), D0
+083BBA  movea.l #$8a36a, A1
+083BC0  add.w   D0, D0
+083BC2  move.w  ($22,PC,D0.w), D1
+083BC6  move.w  D1, ($c60,A5)
+083BCA  lsl.w   #2, D1
+083BCC  lea     ($40,PC) ; ($83c0e), A0
+083BD0  move.l  (A0,D1.w), ($c68,A5)
+083BD6  move.l  ($4,A0,D1.w), ($c6c,A5)
+083BDC  add.w   D0, D0
+083BDE  move.l  (A1,D0.w), ($c64,A5)
+083BE4  rts
+083C1E  move.w  ($9ca,A5), D0
+083C22  add.w   D0, D0
+083C24  lea     ($274,PC) ; ($83e9a), A1
+083C28  move.w  ($52,A5), D1
+083C2C  andi.w  #$39, D1
+083C30  or.w    (A1,D0.w), D1
+083C34  move.w  D1, ($52,A5)
+083C38  rts
+083C3A  move.w  ($9ca,A5), D0
+083C3E  move.w  D0, D1
+083C40  lsl.w   #3, D0
+083C42  lsl.w   #2, D1
+083C44  add.w   D1, D0
+083C46  lea     ($192,PC) ; ($83dda), A1
+083C4A  move.w  (A1,D0.w), ($b58,A5)
+083C50  move.w  ($2,A1,D0.w), ($b5c,A5)
+083C56  move.w  ($4,A1,D0.w), ($bd8,A5)
+083C5C  move.w  ($6,A1,D0.w), ($bdc,A5)
+083C62  move.w  ($8,A1,D0.w), ($c58,A5)
+083C68  move.w  ($a,A1,D0.w), ($c5c,A5)
+083C6E  rts
+083C70  move.w  ($9ca,A5), D0
+083C74  lsl.w   #3, D0
+083C76  lea     ($c2,PC) ; ($83d3a), A1
+083C7A  move.w  (A1,D0.w), ($9d0,A5)
+083C80  move.w  ($2,A1,D0.w), ($9d2,A5)
+083C86  move.w  ($4,A1,D0.w), ($9d4,A5)
+083C8C  move.w  ($6,A1,D0.w), ($9d6,A5)
+083C92  move.w  ($9ca,A5), D0
+083C96  add.w   D0, D0
+083C98  lea     ($120,PC) ; ($83dba), A1
+083C9C  move.w  (A1,D0.w), ($9d8,A5)
+083CA2  rts
+083CA4  move.w  ($9ca,A5), D0
+083CA8  move.w  D0, D1
+083CAA  lsl.w   #2, D1
+083CAC  add.w   D0, D0
+083CAE  add.w   D1, D0
+083CB0  lea     ($28,PC) ; ($83cda), A1
+083CB4  move.b  (A1,D0.w), ($b7c,A5)
+083CBA  move.b  ($1,A1,D0.w), ($b7d,A5)
+083CC0  move.b  ($2,A1,D0.w), ($bfc,A5)
+083CC6  move.b  ($3,A1,D0.w), ($bfd,A5)
+083CCC  move.b  ($4,A1,D0.w), ($c7c,A5)
+083CD2  move.b  ($5,A1,D0.w), ($c7d,A5)
+083CD8  rts
+083EBA  move.w  ($6,A6), D0
+083EBE  subi.w  #$c0, D0
+083EC2  move.w  D0, ($3a,A5)
+083EC6  move.w  ($a,A6), ($3c,A5)
+083ECC  movea.l #$906000, A0
+083ED2  moveq   #$0, D0
+083ED4  move.w  #$7, D1
+083ED8  movea.l ($12,A6), A1
+083EDC  move.w  (A1,D0.w), D3
+083EE0  andi.l  #$ffff, D3
+083EE6  lsl.l   #8, D3
+083EE8  lsl.l   #2, D3
+083EEA  movea.l #$e0000, A1
+083EF0  adda.l  D3, A1
+083EF2  move.w  #$ff, D2
+083EF6  move.l  (A1)+, (A0)+
+083EF8  dbra    D2, $83ef6
+083EFC  addq.w  #2, D0
+083EFE  dbra    D1, $83ed8
+083F02  rts
+083F04  move.w  ($6,A6), ($3e,A5)
+083F0A  move.w  ($a,A6), ($40,A5)
+083F10  movea.l #$909800, A0
+083F16  moveq   #$0, D0
+083F18  move.w  #$3, D1
+083F1C  bsr     $83f28
+083F1E  movea.l #$90b800, A0
+083F24  move.w  #$3, D1
+083F28  movea.l ($12,A6), A1
+083F2C  move.w  (A1,D0.w), D3
+083F30  andi.l  #$ffff, D3
+083F36  lsl.l   #8, D3
+083F38  movea.l #$d8000, A1
+083F3E  adda.l  D3, A1
+083F40  move.w  #$3f, D2
+083F44  move.l  (A1)+, (A0)+
+083F46  dbra    D2, $83f44
+083F4A  addq.w  #2, D0
+083F4C  dbra    D1, $83f28
+083F50  rts
+083F52  move.w  ($6,A6), D5
+083F56  move.w  D5, ($36,A5)
+083F5A  subi.w  #$40, D5
+083F5E  move.w  ($a,A6), D6
+083F62  move.w  D6, ($38,A5)
+083F66  addi.w  #$160, D6
+083F6A  not.w   D6
+083F6C  move.w  #$f, D4
+083F70  bsr     $841c6
+083F74  bsr     $84236
+083F78  bsr     $8431a
+083F7C  addi.w  #$20, D5
+083F80  dbra    D4, $83f70
+083F84  rts
+084016  move.w  #$29, D4
+08401A  move.w  ($6,A6), D5
+08401E  move.w  D5, ($3a,A5)
+084022  subi.w  #$90, D5
+084026  move.w  ($a,A6), D6
+08402A  move.w  D6, ($3c,A5)
+08402E  addi.w  #$180, D6
+084032  not.w   D6
+084034  bsr     $841ec
+084038  bsr     $84264
+08403C  bsr     $8447e
+084040  addi.w  #$10, D5
+084044  dbra    D4, $84034
+084048  rts
+08404A  move.w  ($6,A6), ($3a,A5)
+084050  move.w  ($a,A6), ($3c,A5)
+084056  move.b  ($7,A6), D0
+08405A  andi.b  #$10, D0
+08405E  move.b  ($1e,A6), D1
+084062  eor.b   D1, D0
+084064  bne     $84080
+084066  eori.b  #$10, ($1e,A6)
+08406C  move.b  ($24,A6), D0
+084070  bsr     $8416e
+084074  bsr     $841ec
+084078  bsr     $84264
+08407C  bsr     $8447e
+084080  move.b  ($b,A6), D0
+084084  andi.b  #$10, D0
+084088  move.b  ($1f,A6), D1
+08408C  eor.b   D1, D0
+08408E  bne     $840aa
+084090  eori.b  #$10, ($1f,A6)
+084096  move.b  ($25,A6), D0
+08409A  bsr     $8416e
+08409E  bsr     $841ec
+0840A2  bsr     $84264
+0840A6  bra     $84710
+0840AA  rts
+0840AC  move.w  #$15, D4
+0840B0  move.w  ($6,A6), D5
+0840B4  move.w  D5, ($3e,A5)
+0840B8  subi.w  #$a0, D5
+0840BC  move.w  ($a,A6), D6
+0840C0  move.w  D6, ($40,A5)
+0840C4  addi.w  #$180, D6
+0840C8  not.w   D6
+0840CA  bsr     $84212
+0840CE  bsr     $84294
+0840D2  bsr     $84512
+0840D6  addi.w  #$20, D5
+0840DA  dbra    D4, $840ca
+0840DE  rts
+0840E0  move.w  ($6,A6), ($3e,A5)
+0840E6  move.w  ($a,A6), ($40,A5)
+0840EC  move.b  ($7,A6), D0
+0840F0  andi.b  #$20, D0
+0840F4  move.b  ($1e,A6), D1
+0840F8  eor.b   D1, D0
+0840FA  bne     $84116
+0840FC  eori.b  #$20, ($1e,A6)
+084102  move.b  ($24,A6), D0
+084106  bsr     $8419a
+08410A  bsr     $84212
+08410E  bsr     $84294
+084112  bsr     $84512
+084116  move.b  ($b,A6), D0
+08411A  andi.b  #$20, D0
+08411E  move.b  ($1f,A6), D1
+084122  eor.b   D1, D0
+084124  bne     $84140
+084126  eori.b  #$20, ($1f,A6)
+08412C  move.b  ($25,A6), D0
+084130  bsr     $8419a
+084134  bsr     $84212
+084138  bsr     $84294
+08413C  bra     $847b6
+084140  rts
+084142  move.w  ($6,A6), D5
+084146  move.w  ($a,A6), D6
+08414A  andi.w  #$f, D0
+08414E  lea     ($e,PC,D0.w), A0
+084152  move.w  (A0)+, D0
+084154  add.w   D0, D5
+084156  move.w  (A0)+, D0
+084158  add.w   D0, D6
+08415A  not.w   D6
+08415C  rts
+08416E  move.w  ($6,A6), D5
+084172  move.w  ($a,A6), D6
+084176  andi.w  #$f, D0
+08417A  lea     ($e,PC,D0.w), A0
+08417E  move.w  (A0)+, D0
+084180  add.w   D0, D5
+084182  move.w  (A0)+, D0
+084184  add.w   D0, D6
+084186  not.w   D6
+084188  rts
+08419A  move.w  ($6,A6), D5
+08419E  move.w  ($a,A6), D6
+0841A2  andi.w  #$f, D0
+0841A6  lea     ($e,PC,D0.w), A0
+0841AA  move.w  (A0)+, D0
+0841AC  add.w   D0, D5
+0841AE  move.w  (A0)+, D0
+0841B0  add.w   D0, D6
+0841B2  not.w   D6
+0841B4  rts
+0841C6  move.w  D6, D0
+0841C8  andi.w  #$100, D0
+0841CC  lsl.w   #5, D0
+0841CE  move.b  D6, D1
+0841D0  andi.w  #$e0, D1
+0841D4  lsr.w   #1, D1
+0841D6  add.w   D0, D1
+0841D8  move.w  D5, D0
+0841DA  lsl.w   #4, D0
+0841DC  andi.w  #$1e00, D0
+0841E0  add.w   D1, D0
+0841E2  movea.l #$90c000, A0
+0841E8  adda.w  D0, A0
+0841EA  rts
+0841EC  move.w  D6, D0
+0841EE  andi.w  #$300, D0
+0841F2  lsl.w   #4, D0
+0841F4  move.b  D6, D1
+0841F6  andi.w  #$f0, D1
+0841FA  lsr.w   #2, D1
+0841FC  add.w   D0, D1
+0841FE  move.w  D5, D0
+084200  lsl.w   #2, D0
+084202  andi.w  #$fc0, D0
+084206  add.w   D1, D0
+084208  movea.l #$904000, A0
+08420E  adda.w  D0, A0
+084210  rts
+084212  move.w  D6, D0
+084214  andi.w  #$700, D0
+084218  lsl.w   #3, D0
+08421A  move.b  D6, D1
+08421C  andi.w  #$e0, D1
+084220  lsr.w   #3, D1
+084222  add.w   D1, D0
+084224  move.w  D5, D1
+084226  andi.w  #$7e0, D1
+08422A  add.w   D1, D0
+08422C  movea.l #$908000, A0
+084232  adda.w  D0, A0
+084234  rts
+084236  bsr     $842c0
+08423A  lsl.l   #7, D0
+08423C  movea.l #$d6800, A1
+084242  adda.l  D0, A1
+084244  move.b  D6, D0
+084246  andi.w  #$e0, D0
+08424A  lsr.w   #4, D0
+08424C  move.w  D0, ($28,A6)
+084250  move.b  D5, D1
+084252  andi.w  #$e0, D1
+084256  lsr.w   #1, D1
+084258  move.w  D1, ($26,A6)
+08425C  add.w   D1, D0
+08425E  lea     (A1,D0.w), A1
+084262  rts
+084264  bsr     $842c0
+084268  lsl.l   #8, D0
+08426A  lsl.l   #2, D0
+08426C  movea.l #$e0000, A1
+084272  adda.l  D0, A1
+084274  move.b  D6, D0
+084276  andi.w  #$f0, D0
+08427A  lsr.w   #2, D0
+08427C  move.w  D0, ($28,A6)
+084280  move.b  D5, D1
+084282  andi.w  #$f0, D1
+084286  lsl.w   #2, D1
+084288  move.w  D1, ($26,A6)
+08428C  add.w   D1, D0
+08428E  lea     (A1,D0.w), A1
+084292  rts
+084294  bsr     $842c0
+084298  lsl.l   #8, D0
+08429A  movea.l #$d8000, A1
+0842A0  adda.l  D0, A1
+0842A2  move.b  D6, D0
+0842A4  andi.w  #$e0, D0
+0842A8  lsr.w   #3, D0
+0842AA  move.w  D0, ($28,A6)
+0842AE  move.b  D5, D1
+0842B0  andi.w  #$e0, D1
+0842B4  move.w  D1, ($26,A6)
+0842B8  add.w   D1, D0
+0842BA  lea     (A1,D0.w), A1
+0842BE  rts
+0842C0  moveq   #$0, D0
+0842C2  move.w  ($e,A6), D0
+0842C6  move.w  ($6,PC,D0.w), D0
+0842CA  jmp     ($2,PC,D0.w)
+0842D2  movea.l ($12,A6), A1
+0842D6  move.w  D6, D0
+0842D8  andi.w  #$100, D0
+0842DC  lsr.w   #5, D0
+0842DE  move.w  D5, D1
+0842E0  andi.w  #$300, D1
+0842E4  lsr.w   #7, D1
+0842E6  add.w   D1, D0
+0842E8  move.w  D0, ($20,A6)
+0842EC  move.w  D0, ($22,A6)
+0842F0  move.w  (A1,D0.w), D0
+0842F4  rts
+0842F6  movea.l ($12,A6), A1
+0842FA  move.w  D6, D0
+0842FC  andi.w  #$700, D0
+084300  lsr.w   #4, D0
+084302  move.w  D5, D1
+084304  andi.w  #$700, D1
+084308  lsr.w   #7, D1
+08430A  add.w   D1, D0
+08430C  move.w  D0, ($20,A6)
+084310  move.w  D0, ($22,A6)
+084314  move.w  (A1,D0.w), D0
+084318  rts
+08431A  move.w  D6, D0
+08431C  not.w   D0
+08431E  andi.w  #$e0, D0
+084322  lsr.w   #5, D0
+084324  move.w  D0, D3
+084326  bsr     $8434a
+084328  bsr     $8442c
+08432C  move.w  #$e, D0
+084330  sub.w   D3, D0
+084332  cmpi.w  #$7, D0
+084336  bls     $8434a
+084338  move.w  D0, D3
+08433A  move.w  #$7, D0
+08433E  bsr     $8434a
+084340  bsr     $8442c
+084344  subi.w  #$8, D3
+084348  move.w  D3, D0
+08434A  movea.l #$d0000, A2
+084350  move.w  (A1), D1
+084352  andi.l  #$ffff, D1
+084358  lsl.w   #5, D1
+08435A  adda.l  D1, A2
+08435C  move.w  (A1)+, D1
+08435E  lsl.w   #4, D1
+084360  adda.l  D1, A2
+084362  move.b  (A2)+, ($0,A0)
+084366  move.b  (A2)+, ($1,A0)
+08436A  move.b  (A2)+, ($3,A0)
+08436E  move.b  (A2)+, ($4,A0)
+084372  move.b  (A2)+, ($5,A0)
+084376  move.b  (A2)+, ($7,A0)
+08437A  move.b  (A2)+, ($8,A0)
+08437E  move.b  (A2)+, ($9,A0)
+084382  move.b  (A2)+, ($b,A0)
+084386  move.b  (A2)+, ($c,A0)
+08438A  move.b  (A2)+, ($d,A0)
+08438E  move.b  (A2)+, ($f,A0)
+084392  move.b  (A2)+, ($80,A0)
+084396  move.b  (A2)+, ($81,A0)
+08439A  move.b  (A2)+, ($83,A0)
+08439E  move.b  (A2)+, ($84,A0)
+0843A2  move.b  (A2)+, ($85,A0)
+0843A6  move.b  (A2)+, ($87,A0)
+0843AA  move.b  (A2)+, ($88,A0)
+0843AE  move.b  (A2)+, ($89,A0)
+0843B2  move.b  (A2)+, ($8b,A0)
+0843B6  move.b  (A2)+, ($8c,A0)
+0843BA  move.b  (A2)+, ($8d,A0)
+0843BE  move.b  (A2)+, ($8f,A0)
+0843C2  move.b  (A2)+, ($100,A0)
+0843C6  move.b  (A2)+, ($101,A0)
+0843CA  move.b  (A2)+, ($103,A0)
+0843CE  move.b  (A2)+, ($104,A0)
+0843D2  move.b  (A2)+, ($105,A0)
+0843D6  move.b  (A2)+, ($107,A0)
+0843DA  move.b  (A2)+, ($108,A0)
+0843DE  move.b  (A2)+, ($109,A0)
+0843E2  move.b  (A2)+, ($10b,A0)
+0843E6  move.b  (A2)+, ($10c,A0)
+0843EA  move.b  (A2)+, ($10d,A0)
+0843EE  move.b  (A2)+, ($10f,A0)
+0843F2  move.b  (A2)+, ($180,A0)
+0843F6  move.b  (A2)+, ($181,A0)
+0843FA  move.b  (A2)+, ($183,A0)
+0843FE  move.b  (A2)+, ($184,A0)
+084402  move.b  (A2)+, ($185,A0)
+084406  move.b  (A2)+, ($187,A0)
+08440A  move.b  (A2)+, ($188,A0)
+08440E  move.b  (A2)+, ($189,A0)
+084412  move.b  (A2)+, ($18b,A0)
+084416  move.b  (A2)+, ($18c,A0)
+08441A  move.b  (A2)+, ($18d,A0)
+08441E  move.b  (A2)+, ($18f,A0)
+084422  lea     ($10,A0), A0
+084426  dbra    D0, $8434a
+08442A  rts
+08442C  lea     (-$10,A0), A0
+084430  move.l  A0, D0
+084432  move.l  D0, D1
+084434  andi.l  #$ffffcf80, D0
+08443A  addi.l  #$2000, D1
+084440  andi.l  #$3000, D1
+084446  or.l    D1, D0
+084448  movea.l D0, A0
+08444A  movea.l ($12,A6), A1
+08444E  moveq   #$0, D0
+084450  move.w  ($20,A6), D0
+084454  add.w   ($16,A6), D0
+084458  and.w   ($18,A6), D0
+08445C  move.w  D0, ($20,A6)
+084460  move.w  (A1,D0.w), D0
+084464  andi.l  #$ffff, D0
+08446A  lsl.l   #7, D0
+08446C  movea.l #$d6800, A1
+084472  adda.l  D0, A1
+084474  move.w  ($26,A6), D0
+084478  lea     (A1,D0.w), A1
+08447C  rts
+08447E  move.w  D6, D0
+084480  not.w   D0
+084482  andi.w  #$f0, D0
+084486  lsr.w   #4, D0
+084488  move.w  D0, D3
+08448A  bsr     $844b6
+08448C  bsr     $844be
+084490  move.w  #$f, D0
+084494  bsr     $844b6
+084496  bsr     $844be
+08449A  addi.w  #$10, D3
+08449E  move.w  #$20, D0
+0844A2  sub.w   D3, D0
+0844A4  cmpi.w  #$f, D0
+0844A8  bls     $844b6
+0844B6  move.l  (A1)+, (A0)+
+0844B8  dbra    D0, $844b6
+0844BC  rts
+0844BE  lea     (-$4,A0), A0
+0844C2  move.l  A0, D0
+0844C4  move.l  D0, D1
+0844C6  andi.l  #$ffffcfc3, D0
+0844CC  addi.l  #$1000, D1
+0844D2  andi.l  #$3000, D1
+0844D8  or.l    D1, D0
+0844DA  movea.l D0, A0
+0844DC  movea.l ($12,A6), A1
+0844E0  moveq   #$0, D0
+0844E2  move.w  ($20,A6), D0
+0844E6  add.w   ($16,A6), D0
+0844EA  and.w   ($18,A6), D0
+0844EE  move.w  D0, ($20,A6)
+0844F2  move.w  (A1,D0.w), D0
+0844F6  andi.l  #$ffff, D0
+0844FC  lsl.l   #8, D0
+0844FE  lsl.l   #2, D0
+084500  movea.l #$e0000, A1
+084506  adda.l  D0, A1
+084508  move.w  ($26,A6), D0
+08450C  lea     (A1,D0.w), A1
+084510  rts
+084512  move.w  D6, D0
+084514  not.w   D0
+084516  andi.w  #$e0, D0
+08451A  lsr.w   #5, D0
+08451C  move.w  D0, D3
+08451E  bsr     $8454a
+084520  bsr     $84552
+084524  move.w  #$7, D0
+084528  bsr     $8454a
+08452A  bsr     $84552
+08452E  addi.w  #$8, D3
+084532  move.w  #$10, D0
+084536  sub.w   D3, D0
+084538  cmpi.w  #$7, D0
+08453C  bls     $8454a
+08454A  move.l  (A1)+, (A0)+
+08454C  dbra    D0, $8454a
+084550  rts
+084552  lea     (-$4,A0), A0
+084556  move.l  A0, D0
+084558  move.l  D0, D1
+08455A  andi.l  #$ffffc7e3, D0
+084560  addi.l  #$800, D1
+084566  andi.l  #$3800, D1
+08456C  or.l    D1, D0
+08456E  movea.l D0, A0
+084570  movea.l ($12,A6), A1
+084574  moveq   #$0, D0
+084576  move.w  ($20,A6), D0
+08457A  add.w   ($16,A6), D0
+08457E  and.w   ($18,A6), D0
+084582  move.w  D0, ($20,A6)
+084586  move.w  (A1,D0.w), D0
+08458A  andi.l  #$ffff, D0
+084590  lsl.l   #8, D0
+084592  movea.l #$d8000, A1
+084598  adda.l  D0, A1
+08459A  move.w  ($26,A6), D0
+08459E  lea     (A1,D0.w), A1
+0845A2  rts
+084710  move.w  D5, D0
+084712  not.w   D0
+084714  andi.w  #$f0, D0
+084718  lsr.w   #4, D0
+08471A  move.w  D0, D2
+08471C  bsr     $8474e
+08471E  bsr     $8475e
+084722  move.w  #$f, D0
+084726  bsr     $8474e
+084728  bsr     $8475e
+08472C  addi.w  #$11, D2
+084730  move.w  #$29, D0
+084734  sub.w   D2, D0
+084736  cmpi.w  #$f, D0
+08473A  bls     $8474e
+08473C  move.w  D0, D2
+08473E  move.w  #$f, D0
+084742  bsr     $8474e
+084744  bsr     $8475e
+084748  subi.w  #$10, D2
+08474C  move.w  D2, D0
+08474E  move.l  (A1), (A0)
+084750  lea     ($40,A0), A0
+084754  lea     ($40,A1), A1
+084758  dbra    D0, $8474e
+08475C  rts
+08475E  lea     (-$40,A0), A0
+084762  move.l  A0, D0
+084764  move.l  D0, D1
+084766  andi.l  #$fffff000, D0
+08476C  addi.l  #$40, D1
+084772  andi.l  #$fff, D1
+084778  or.l    D1, D0
+08477A  movea.l D0, A0
+08477C  movea.l ($12,A6), A1
+084780  move.w  ($22,A6), D0
+084784  move.w  D0, D1
+084786  addq.w  #2, D0
+084788  and.w   ($1a,A6), D0
+08478C  and.w   ($1c,A6), D1
+084790  or.w    D1, D0
+084792  move.w  D0, ($22,A6)
+084796  move.w  (A1,D0.w), D0
+08479A  andi.l  #$ffff, D0
+0847A0  lsl.l   #8, D0
+0847A2  lsl.l   #2, D0
+0847A4  movea.l #$e0000, A1
+0847AA  adda.l  D0, A1
+0847AC  move.w  ($28,A6), D0
+0847B0  lea     (A1,D0.w), A1
+0847B4  rts
+0847B6  move.w  D5, D0
+0847B8  not.w   D0
+0847BA  andi.w  #$e0, D0
+0847BE  lsr.w   #5, D0
+0847C0  move.w  D0, D2
+0847C2  bsr     $847f4
+0847C4  bsr     $84804
+0847C8  move.w  #$7, D0
+0847CC  bsr     $847f4
+0847CE  bsr     $84804
+0847D2  addi.w  #$9, D2
+0847D6  move.w  #$15, D0
+0847DA  sub.w   D2, D0
+0847DC  cmpi.w  #$7, D0
+0847E0  bls     $847f4
+0847E2  move.w  D0, D2
+0847E4  move.w  #$7, D0
+0847E8  bsr     $847f4
+0847EA  bsr     $84804
+0847EE  subi.w  #$8, D2
+0847F2  move.w  D2, D0
+0847F4  move.l  (A1), (A0)
+0847F6  lea     ($20,A0), A0
+0847FA  lea     ($20,A1), A1
+0847FE  dbra    D0, $847f4
+084802  rts
+084804  lea     (-$20,A0), A0
+084808  move.l  A0, D0
+08480A  move.l  D0, D1
+08480C  andi.l  #$fffff800, D0
+084812  addi.l  #$20, D1
+084818  andi.l  #$7ff, D1
+08481E  or.l    D1, D0
+084820  movea.l D0, A0
+084822  movea.l ($12,A6), A1
+084826  move.w  ($22,A6), D0
+08482A  move.w  D0, D1
+08482C  addq.w  #2, D0
+08482E  and.w   ($1a,A6), D0
+084832  and.w   ($1c,A6), D1
+084836  or.w    D1, D0
+084838  move.w  D0, ($22,A6)
+08483C  move.w  (A1,D0.w), D0
+084840  andi.l  #$ffff, D0
+084846  lsl.l   #8, D0
+084848  movea.l #$d8000, A1
+08484E  adda.l  D0, A1
+084850  move.w  ($28,A6), D0
+084854  lea     (A1,D0.w), A1
+084858  rts
+08485A  lea     ($cd2,A5), A6
+08485E  moveq   #$0, D0
+084860  move.b  ($2,A6), D0
+084864  move.w  ($6,PC,D0.w), D1
+084868  jmp     ($2,PC,D1.w)
+084870  addq.b  #2, ($2,A6)
+084874  move.w  ($9ca,A5), D0
+084878  add.w   D0, D0
+08487A  lea     ($34,PC) ; ($848b0), A0
+08487E  move.w  (A0,D0.w), ($e,A6)
+084884  lea     ($4a,PC) ; ($848d0), A0
+084888  move.w  (A0,D0.w), ($10,A6)
+08488E  lea     ($60,PC) ; ($848f0), A0
+084892  move.w  (A0,D0.w), ($12,A6)
+084898  move.w  #$9200, ($32,A5)
+08489E  move.l  #$921000, ($2be,A5)
+0848A6  clr.w   ($24,A6)
+0848AA  btst    #$0, D1
+0848AE  rts
+084920  addi.b  #$10, ($33,A5)
+084926  andi.b  #$30, ($33,A5)
+08492C  addi.w  #$1000, ($2c0,A5)
+084932  andi.w  #$3000, ($2c0,A5)
+084938  move.w  ($24,A6), D0
+08493C  movea.l (-$2e,PC,D0.w), A1
+084940  addq.w  #4, ($24,A6)
+084944  andi.w  #$c, ($24,A6)
+08494A  move.w  ($bdc,A5), ($a,A6)
+084950  move.w  ($a,A6), ($4a,A5)
+084956  move.w  ($bd8,A5), D0
+08495A  cmp.w   ($0,A1), D0
+08495E  beq     $8496a
+084960  movea.l ($2be,A5), A0
+084964  move.w  D0, ($0,A1)
+084968  bra     $8496c
+08496A  rts
+08496C  move.w  ($9ca,A5), D0
+084970  add.w   D0, D0
+084972  move.w  ($6,PC,D0.w), D1
+084976  jmp     ($2,PC,D1.w)
+084D24  move.w  ($e,A6), D1
+084D28  sub.w   ($0,A1), D1
+084D2C  move.w  ($10,A6), D0
+084D30  muls.w  D1, D0
+084D32  move.w  ($12,A6), D3
+084D36  lea     (A0,D3.w), A2
+084D3A  move.l  #$c00000, D1
+084D40  move.w  #$17, D2
+084D44  swap    D1
+084D46  move.w  D1, (A2)+
+084D48  swap    D1
+084D4A  sub.l   D0, D1
+084D4C  dbra    D2, $84d44
+084D50  lea     (A0,D3.w), A2
+084D54  move.l  #$c00000, D1
+084D5A  move.l  D1, ($14,A6)
+084D5E  move.w  #$17, D2
+084D62  add.l   D0, D1
+084D64  swap    D1
+084D66  move.w  D1, -(A2)
+084D68  swap    D1
+084D6A  dbra    D2, $84d62
+084D6E  move.l  D1, ($18,A6)
+084D72  move.w  #$f, D2
+084D76  add.l   D0, D1
+084D78  swap    D1
+084D7A  move.w  D1, -(A2)
+084D7C  swap    D1
+084D7E  dbra    D2, $84d76
+084D82  move.w  #$bf, D2
+084D86  swap    D1
+084D88  move.w  D1, -(A2)
+084D8A  dbra    D2, $84d88
+084D8E  swap    D1
+084D90  rts
+099C48  moveq   #$0, D0
+099C4A  move.b  ($281,A6), D0
+099C4E  lsl.w   #5, D0
+099C50  lea     ($58,PC) ; ($99caa), A0
+099C54  lea     (A0,D0.w), A0
+099C58  move.l  A0, ($38,A6)
+099C5C  moveq   #$0, D0
+099C5E  move.b  ($291,A6), D0
+099C62  lsl.w   #2, D0
+099C64  lea     ($14,PC) ; ($99c7a), A0
+099C68  lea     (A0,D0.w), A0
+099C6C  move.b  (A0)+, ($4f,A6)
+099C70  move.b  (A0)+, ($50,A6)
+099C74  move.b  (A0)+, ($51,A6)
+099C78  rts
