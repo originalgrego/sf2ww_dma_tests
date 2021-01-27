@@ -28,37 +28,45 @@
 000486  lea     ($6,PC) ; ($48e), A4
 00048A  bra     $794
 
-00048E  move.w  #$12c8, $800166.l
+00048E  move.w  #$12c8, $800166.l ; Ctrl
 000496  move.w  #$3e, $800122.l
-00049E  move.w  #$3f, $800170.l
-0004A6  move.w  #$9000, $80010a.l
+00049E  move.w  #$3f, $800170.l ; Pal Control
+0004A6  move.w  #$9000, $80010a.l ; Palette base
+
 0004AE  lea     ($378,PC) ; ($828), A2
 0004B2  lea     ($6,PC) ; ($4ba), A5
 0004B6  bra     $706
+
 0004BA  move.w  #$4000, D0
 0004BE  dbra    D0, $4be
 0004C2  move.w  $800172.l, D0
 0004C8  andi.w  #$fc3f, D0
 0004CC  cmpi.w  #$401, D0
 0004D0  bne     $6f0
+
 0004D4  lea     ($36d,PC) ; ($843), A2
 0004D8  lea     ($6,PC) ; ($4e0), A5
 0004DC  bra     $706
+
 0004E0  lea     ($38b,PC) ; ($86d), A2
 0004E4  lea     ($6,PC) ; ($4ec), A5
 0004E8  bra     $706
+
 0004EC  movea.l #$90c000, A0
 0004F2  movea.l A0, A1
 0004F4  adda.l  #$3ffe, A1
 0004FA  lea     ($37b,PC) ; ($877), A2
 0004FE  lea     ($6,PC) ; ($506), A6
 000502  bra     $6ca
+
 000506  lea     ($37a,PC) ; ($882), A2
 00050A  lea     ($6,PC) ; ($512), A5
 00050E  bra     $706
+
 000512  lea     ($379,PC) ; ($88d), A2
 000516  lea     ($6,PC) ; ($51e), A5
 00051A  bra     $706
+
 00051E  movea.l #$904000, A0
 000524  movea.l A0, A1
 000526  adda.l  #$3ffe, A1
@@ -128,6 +136,7 @@
 00060C  move.w  #$12f8, ($52,A5)
 000612  move.w  #$3f, ($5c,A5)
 000618  move.w  #$9000, ($34,A5)
+
 00061E  move.w  #$9100, $800100.l ; Object ram base
 000626  move.w  #$9100, ($2a,A5)
 
@@ -220,6 +229,7 @@
 00074C  cmpa.l  A1, A0
 00074E  bls     $748
 000750  jmp     (A4)
+
 000752  lea     $ff0000.l, A0
 000758  move.w  #$1fff, D4
 00075C  moveq   #$0, D0
@@ -227,16 +237,19 @@
 000760  move.l  D0, (A0)+
 000762  dbra    D4, $75e
 000766  jmp     (A4)
+
 000768  lea     $90c000.l, A0
 00076E  lea     $90ffff.l, A1
 000774  move.w  #$4020, D0
 000778  moveq   #$0, D1
 00077A  bra     $7a6
+
 00077E  lea     $904000.l, A0
 000784  lea     $907fff.l, A1
 00078A  move.w  #$2800, D0
 00078E  moveq   #$0, D1
 000790  bra     $7a6
+
 000794  lea     $908000.l, A0
 00079A  lea     $90bfff.l, A1
 0007A0  move.w  #$400, D0
@@ -246,6 +259,7 @@
 0007AA  cmpa.l  A1, A0
 0007AC  bls     $7a6
 0007AE  jmp     (A4)
+
 0007B0  lea     $910000.l, A0
 0007B6  move.w  #$0, D0
 0007BA  moveq   #$0, D1
@@ -255,6 +269,7 @@
 0007C4  move.l  D1, (A0)+
 0007C6  dbra    D4, $7c0
 0007CA  jmp     (A4)
+
 0007CC  lea     ($122,PC) ; ($8f0), A0
 0007D0  lea     $900400.l, A1
 0007D6  move.l  (A0)+, D0
@@ -282,12 +297,15 @@
 00081E  ori.l   #$f000f000, D0
 000824  move.l  D0, (A1)+
 000826  jmp     (A4)
+
 00091E  move.b  ($2db,A5), D0
 000922  cmpi.b  #$9, ($2dd,A5)
 000928  bcc     $914
+
 00092A  ori.b   #$c, D0
 00092E  move.b  D0, ($2db,A5)
 000932  rts
+
 000934  lea     $0.w, A7
 000938  lea     $8000.w, A5
 00093C  moveq   #$0, D0
@@ -306,7 +324,7 @@
 000974  move.l  #$0, (A0)+
 00097A  dbra    D0, $96e
 00097E  move.w  #$4, ($2c2,A5)
-000984  jsr     $1b44.w
+000984  jsr     $1b44.w ; Fade out test screen
 000988  jsr     $1b9c.w
 00098C  bsr     $170e
 000990  bsr     $184e
@@ -315,6 +333,7 @@
 00099E  not.b   D0
 0009A0  cmpi.b  #$50, D0
 0009A4  bne     $9ac
+
 0009AC  lea     ($3ba,PC) ; ($d68), A0
 0009B0  lea     (-$8000,A5), A6
 0009B4  move.w  #$f, D7
@@ -348,14 +367,16 @@
 000A1E  move.w  #$c0, D0
 000A22  movea.l #$e38, A0
 000A28  jsr     $b44.w
-000A2C  move    #$2000, SR
+000A2C  move    #$2000, SR ; Set supervisor state, 0 interrupt priority mask
 
+;
 000A30  clr.b   (-$7df2,A5)
 000A34  lea     (-$8000,A5), A0
 000A38  move.w  #$f, D0
-000A3C  move    #$2600, SR
 
-; VBlank?
+000A3C  move    #$2600, SR ; Set supervisor state, 6 interrupt priority mask
+
+; Hmmmm
 000A40  tst.b   (-$7df2,A5)
 000A44  bne     $a30
 
@@ -397,7 +418,7 @@
 000AB2  move    #$0, SR ; Clear supervisor state
 000AB6  jmp     (A1)
 
-;
+; VBLANK
 000AB8  movem.l D0-D7/A0-A6, -(A7)
 000ABC  lea     $8000.w, A5
 000AC0  move.w  ($2a,A5), $800100.l ; Update object
@@ -414,6 +435,7 @@
 000AF8  st      (-$7df2,A5)
 000AFC  clr.b   ($2e2,A5)
 000B00  lea     (-$8000,A5), A0
+
 000B04  move.w  #$f, D0
 000B08  cmpi.b  #$1, ($0,A0)
 000B0E  bne     $b1c
@@ -422,14 +444,15 @@
 000B14  bne     $b1c
 
 000B16  move.b  #$4, ($0,A0)
+
 000B1C  lea     ($20,A0), A0
 000B20  dbra    D0, $b08
 000B24  movem.l (A7)+, D0-D7/A0-A6
 000B28  rte
-;
+; VBLANK
 
 000B2A  move.w  ($5c,A5), $800170.l
-000B32  move.w  ($34,A5), $80010a.l
+000B32  move.w  ($34,A5), $80010a.l ; Palette base
 000B3A  move.w  #$50, D0
 000B3E  dbra    D0, $b3e
 000B42  rts
@@ -574,6 +597,7 @@
 000E80  jsr     $d10.w
 000E84  tst.b   (-$7df2,A5)
 000E88  bne     $ea0
+
 000E8A  tst.w   (-$7df4,A5)
 000E8E  beq     $ea0
 000E90  lea     ($a2,A5), A0
@@ -581,6 +605,7 @@
 000E98  move.l  (A0,D2.w), D0
 000E9C  bpl     $e12
 000EA0  bra     $e38
+
 000ED2  tst.w   (-$7df4,A5)
 000ED6  beq     $f0e
 000ED8  cmpi.w  #$2, ($0,A5)
@@ -645,6 +670,7 @@
 001028  move.w  #$1, ($5d56,A5)
 00102E  andi.w  #$ffc0, ($52,A5)
 001034  jmp     $bd2.w
+
 0011E8  clr.l   ($5d3a,A5)
 0011EC  lea     $900000.l, A0
 0011F2  lea     ($5d3e,A5), A1
@@ -1038,9 +1064,13 @@
 001B06  bhi     $1b0e
 001B08  move.b  D0, ($2f8,A5)
 001B0C  rts
+
+; Fade out test screen
 001B44  movea.l #$8acba, A0
 001B4A  lea     $900000.l, A1
 001B50  bra     $1d1c
+; Fade out test screen
+
 001B7C  move.w  ($9e4,A5), D0
 001B80  bsr     $1c1e
 001B84  move.w  ($9e4,A5), D0
@@ -1104,6 +1134,7 @@
 001C80  movea.l #$ca000, A0
 001C86  adda.l  D0, A0
 001C88  bra     $1d1c
+
 001D1C  move.w  #$1f, D7
 001D20  move.l  (A0)+, (A1)+
 001D22  move.l  (A0)+, (A1)+
