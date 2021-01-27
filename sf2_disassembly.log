@@ -1,24 +1,33 @@
 000416  move.b  #$0, $800030.l
 00041E  lea     ($6,PC) ; ($426), A4
 000422  bra     $73c
+
 000426  lea     ($6,PC) ; ($42e), A4
 00042A  bra     $7cc
+
+; Initialize vram base addresses
 00042E  move.b  #$f0, $800181.l
 000436  move.w  #$ffc0, $80010c.l
 00043E  move.w  #$0, $80010e.l
-000446  move.w  #$9100, $800100.l
-00044E  move.w  #$90c0, $800102.l
-000456  move.w  #$9040, $800104.l
-00045E  move.w  #$9080, $800106.l
-000466  move.w  #$9200, $800108.l
+000446  move.w  #$9100, $800100.l ; Object ram base
+00044E  move.w  #$90c0, $800102.l ; Scroll1 ram base
+000456  move.w  #$9040, $800104.l ; Scroll2 ram base
+00045E  move.w  #$9080, $800106.l ; Scroll3 ram base
+000466  move.w  #$9200, $800108.l ; Rowscroll  ram base
+; Initialize vram base addresses
+
 00046E  lea     ($6,PC) ; ($476), A4
 000472  bra     $7b0
+
 000476  lea     ($6,PC) ; ($47e), A4
 00047A  bra     $768
+
 00047E  lea     ($6,PC) ; ($486), A4
 000482  bra     $77e
+
 000486  lea     ($6,PC) ; ($48e), A4
 00048A  bra     $794
+
 00048E  move.w  #$12c8, $800166.l
 000496  move.w  #$3e, $800122.l
 00049E  move.w  #$3f, $800170.l
@@ -109,24 +118,31 @@
 
 0005EA  lea     ($6,PC) ; ($5f2), A4
 0005EE  bra     $7b0
+
 0005F2  lea     ($6,PC) ; ($5fa), A4
 0005F6  bra     $752
+
 0005FA  lea     $8000.w, A5
 0005FE  move.w  #$3f, $800122.l
 000606  move.w  #$3f, ($4c,A5)
 00060C  move.w  #$12f8, ($52,A5)
 000612  move.w  #$3f, ($5c,A5)
 000618  move.w  #$9000, ($34,A5)
-00061E  move.w  #$9100, $800100.l
+00061E  move.w  #$9100, $800100.l ; Object ram base
 000626  move.w  #$9100, ($2a,A5)
-00062C  move.w  #$90c0, $800102.l
+
+00062C  move.w  #$90c0, $800102.l ; Scroll1 ram base
 000634  move.w  #$90c0, ($2c,A5)
-00063A  move.w  #$9040, $800104.l
+
+00063A  move.w  #$9040, $800104.l ; Scroll2 ram base
 000642  move.w  #$9040, ($2e,A5)
-000648  move.w  #$9080, $800106.l
+
+000648  move.w  #$9080, $800106.l ; Scroll3 ram base
 000650  move.w  #$9080, ($30,A5)
-000656  move.w  #$9200, $800108.l
+
+000656  move.w  #$9200, $800108.l ; Rowscroll ram base
 00065E  move.w  #$9200, ($32,A5)
+
 000664  move.w  #$0, D0
 000668  move.w  D0, ($36,A5)
 00066C  move.w  D0, ($60,A5)
@@ -333,19 +349,26 @@
 000A22  movea.l #$e38, A0
 000A28  jsr     $b44.w
 000A2C  move    #$2000, SR
+
 000A30  clr.b   (-$7df2,A5)
 000A34  lea     (-$8000,A5), A0
 000A38  move.w  #$f, D0
 000A3C  move    #$2600, SR
+
+; VBlank?
 000A40  tst.b   (-$7df2,A5)
 000A44  bne     $a30
+
 000A46  move.b  ($0,A0), D1
 000A4A  cmpi.b  #$4, D1
 000A4E  bcc     $a5e
-000A50  move    #$2000, SR
+
+000A50  move    #$2000, SR ; Set supervisor state, 0 interrupt priority mask
+
 000A54  lea     ($20,A0), A0
 000A58  dbra    D0, $a3c
 000A5C  bra     $a30
+
 000A5E  pea     (-$10,PC) ; ($a50)
 000A62  move.w  D0, -(A7)
 000A64  move.l  A0, -(A7)
@@ -354,26 +377,31 @@
 000A6E  ext.w   D1
 000A70  movea.l (PC,D1.w), A1
 000A74  jmp     (A1)
+
 000A82  movea.l (-$7e00,A5), A7
 000A86  movea.l (A7)+, A0
 000A88  move.w  (A7)+, D0
 000A8A  rts
+
 000A8C  move.b  #$8, ($0,A0)
 000A92  move.l  ($4,A0), -(A7)
 000A96  move.w  ($2,A0), -(A7)
 000A9A  movea.l ($8,A0), A1
 000A9E  move    A1, USP
 000AA0  rte
+
 000AA2  move.b  #$8, ($0,A0)
 000AA8  movea.l ($4,A0), A1
 000AAC  movea.l ($c,A0), A4
 000AB0  move    A4, USP
-000AB2  move    #$0, SR
+000AB2  move    #$0, SR ; Clear supervisor state
 000AB6  jmp     (A1)
+
+;
 000AB8  movem.l D0-D7/A0-A6, -(A7)
 000ABC  lea     $8000.w, A5
-000AC0  move.w  ($2a,A5), $800100.l
-000AC8  move.w  ($32,A5), $800108.l
+000AC0  move.w  ($2a,A5), $800100.l ; Update object
+000AC8  move.w  ($32,A5), $800108.l ; Update rowscroll
 000AD0  move.w  $800172.l, ($5e,A5)
 000AD8  bsr     $166a
 000ADC  bsr     $b2a
@@ -389,30 +417,39 @@
 000B04  move.w  #$f, D0
 000B08  cmpi.b  #$1, ($0,A0)
 000B0E  bne     $b1c
+
 000B10  subq.b  #1, ($1,A0)
 000B14  bne     $b1c
+
 000B16  move.b  #$4, ($0,A0)
 000B1C  lea     ($20,A0), A0
 000B20  dbra    D0, $b08
 000B24  movem.l (A7)+, D0-D7/A0-A6
 000B28  rte
+;
+
 000B2A  move.w  ($5c,A5), $800170.l
 000B32  move.w  ($34,A5), $80010a.l
 000B3A  move.w  #$50, D0
 000B3E  dbra    D0, $b3e
 000B42  rts
+
 000B44  trap    #$0
 000B46  rts
+
 000B48  lea     (-$8000,A5), A1
 000B4C  tst.b   (A1,D0.w)
 000B50  bne     $b64
+
 000B52  move.w  #$c00, (A1,D0.w)
 000B58  move.l  A0, ($4,A1,D0.w)
 000B5C  move.w  D1, ($10,A1,D0.w)
 000B60  move.w  D2, ($12,A1,D0.w)
 000B64  rte
+
 000B82  trap    #$7
 000B84  rts
+
 000B86  tst.w   (-$7df4,A5)
 000B8A  beq     $bac
 000B8C  movea.l (-$7df8,A5), A3
