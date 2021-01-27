@@ -15,6 +15,22 @@
  ; Free space
  org $0E0000
 main:
+; Fix palette brightness
+  movea.l	#$900000, A0
+  move.l	#$F000F000, D0
+  moveq		#$80, D1
+palette_brightness_loop:
+  or.l		D0, (A0)+
+  or.l		D0, (A0)+
+  or.l		D0, (A0)+
+  or.l		D0, (A0)+
+  or.l		D0, (A0)+
+  or.l		D0, (A0)+
+  or.l		D0, (A0)+
+  or.l		D0, (A0)+
+  dbeq		D1, palette_brightness_loop
+; end of brightness fix
+
   moveq #$0, D0
   move.w #$4f0, D0
   movea.l #$00910000, A0
