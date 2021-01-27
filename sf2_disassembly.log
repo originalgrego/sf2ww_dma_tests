@@ -424,8 +424,8 @@
 000AC0  move.w  ($2a,A5), $800100.l ; Update object
 000AC8  move.w  ($32,A5), $800108.l ; Update rowscroll
 000AD0  move.w  $800172.l, ($5e,A5)
-000AD8  bsr     $166a
-000ADC  bsr     $b2a
+000AD8  bsr     $166a ; Poll inputs and stuff
+000ADC  bsr     $b2a ; Update palette base
 000AE0  jsr     $15d4.w
 000AE4  jsr     $6264.w
 000AE8  bsr     $1990
@@ -451,7 +451,7 @@
 000B28  rte
 ; VBLANK
 
-000B2A  move.w  ($5c,A5), $800170.l
+000B2A  move.w  ($5c,A5), $800170.l ; Palette control
 000B32  move.w  ($34,A5), $80010a.l ; Palette base
 000B3A  move.w  #$50, D0
 000B3E  dbra    D0, $b3e
@@ -767,8 +767,11 @@
 0015E0  tst.b   ($2d7,A5)
 0015E4  beq     $162c
 00162C  rts
+
+;
 00163E  tst.b   ($2d7,A5)
 001642  beq     $162c
+
 00166A  move.b  ($2d2,A5), D0
 00166E  move.b  ($2df,A5), D1
 001672  eor.b   D1, D0
@@ -782,20 +785,24 @@
 00169C  move.w  ($56,A5), $80016a.l
 0016A4  move.w  ($58,A5), $80016c.l
 0016AC  move.w  ($5a,A5), $80016e.l
+
 0016B4  move.l  ($76,A5), D0
 0016B8  lsr.l   #8, D0
 0016BA  move.l  D0, ($76,A5)
+
 0016BE  move.b  $800018.l, D0
 0016C4  not.b   D0
 0016C6  move.b  D0, ($76,A5)
-0016CA  move.w  ($7e,A5), ($80,A5)
-0016D0  move.w  ($82,A5), ($84,A5)
-0016D6  move.b  $800001.l, D0
+0016CA  move.w  ($7e,A5), ($80,A5) ; Read last input p2
+0016D0  move.w  ($82,A5), ($84,A5) ; Read last input p1
+
+0016D6  move.b  $800001.l, D0 ; P2 inputs
 0016DC  not.b   D0
 0016DE  move.b  D0, ($7f,A5)
-0016E2  move.b  $800000.l, D0
+0016E2  move.b  $800000.l, D0 ; P1 inputs
 0016E8  not.b   D0
 0016EA  move.b  D0, ($83,A5)
+
 0016EE  move.b  $800177.l, D0
 0016F4  not.b   D0
 0016F6  move.b  D0, D1
@@ -805,6 +812,7 @@
 001702  andi.b  #$7, D1
 001706  move.b  D1, ($82,A5)
 00170A  bsr     $1736
+
 00170E  move.b  $80001a.l, D0
 001714  not.b   D0
 001716  move.b  D0, ($8a,A5)
@@ -815,6 +823,7 @@
 00172C  not.b   D0
 00172E  move.b  D0, ($8c,A5)
 001732  bra     $1ad2
+
 001736  move.w  #$ffc0, D1
 00173A  move.w  ($60,A5), $80010c.l
 001742  move.w  ($36,A5), D0
@@ -832,11 +841,13 @@
 001778  move.w  ($42,A5), D0
 00177C  tst.b   ($8d,A5)
 001780  bpl     $178a
+
 00178A  move.w  D0, ($6c,A5)
 00178E  move.w  ($70,A5), $80011c.l
 001796  move.w  ($46,A5), D0
 00179A  tst.b   ($8d,A5)
 00179E  bpl     $17a8
+
 0017A8  move.w  D0, ($70,A5)
 0017AC  move.w  ($62,A5), $80010e.l
 0017B4  move.w  #$100, D0
@@ -1045,8 +1056,11 @@
 001AC8  move.w  #$1000, D0
 001ACC  jmp     $2564.w
 001AD0  rts
+
+;
 001AD2  tst.b   (-$7f80,A5)
 001AD6  beq     $1adc
+
 001AD8  addq.l  #1, ($2fa,A5)
 001ADC  moveq   #$1, D1
 001ADE  move.b  ($2f9,A5), D0
@@ -1054,8 +1068,11 @@
 001AE6  abcd    D1, D0
 001AE8  cmpi.b  #$59, D0
 001AEC  bhi     $1af4
+
 001AEE  move.b  D0, ($2f9,A5)
 001AF2  rts
+;
+
 001AF4  clr.b   ($2f9,A5)
 001AF8  move.b  ($2f8,A5), D0
 001AFC  andi    #$ef, CCR
