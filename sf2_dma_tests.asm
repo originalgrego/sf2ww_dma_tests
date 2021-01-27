@@ -18,7 +18,8 @@ main:
 ; Fix palette brightness
   movea.l	#$900000, A0
   move.l	#$F000F000, D0
-  moveq		#$80, D1
+  moveq		#0, D1
+  move.b	#$80, D1
 palette_brightness_loop:
   or.l		D0, (A0)+
   or.l		D0, (A0)+
