@@ -4,8 +4,11 @@ vsync_handled = $400
 
 loop_count = $404
 
+loop_count_string_pos = $ff8410
+loop_count_string_start = $ff8413
+
  org  0
-  incbin  "build\sf2.bin"
+  incbin "build\sf2.bin"
    
  org $8D1
   dc.b "123  "
@@ -44,10 +47,12 @@ main:
 
   bsr fix_palette_brightness
   bsr upload_object_data
-  
+  bsr setup_loop_count_string
 
 .loop
   moveq #$0, D7 ; Reset vsync handled
+
+  bsr draw_count
 
   move.w  ($7e,A5), D0
   eor D0, ($80,A5)
@@ -69,7 +74,54 @@ main:
   bra .loop
 ;-------------------
 
+;-------------------
+setup_loop_count_string:
+  moveq #$3, D0
+  movea.l #default_count_string, A1
+  movea.l #loop_count_string_pos, A0
 
+  bsr copy_mem
+
+  rts
+;-------------------
+
+;-------------------
+draw_count:
+  movea.l #nibble_to_char, A2
+  movea.l #$ffff8404, A1 ; loop count
+  movea.l #loop_count_string_start, A0
+  
+  moveq #$3, D0 ; Loop three times
+
+.draw_count_loop
+  move.b (A1)+, D1
+  move.b D1, D2
+
+  ; First nibble
+  andi.b #$F0, D1
+  ror.b #$4, D1
+  
+  move.b (A2, D1), D1
+  move.b D1, (A0)+
+
+  ; Second nibble
+  andi.b #$0F, D2
+  
+  move.b (A2, D2), D2
+  move.b D2, (A0)+
+  
+  dbra D0, .draw_count_loop ; Do it four times
+
+  movea.l #loop_count_string_pos, A2
+  movea.l #.draw_count_continue, A5
+
+  jmp $706
+
+.draw_count_continue
+  movea.l #$ffff8000, A5 
+
+  rts
+;-------------------
 
 ;-------------------
 fix_palette_brightness:
@@ -99,14 +151,14 @@ upload_object_data:
   movea.l #$00910000, A0
   movea.l #sf2_objects_2, A1
   
-  bsr upload_gfx
+  bsr copy_mem
 
   moveq #$0, D0
   move.w #$104, D0
   movea.l #$00914000, A0
   movea.l #sf2_objects_2, A1
   
-  bsr upload_gfx
+  bsr copy_mem
 
   move.b #$FF, (end_short_object_offset, A0)
 
@@ -114,13 +166,13 @@ upload_object_data:
   movea.l #$00918000, A0
   movea.l #sf2_objects, A1
   
-  bsr upload_gfx
+  bsr copy_mem
 
   move.w #$104, D0
   movea.l #$0091C000, A0
   movea.l #sf2_objects, A1
   
-  bsr upload_gfx
+  bsr copy_mem
   
   move.b #$FF, (end_short_object_offset, A0)
 
@@ -128,13 +180,16 @@ upload_object_data:
 ;-----------------
 
 ;-----------------
-upload_gfx:
+copy_mem:
   move.b  (A1, D0.w), D1
   move.b  D1, (A0, D0.w)
-  dbra D0, upload_gfx
+  dbra D0, copy_mem
   rts
 ;-----------------
 
+default_count_string:
+  dc.b $18, $0C, $00, $00
+ 
 nibble_to_char:
   dc.b "0123456789ABCDEF"
 
