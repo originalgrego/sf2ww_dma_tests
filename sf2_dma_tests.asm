@@ -1,5 +1,9 @@
 end_short_object_offset = $102;
 
+vsync_handled = $400
+
+loop_count = $404
+
  org  0
   incbin  "build\sf2.bin"
    
@@ -15,35 +19,58 @@ end_short_object_offset = $102;
 ;   NOP
  
 ;-------------------
- ; Stop vsync handling after inputs are read and palette updated
+; Stop vsync handling after inputs are read and palette updated and do custom logic
  org $000AE0
+  move.l D6, (loop_count, A5) ; Store loop count
+  
   eori.w  #$0080, ($2a,A5) ; Switch object buffers each frame
+
+  movem.l (A7)+, D0-D7/A0-A6 ; Restore regs
+
+  moveq #$1, D7 ; Vsync handled
+
+  rte
+;-------------------
+
+;=================================
+; Free space
+;=================================
+ org $0E0000
+
+;-------------------
+main:
+  moveq #$0, D7 ; Reset vsync handled
+  moveq #$0, D6 ; Reset loop count
+
+  bsr fix_palette_brightness
+  bsr upload_object_data
+  
+
+.loop
+  moveq #$0, D7 ; Reset vsync handled
 
   move.w  ($7e,A5), D0
   eor D0, ($80,A5)
   and D0, ($7e,A5)
   tst D0
-  beq vsync_exit
+  beq .continue
   
   eori.w  #$0040, ($2a,A5) ; If a button was pressed switch object buffers
 
-vsync_exit:
-  movem.l (A7)+, D0-D7/A0-A6
-  rte
-;-------------------
- 
- ; Free space
- org $0E0000
+.continue
+  moveq #$0, D6 ; Reset loop count
 
-;-------------------
-main:
-  bsr fix_palette_brightness
-  bsr upload_object_data
+.count_loop
+  addq #$1, D6 ; Increment loop count
 
-loop:
-  bra loop
+  tst.b D7 ; Check vsync handled
+  beq .count_loop
+
+  bra .loop
 ;-------------------
-  
+
+
+
 ;-------------------
 fix_palette_brightness:
   movea.l	#$900000, A0
@@ -107,7 +134,10 @@ upload_gfx:
   dbra D0, upload_gfx
   rts
 ;-----------------
-  
+
+nibble_to_char:
+  dc.b "0123456789ABCDEF"
+
 sf2_objects:
   incbin "sf2_objects_1.bin"
  

@@ -212,14 +212,18 @@
 00071C  adda.l  D0, A1
 00071E  moveq   #$0, D0
 000720  move.b  (A0)+, D0
+
+; .loop
 000722  moveq   #$0, D1
 000724  move.b  (A0)+, D1
-000726  beq     $73a
+000726  beq     $73a ; exit
+
 000728  addi.w  #$4000, D1
 00072C  move.w  D1, ($0,A1)
 000730  move.w  D0, ($2,A1)
 000734  lea     ($80,A1), A1
-000738  bra     $722
+000738  bra     $722 ; .loop
+
 00073A  jmp     (A5)
 ; Draw test screen text
 
