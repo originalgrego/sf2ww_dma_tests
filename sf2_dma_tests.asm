@@ -55,9 +55,10 @@ main:
   bsr draw_count
 
   move.w  ($7e,A5), D0
-  eor D0, ($80,A5)
-  and D0, ($7e,A5)
-  tst D0
+  move.w  ($80,A5), D1
+  eor.w D0, D1
+  and.w D0, D1
+  tst.w D1
   beq .continue
   
   eori.w  #$0040, ($2a,A5) ; If a button was pressed switch object buffers
@@ -66,7 +67,7 @@ main:
   moveq #$0, D6 ; Reset loop count
 
 .count_loop
-  addq #$1, D6 ; Increment loop count
+  addq.w #$1, D6 ; Increment loop count
 
   tst.b D7 ; Check vsync handled
   beq .count_loop
