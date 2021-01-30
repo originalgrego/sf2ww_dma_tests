@@ -10,6 +10,8 @@ loop_count_string_start = $ff8413
  org  0
   incbin "build\sf2.bin"
    
+ include "sf2_to_sf2eb.asm"
+   
  org $8D1
   dc.b "123  "
    
@@ -56,8 +58,8 @@ main:
 
   move.w  ($7e,A5), D0
   move.w  ($80,A5), D1
-  eor.w D0, D1
-  and.w D0, D1
+  eor.w D0, D1 ; Fresh input
+  and.w D0, D1 ; Was a press not a release
   tst.w D1
   beq .continue
   
