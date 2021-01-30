@@ -331,15 +331,20 @@
 000A10  lea     (-$8000,A5), A0
 000A14  move.w  #$f, D0
 000A18  move    #$2600, SR
+
 000A1C  tst.b   (-$7df2,A5)
 000A20  bne     $a0c
+
 000A22  move.b  ($0,A0), D1
 000A26  cmpi.b  #$4, D1
 000A2A  bcc     $a3a
+
 000A2C  move    #$2000, SR
+
 000A30  lea     ($20,A0), A0
 000A34  dbra    D0, $a18
 000A38  bra     $a0c
+
 000A3A  pea     (-$10,PC) ; ($a2c)
 000A3E  move.w  D0, -(A7)
 000A40  move.l  A0, -(A7)
@@ -371,8 +376,9 @@
 000A9C  move.w  ($2a,A5), $800100.l ; Object
 000AA4  move.w  ($32,A5), $800108.l ; rowscroll
 000AAC  move.w  $800148.l, ($5e,A5)
-000AB4  bsr     $1baa
-000AB8  bsr     $b06
+000AB4  bsr     $1baa ; INput
+000AB8  bsr     $b06 ; Palette
+
 000ABC  jsr     $1b14.w
 000AC0  jsr     $628e.w
 000AC4  bsr     $1ed0

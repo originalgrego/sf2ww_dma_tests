@@ -431,6 +431,7 @@
 000AD0  move.w  $800172.l, ($5e,A5)
 000AD8  bsr     $166a ; Poll inputs and stuff
 000ADC  bsr     $b2a ; Update palette base
+
 000AE0  jsr     $15d4.w
 000AE4  jsr     $6264.w
 000AE8  bsr     $1990

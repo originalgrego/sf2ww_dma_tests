@@ -10,12 +10,10 @@ loop_count_string_start = $ff8413
  org  0
   incbin "build\sf2.bin"
    
- include "sf2_to_sf2eb.asm"
-   
  org $8D1
-  dc.b "123  "
+;  dc.b "123  "
    
- org $000A54
+ org $000A30
   jmp main
 
  ; Don't fade out test screen 
@@ -25,7 +23,7 @@ loop_count_string_start = $ff8413
  
 ;-------------------
 ; Stop vsync handling after inputs are read and palette updated and do custom logic
- org $000AE0
+ org $000ABC
   move.l D6, (loop_count, A5) ; Store loop count
   
   eori.w  #$0080, ($2a,A5) ; Switch object buffers each frame
