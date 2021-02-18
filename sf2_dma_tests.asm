@@ -7,7 +7,7 @@ loop_count = $404
 loop_count_string_pos = $ff8410
 loop_count_string_start = $ff8413
 
-config_vars_start = $ff8430
+config_values_start = $ff8430
 palette_select = $ff8430
 scroll_1_select = $ff8431
 scroll_2_select = $ff8432
@@ -132,9 +132,9 @@ handle_controls:
   tst.w D1
   beq .handle_controls_continue ; Nothing pressed!
   
-  bsr increment_var
+  bsr increment_value
   
-  bsr update_vars
+  bsr update_value_string
   
   eori.w  #$0040, ($2a,A5) ; If a button was pressed switch object buffers
 
@@ -143,14 +143,14 @@ handle_controls:
 ;-------------------
 
 ;-------------------
-update_vars:
-  movea.l #config_vars_start, A0
+update_value_string:
+  movea.l #config_values_start, A0
   movea.l #value_string_start, A1
   movea.l #nibble_to_char, A2
   
   moveq #$04, D0
 
-.update_var_loop  
+.update_value_string_loop  
   moveq #$00, D1
   moveq #$00, D2
 
@@ -163,24 +163,25 @@ update_vars:
   
   move.b D2, (A1, D1)
 
-  dbra D0, .update_var_loop  
+  dbra D0, .update_value_string_loop  
 
   rts
 ;-------------------
 
-
 ;-------------------
-increment_var:
+increment_value:
   moveq #$04, D0 ; Check five inputs, 00 - 04
 
-.increment_var_loop
+.increment_value_loop
   btst D0, D1
-  bne .increment_var_exit
+  bne .increment_value_exit
   
-  dbra D0, .increment_var_loop
+  dbra D0, .increment_value_loop
 
-.increment_var_exit
-  movea.l #config_vars_start, A0
+  rts
+
+.increment_value_exit
+  movea.l #config_values_start, A0
   addq.b #$01, (A0, D0)
 
   rts  
