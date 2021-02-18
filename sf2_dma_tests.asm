@@ -7,7 +7,6 @@ loop_count = $404
 loop_count_string_pos = $ff8410
 loop_count_string_start = $ff8413
 
-
 config_vars_start = $ff8430
 palette_select = $ff8430
 scroll_1_select = $ff8431
@@ -17,6 +16,25 @@ object_select = $ff8434
 
 value_string_pos = $ff8460
 value_string_start = $ff8463
+
+b_input_right = $00
+b_input_left = $01
+b_input_down = $02
+b_input_up = $03
+
+b_input_b1 = $04
+b_input_b2 = $05
+b_input_b3 = $06
+
+input_right = $0001
+input_left = $0002
+input_down = $0004
+input_up = $0008
+
+input_b1 = $0010
+input_b2 = $0020
+input_b3 = $0040
+
 
  org  0
   incbin "build\sf2.bin"
@@ -59,7 +77,10 @@ main:
   bsr fix_palette_brightness
   bsr upload_object_data
   bsr setup_variable_strings
-  
+ 
+  movea.l #control_string, A2
+  bsr draw_string_hook
+
   movea.l #config_string, A2
   bsr draw_string_hook
 
@@ -68,17 +89,8 @@ main:
 
   bsr draw_count
   bsr draw_values
+  bsr handle_controls
 
-  move.w  ($7e,A5), D0
-  move.w  ($80,A5), D1
-  eor.w D0, D1 ; Fresh input
-  and.w D0, D1 ; Was a press not a release
-  tst.w D1
-  beq .continue
-  
-  eori.w  #$0040, ($2a,A5) ; If a button was pressed switch object buffers
-
-.continue
   moveq #$0, D6 ; Reset loop count
 
 .count_loop
@@ -105,6 +117,73 @@ setup_variable_strings:
   bsr copy_mem
 
   rts
+;-------------------
+
+;-------------------
+handle_controls:
+  moveq #$00, D0
+  moveq #$00, D1
+
+  move.w  ($7e,A5), D0
+  move.w  ($80,A5), D1
+  eor.w D0, D1 ; Fresh input
+  and.w D0, D1 ; Was a press not a release
+
+  tst.w D1
+  beq .handle_controls_continue ; Nothing pressed!
+  
+  bsr increment_var
+  
+  bsr update_vars
+  
+  eori.w  #$0040, ($2a,A5) ; If a button was pressed switch object buffers
+
+.handle_controls_continue
+  rts
+;-------------------
+
+;-------------------
+update_vars:
+  movea.l #config_vars_start, A0
+  movea.l #value_string_start, A1
+  movea.l #nibble_to_char, A2
+  
+  moveq #$04, D0
+
+.update_var_loop  
+  moveq #$00, D1
+  moveq #$00, D2
+
+  move.b D0, D1
+  rol.b #$01, D1
+  add.b D0, D1 ; D1 contains the value string offset
+  
+  move.b (A0, D0), D2 ; Get value
+  move.b (A2, D2), D2 ; Convert to char
+  
+  move.b D2, (A1, D1)
+
+  dbra D0, .update_var_loop  
+
+  rts
+;-------------------
+
+
+;-------------------
+increment_var:
+  moveq #$04, D0 ; Check five inputs, 00 - 04
+
+.increment_var_loop
+  btst D0, D1
+  bne .increment_var_exit
+  
+  dbra D0, .increment_var_loop
+
+.increment_var_exit
+  movea.l #config_vars_start, A0
+  addq.b #$01, (A0, D0)
+
+  rts  
 ;-------------------
 
 ;-------------------
@@ -224,14 +303,17 @@ copy_mem:
   rts
 ;-----------------
 
+control_string:
+  dc.b $10, $12, $00, "R  L  D  U  B1", $00
+
 config_string:
-  dc.b $10, $12, $00, "PL S1 S2 S3 OB", $00
+  dc.b $10, $14, $00, "PL S1 S2 S3 OB", $00
 
 default_value_string:
-  dc.b $10, $14, $00, "0  0  0  0  0 ", $00
+  dc.b $10, $16, $00, "0  0  0  0  0 ", $00
 
 default_count_string:
-  dc.b $18, $0C, $00, $00
+  dc.b $14, $0A, $00, $00
  
 nibble_to_char:
   dc.b "0123456789ABCDEF"
