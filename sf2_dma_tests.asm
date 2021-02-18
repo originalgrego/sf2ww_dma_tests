@@ -7,6 +7,17 @@ loop_count = $404
 loop_count_string_pos = $ff8410
 loop_count_string_start = $ff8413
 
+
+config_vars_start = $ff8430
+palette_select = $ff8430
+scroll_1_select = $ff8431
+scroll_2_select = $ff8432
+scroll_3_select = $ff8433
+object_select = $ff8434
+
+value_string_pos = $ff8460
+value_string_start = $ff8463
+
  org  0
   incbin "build\sf2.bin"
    
@@ -47,12 +58,16 @@ main:
 
   bsr fix_palette_brightness
   bsr upload_object_data
-  bsr setup_loop_count_string
+  bsr setup_variable_strings
+  
+  movea.l #config_string, A2
+  bsr draw_string_hook
 
 .loop
   moveq #$0, D7 ; Reset vsync handled
 
   bsr draw_count
+  bsr draw_values
 
   move.w  ($7e,A5), D0
   move.w  ($80,A5), D1
@@ -76,12 +91,26 @@ main:
 ;-------------------
 
 ;-------------------
-setup_loop_count_string:
+setup_variable_strings:
   moveq #$3, D0
   movea.l #default_count_string, A1
   movea.l #loop_count_string_pos, A0
 
   bsr copy_mem
+
+  moveq #$11, D0
+  movea.l #default_value_string, A1
+  movea.l #value_string_pos, A0
+
+  bsr copy_mem
+
+  rts
+;-------------------
+
+;-------------------
+draw_values:
+  movea.l #value_string_pos, A2
+  bsr draw_string_hook
 
   rts
 ;-------------------
@@ -114,11 +143,18 @@ draw_count:
   dbra D0, .draw_count_loop ; Do it four times
 
   movea.l #loop_count_string_pos, A2
-  movea.l #.draw_count_continue, A5
+  bsr draw_string_hook
+
+  rts
+;-------------------
+
+;-------------------
+draw_string_hook:
+  movea.l #.draw_string_hook_continue, A5
 
   jmp $706
 
-.draw_count_continue
+.draw_string_hook_continue
   movea.l #$ffff8000, A5 
 
   rts
@@ -187,6 +223,12 @@ copy_mem:
   dbra D0, copy_mem
   rts
 ;-----------------
+
+config_string:
+  dc.b $10, $12, $00, "PL S1 S2 S3 OB", $00
+
+default_value_string:
+  dc.b $10, $14, $00, "0  0  0  0  0 ", $00
 
 default_count_string:
   dc.b $18, $0C, $00, $00
