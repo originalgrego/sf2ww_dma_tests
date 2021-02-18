@@ -134,11 +134,113 @@ handle_controls:
   
   bsr increment_value
   
-  bsr update_value_string
+  bsr clamp_value_and_update_pointers
   
-  eori.w  #$0040, ($2a,A5) ; If a button was pressed switch object buffers
+  bsr update_value_string
 
 .handle_controls_continue
+  rts
+;-------------------
+
+;-------------------
+clamp_value_and_update_pointers:
+  btst #b_input_right, D1
+  beq .clamp_check_left
+  
+  bsr handle_palette_value_change
+
+.clamp_check_left
+  btst #b_input_left, D1
+  beq .clamp_check_down
+  
+  bsr handle_scroll1_value_change
+
+.clamp_check_down
+  btst #b_input_down, D1
+  beq .clamp_check_up
+  
+  bsr handle_scroll2_value_change
+
+.clamp_check_up
+  btst #b_input_up, D1
+  beq .clamp_check_b1
+  
+  bsr handle_scroll3_value_change
+
+.clamp_check_b1
+  btst #b_input_b1, D1
+  beq .clamp_exit
+  
+  bsr handle_object_value_change
+
+.clamp_exit
+  rts
+;-------------------
+
+;-------------------
+handle_palette_value_change:
+  movea.l #palette_select, A0
+  move.b (A0), D0
+  cmpi.b #$02, D0
+  bne .palette_exit
+  
+  move.b #$00, (A0)
+  
+.palette_exit
+  rts
+;-------------------
+
+;-------------------
+handle_scroll1_value_change:
+  movea.l #scroll_1_select, A0
+  move.b (A0), D0
+  cmpi.b #$04, D0
+  bne .scroll1_exit
+  
+  move.b #$00, (A0)
+  
+.scroll1_exit
+  rts
+;-------------------
+
+;-------------------
+handle_scroll2_value_change:
+  movea.l #scroll_2_select, A0
+  move.b (A0), D0
+  cmpi.b #$04, D0
+  bne .scroll2_exit
+  
+  move.b #$00, (A0)
+  
+.scroll2_exit
+  rts
+;-------------------
+
+;-------------------
+handle_scroll3_value_change:
+  movea.l #scroll_3_select, A0
+  move.b (A0), D0
+  cmpi.b #$04, D0
+  bne .scroll3_exit
+  
+  move.b #$00, (A0)
+  
+.scroll3_exit
+  rts
+;-------------------
+
+;-------------------
+handle_object_value_change:
+  movea.l #object_select, A0
+  move.b (A0), D0
+  cmpi.b #$02, D0
+  bne .object_exit
+  
+  move.b #$00, (A0)
+  
+.object_exit
+  eori.w  #$0040, ($2a,A5) ; If a button was pressed switch object buffers
+
   rts
 ;-------------------
 
