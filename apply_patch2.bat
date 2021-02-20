@@ -1,4 +1,4 @@
-SET ROM_DIR=H:\ffight3p\gittest\mame0206\roms
+SET ROM_DIR=C:\Repos\mame0206\roms
 
 del build\sf2_hack.bin
 copy build\sf2.bin build\sf2_hack.bin

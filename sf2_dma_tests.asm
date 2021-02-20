@@ -63,6 +63,12 @@ input_b3 = $0040
 
   rte
 ;-------------------
+; Overwrite default scroll 2 and 3 palette banks
+
+ org $C9000
+   incbin "palettes_scroll2_sagatstage.bin"
+ org $CE000
+   incbin "palettes_scroll3_sagatstage.bin"
 
 ;=================================
 ; Free space
