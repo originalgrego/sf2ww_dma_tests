@@ -83,6 +83,8 @@ main:
 
   movea.l #config_string, A2
   bsr draw_string_hook
+  
+  bsr upload_scroll23_data
 
 .loop
   moveq #$0, D7 ; Reset vsync handled
@@ -399,6 +401,25 @@ upload_object_data:
 ;-----------------
 
 ;-----------------
+
+upload_scroll23_data:
+  move.w #$400, D0
+  movea.l #$00904000, A0
+  movea.l #sf2_scroll2, A1
+  
+  bsr copy_mem
+  
+  move.w #$400, D0
+  movea.l #$00908000, A0
+  movea.l #sf2_scroll3, A1
+  
+  bsr copy_mem
+  
+  rts
+
+;-----------------
+
+;-----------------
 copy_mem:
   move.b  (A1, D0.w), D1
   move.b  D1, (A0, D0.w)
@@ -427,3 +448,8 @@ sf2_objects:
 sf2_objects_2:
   incbin "sf2_objects_2.bin"
  
+sf2_scroll2:
+  incbin "scroll2_sagatstage.bin"
+  
+sf2_scroll3:
+  incbin "scroll3_sagatstage.bin"
