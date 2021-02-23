@@ -66,7 +66,13 @@ input_b3 = $0040
 
 scroll_2_pos_offset = $3a
 scroll_3_pos_offset = $3e
+video_control_offset = $4c
 layer_control_offset = $52
+
+video_control_scroll_2_on = $0004
+video_control_scroll_2_off = $FFFB
+video_control_scroll_3_on = $0008
+video_control_scroll_3_off = $FFF7
 
  org  0
   incbin "build\sf2.bin"
@@ -100,7 +106,8 @@ hijack_vsync:
 
   move.w  $800148.l, ($5e,A5)
 
-  jsr $001baa ; INput and update video control
+  move.w  ($4c,A5), $800122.l ; Video control
+  jsr $001BC4 ; Input and update video control, skip video control
   jsr $000b06 ; Palette
   ; From 000A9C  
  
@@ -359,21 +366,29 @@ scroll2_value_jump_tbl:
 scroll2_value_0:
   move.l #base_reg_scroll2, D0
   move.l D0, base_reg_scroll2_ptr
+  
+  ori.w #video_control_scroll_2_on, (video_control_offset, A5)   
   rts
 
 scroll2_value_1:
   move.l #base_reg_null_ptr, D0
   move.l D0, base_reg_scroll2_ptr
+
+  ori.w #video_control_scroll_2_on, (video_control_offset, A5)   
   rts
 
 scroll2_value_2:
   move.l #base_reg_scroll2, D0
   move.l D0, base_reg_scroll2_ptr
+
+  andi.w #video_control_scroll_2_off, (video_control_offset, A5)   
   rts
 
 scroll2_value_3:
   move.l #base_reg_null_ptr, D0
   move.l D0, base_reg_scroll2_ptr
+
+  andi.w #video_control_scroll_2_off, (video_control_offset, A5)   
   rts
 ;===========================================
 
@@ -406,21 +421,29 @@ scroll3_value_jump_tbl:
 scroll3_value_0:
   move.l #base_reg_scroll3, D0
   move.l D0, base_reg_scroll3_ptr
+  
+  ori.w #video_control_scroll_3_on, (video_control_offset, A5)   
   rts
 
 scroll3_value_1:
   move.l #base_reg_null_ptr, D0
   move.l D0, base_reg_scroll3_ptr
+
+  ori.w #video_control_scroll_3_on, (video_control_offset, A5)   
   rts
 
 scroll3_value_2:
   move.l #base_reg_scroll3, D0
   move.l D0, base_reg_scroll3_ptr
+
+  andi.w #video_control_scroll_3_off, (video_control_offset, A5)   
   rts
 
 scroll3_value_3:
   move.l #base_reg_null_ptr, D0
   move.l D0, base_reg_scroll3_ptr
+
+  andi.w #video_control_scroll_3_off, (video_control_offset, A5)   
   rts
 ;===========================================
 
