@@ -13,6 +13,7 @@ scroll_1_select = $ff8431
 scroll_2_select = $ff8432
 scroll_3_select = $ff8433
 object_select = $ff8434
+row_scroll_select = $ff8435
 
 value_string_pos = $ff8460
 value_string_start = $ff8463
@@ -92,6 +93,15 @@ main:
 
   movea.l #config_string, A2
   bsr draw_string_hook
+
+  movea.l #spacer_string_1, A2
+  bsr draw_string_hook
+
+  movea.l #spacer_string_2, A2
+  bsr draw_string_hook
+
+  movea.l #spacer_string_3, A2
+  bsr draw_string_hook
   
   bsr upload_scroll23_data
 
@@ -121,7 +131,7 @@ setup_variable_strings:
 
   bsr copy_mem
 
-  moveq #$11, D0
+  moveq #$15, D0
   movea.l #default_value_string, A1
   movea.l #value_string_pos, A0
 
@@ -180,9 +190,15 @@ clamp_value_and_update_pointers:
 
 .clamp_check_b1
   btst #b_input_b1, D1
-  beq .clamp_exit
+  beq .clamp_check_b2
   
   bsr handle_object_value_change
+
+.clamp_check_b2
+  btst #b_input_b2, D1
+  beq .clamp_exit
+  
+  bsr handle_row_scroll_value_change
 
 .clamp_exit
   rts
@@ -256,12 +272,25 @@ handle_object_value_change:
 ;-------------------
 
 ;-------------------
+handle_row_scroll_value_change:
+  movea.l #row_scroll_select, A0
+  move.b (A0), D0
+  cmpi.b #$02, D0
+  bne .row_scroll_exit
+  
+  move.b #$00, (A0)
+  
+.row_scroll_exit
+  rts
+;-------------------
+
+;-------------------
 update_value_string:
   movea.l #config_values_start, A0
   movea.l #value_string_start, A1
   movea.l #nibble_to_char, A2
   
-  moveq #$04, D0
+  moveq #$05, D0
 
 .update_value_string_loop  
   moveq #$00, D1
@@ -283,7 +312,7 @@ update_value_string:
 
 ;-------------------
 increment_value:
-  moveq #$04, D0 ; Check five inputs, 00 - 04
+  moveq #$05, D0 ; Check six inputs, 00 - 05
 
 .increment_value_loop
   btst D0, D1
@@ -450,14 +479,23 @@ copy_mem:
   rts
 ;-----------------
 
+spacer_string_1:
+  dc.b $10, $0b, $00, "                  ", $00
+
 control_string:
-  dc.b $10, $12, $00, "R  L  D  U  B1", $00
+  dc.b $10, $0c, $00, "R  L  D  U  B1 B2 ", $00
+
+spacer_string_2:
+  dc.b $10, $0d, $00, "                  ", $00
 
 config_string:
-  dc.b $10, $14, $00, "PL S1 S2 S3 OB", $00
+  dc.b $10, $0e, $00, "PL S1 S2 S3 OB RS ", $00
+
+spacer_string_3:
+  dc.b $10, $0f, $00, "                  ", $00
 
 default_value_string:
-  dc.b $10, $16, $00, "0  0  0  0  0 ", $00
+  dc.b $10, $10, $00, "0  0  0  0  0  0  ", $00
 
 default_count_string:
   dc.b $14, $0A, $00, $00
