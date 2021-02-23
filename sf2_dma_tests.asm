@@ -85,6 +85,9 @@ layer_control_scroll_2_off = $FFEF
 layer_control_scroll_3_on = $0002
 layer_control_scroll_3_off = $FFFD
 
+rowscroll_on = $0001
+rowscroll_off = $FFFE
+
  org  0
   incbin "build\sf2.bin"
    
@@ -599,7 +602,7 @@ object_value_2:
 handle_row_scroll_value_change:
   movea.l #row_scroll_select, A0
   move.b (A0), D0
-  cmpi.b #$02, D0
+  cmpi.b #$08, D0
   bne .row_scroll_exit
   
   move.b #$00, (A0)
@@ -617,14 +620,72 @@ handle_row_scroll_value_change:
 ;-------------------
 
 rowscroll_value_jump_tbl:
-  dc.l rowscroll_value_0, rowscroll_value_1
+  dc.l rowscroll_value_0, rowscroll_value_1, rowscroll_value_2, rowscroll_value_3, rowscroll_value_4, rowscroll_value_5, rowscroll_value_6, rowscroll_value_7
 
 ;-------------------
 
 rowscroll_value_0:
+  move.l #base_reg_rowscroll, D0
+  move.l D0, base_reg_rowscroll_ptr
+
+  ori.w #rowscroll_on, (video_control_offset, A5)   
+  ori.w #rowscroll_on, (layer_control_offset, A5)
   rts
 
 rowscroll_value_1:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_rowscroll_ptr
+
+  ori.w #rowscroll_on, (video_control_offset, A5)   
+  ori.w #rowscroll_on, (layer_control_offset, A5)
+  rts
+
+rowscroll_value_2:
+  move.l #base_reg_rowscroll, D0
+  move.l D0, base_reg_rowscroll_ptr
+
+  andi.w #rowscroll_off, (video_control_offset, A5)   
+  ori.w #rowscroll_on, (layer_control_offset, A5)
+  rts
+
+rowscroll_value_3:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_rowscroll_ptr
+
+  andi.w #rowscroll_off, (video_control_offset, A5)   
+  ori.w #rowscroll_on, (layer_control_offset, A5)
+  rts
+  
+rowscroll_value_4:
+  move.l #base_reg_rowscroll, D0
+  move.l D0, base_reg_rowscroll_ptr
+
+  ori.w #rowscroll_on, (video_control_offset, A5)   
+  andi.w #rowscroll_off, (layer_control_offset, A5)
+  rts
+
+rowscroll_value_5:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_rowscroll_ptr
+
+  ori.w #rowscroll_on, (video_control_offset, A5)   
+  andi.w #rowscroll_off, (layer_control_offset, A5)
+  rts
+
+rowscroll_value_6:
+  move.l #base_reg_rowscroll, D0
+  move.l D0, base_reg_rowscroll_ptr
+
+  andi.w #rowscroll_off, (video_control_offset, A5)   
+  andi.w #rowscroll_off, (layer_control_offset, A5)
+  rts
+
+rowscroll_value_7:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_rowscroll_ptr
+
+  andi.w #rowscroll_off, (video_control_offset, A5)   
+  andi.w #rowscroll_off, (layer_control_offset, A5)
   rts
 ;===========================================
 
