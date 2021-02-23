@@ -388,20 +388,26 @@
 000AD4  st      (-$7df2,A5)
 000AD8  clr.b   ($2e2,A5)
 000ADC  lea     (-$8000,A5), A0
+
 000AE0  move.w  #$f, D0
+
 000AE4  cmpi.b  #$1, ($0,A0)
 000AEA  bne     $af8
+
 000AEC  subq.b  #1, ($1,A0)
 000AF0  bne     $af8
+
 000AF2  move.b  #$4, ($0,A0)
 000AF8  lea     ($20,A0), A0
 000AFC  dbra    D0, $ae4
+
 000B00  movem.l (A7)+, D0-D7/A0-A6
 000B04  rte
 
 ; Update pal
-000B06  move.w  ($5c,A5), $80014a.l
-000B0E  move.w  ($34,A5), $80010a.l
+000B06  move.w  ($5c,A5), $80014a.l ; Palette control
+000B0E  move.w  ($34,A5), $80010a.l ; Palette base
+
 000B16  move.w  #$50, D0
 000B1A  dbra    D0, $b1a
 000B1E  rts

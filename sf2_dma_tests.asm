@@ -1,5 +1,6 @@
 end_short_object_offset = $102;
 
+; Vars
 vsync_handled = $400
 
 loop_count = $404
@@ -18,6 +19,21 @@ row_scroll_select = $ff8435
 value_string_pos = $ff8460
 value_string_start = $ff8463
 
+base_vram_null_var = $ff8490
+
+base_vram_object_var = $ff8492
+
+base_reg_object_ptr = $ff84C0
+base_reg_object_data_ptr = $ff84C4
+; Vars
+
+; Vram
+base_vram_object = $9100
+
+base_reg_object = $800100
+; Vram
+
+; Inputs
 b_input_right = $00
 b_input_left = $01
 b_input_down = $02
@@ -35,6 +51,7 @@ input_up = $0008
 input_b1 = $0010
 input_b2 = $0020
 input_b3 = $0040
+; Inputs
 
 scroll_2_pos_offset = $3a
 scroll_3_pos_offset = $3e
@@ -84,25 +101,11 @@ main:
   moveq #$0, D7 ; Reset vsync handled
   moveq #$0, D6 ; Reset loop count
 
+  bsr initialize_base_register_vars
   bsr fix_palette_brightness
   bsr upload_object_data
   bsr setup_variable_strings
- 
-  movea.l #control_string, A2
-  bsr draw_string_hook
-
-  movea.l #config_string, A2
-  bsr draw_string_hook
-
-  movea.l #spacer_string_1, A2
-  bsr draw_string_hook
-
-  movea.l #spacer_string_2, A2
-  bsr draw_string_hook
-
-  movea.l #spacer_string_3, A2
-  bsr draw_string_hook
-  
+  bsr draw_ui
   bsr upload_scroll23_data
 
 .loop
@@ -121,6 +124,42 @@ main:
   beq .count_loop
 
   bra .loop
+;-------------------
+
+;-------------------
+initialize_base_register_vars:
+  ; Object
+  move.w #base_vram_object, D0
+  move.w D0, base_vram_object_var
+  
+  move.l #base_reg_object, D0
+  move.l D0, base_reg_object_ptr
+  
+  move.l #base_vram_object_var, D0
+  move.l D0, base_reg_object_data_ptr
+  ; Object
+  
+  rts
+;-------------------
+
+;-------------------
+draw_ui:
+  movea.l #control_string, A2
+  bsr draw_string_hook
+
+  movea.l #config_string, A2
+  bsr draw_string_hook
+
+  movea.l #spacer_string_1, A2
+  bsr draw_string_hook
+
+  movea.l #spacer_string_2, A2
+  bsr draw_string_hook
+
+  movea.l #spacer_string_3, A2
+  bsr draw_string_hook
+
+  rts
 ;-------------------
 
 ;-------------------
@@ -266,10 +305,28 @@ handle_object_value_change:
   move.b #$00, (A0)
   
 .object_exit
-  eori.w  #$0040, ($2a,A5) ; If a button was pressed switch object buffers
-
+  moveq #$00, D0
+  move.b (A0), D0
+  add.w   D0, D0
+  add.w   D0, D0
+  movea.l object_value_jump_tbl(PC,D0.w), A0
+  jsr     (A0)
+    
   rts
+
+object_value_jump_tbl:
+    dc.l object_value_0, object_value_1
+    
+object_value_0:
+  eori.w #$0040, ($2a,A5) ; If a button was pressed switch object buffers
+  rts
+
+object_value_1:
+  eori.w #$0040, ($2a,A5) ; If a button was pressed switch object buffers
+  rts
+
 ;-------------------
+
 
 ;-------------------
 handle_row_scroll_value_change:
