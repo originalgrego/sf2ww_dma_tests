@@ -23,6 +23,7 @@ base_vram_object_var = $ff8490
 base_vram_scroll1_var = $ff8492
 base_vram_scroll2_var = $ff8494
 base_vram_scroll3_var = $ff8496
+base_vram_rowscroll_var = $ff8498
 
 base_reg_null_ptr = $ff84A0
 
@@ -30,6 +31,7 @@ base_reg_object_ptr = $ff84A4
 base_reg_scroll1_ptr = $ff84A8
 base_reg_scroll2_ptr = $ff84AC
 base_reg_scroll3_ptr = $ff84B0
+base_reg_rowscroll_ptr = $ff84B4
 ; Vars
 
 ; Vram constants
@@ -37,11 +39,13 @@ base_vram_object = $9100
 base_vram_scroll1 = $90c0
 base_vram_scroll2 = $9040
 base_vram_scroll3 = $9080
+base_vram_rowscroll = $9200
 
 base_reg_object = $800100
 base_reg_scroll1 = $800102
 base_reg_scroll2 = $800104
 base_reg_scroll3 = $800106
+base_reg_rowscroll = $800108
 ; Vram constants
 
 ; Inputs
@@ -109,8 +113,6 @@ layer_control_scroll_3_off = $FFFD
 ;-------------------
 hijack_vsync:
   ; From 000A9C
-  move.w  ($32,A5), $800108.l ; rowscroll
-
   move.w  $800148.l, ($5e,A5)
 
   move.w  ($4c,A5), $800122.l ; Video control
@@ -119,6 +121,16 @@ hijack_vsync:
   ; From 000A9C  
  
   move.l D6, (loop_count, A5) ; Store loop count
+  
+  ; Update rowscroll
+  move.w base_vram_rowscroll_var, D0
+  movea.l base_reg_rowscroll_ptr, A0
+  move.w D0, (A0)
+  
+  movea.l #base_vram_rowscroll_var, A0
+  eori.w  #$0010, (A0) ; Switch object buffers each frame
+  ; Update rowscroll
+
   
   ; Update object base
   move.w base_vram_object_var, D0
@@ -162,6 +174,7 @@ main:
   bsr initialize_base_register_vars
   bsr fix_palette_brightness
   bsr upload_object_data
+  bsr upload_rowscroll_data
   bsr setup_variable_strings
   bsr draw_ui
   bsr upload_scroll23_data
@@ -199,6 +212,9 @@ initialize_base_register_vars:
 
   move.w #base_vram_scroll3, D0
   move.w D0, base_vram_scroll3_var
+
+  move.w #base_vram_rowscroll, D0
+  move.w D0, base_vram_rowscroll_var
   ; Values
 
   ; Pointers
@@ -213,6 +229,9 @@ initialize_base_register_vars:
 
   move.l #base_reg_scroll3, D0
   move.l D0, base_reg_scroll3_ptr
+
+  move.l #base_reg_rowscroll, D0
+  move.l D0, base_reg_rowscroll_ptr
   ; Pointers
   
   rts
@@ -576,7 +595,7 @@ object_value_2:
 ;===========================================
 
 
-;-------------------
+;===========================================
 handle_row_scroll_value_change:
   movea.l #row_scroll_select, A0
   move.b (A0), D0
@@ -586,8 +605,28 @@ handle_row_scroll_value_change:
   move.b #$00, (A0)
   
 .row_scroll_exit
+  moveq #$00, D0
+  move.b (A0), D0
+  add.w   D0, D0
+  add.w   D0, D0
+  movea.l rowscroll_value_jump_tbl(PC,D0.w), A0
+  jsr     (A0)
+    
   rts
+
 ;-------------------
+
+rowscroll_value_jump_tbl:
+  dc.l rowscroll_value_0, rowscroll_value_1
+
+;-------------------
+
+rowscroll_value_0:
+  rts
+
+rowscroll_value_1:
+  rts
+;===========================================
 
 ;-------------------
 update_value_string:
@@ -777,6 +816,17 @@ upload_scroll23_data:
 ;-----------------
 
 ;-----------------
+upload_rowscroll_data:
+
+  move.w #$1000, D0
+  movea.l #$00920000, A0
+  movea.l #sf2_rowscroll, A1
+  
+  bsr copy_mem
+  rts
+;-----------------
+
+;-----------------
 copy_mem:
   move.b  (A1, D0.w), D1
   move.b  D1, (A0, D0.w)
@@ -822,3 +872,6 @@ sf2_scroll3:
   
 sf2_palettes:
   incbin "palettes_vegastage.bin"
+  
+sf2_rowscroll:
+  incbin "sf2_rowscroll.bin"

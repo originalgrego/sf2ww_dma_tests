@@ -1,0 +1,15 @@
+Object:
+0 - Switch between long lists every frame
+1 - Switch between short lists
+2 - Do not update base register
+
+Scroll2/3:
+0 - Switch between data every frame with base reg, layer/video control = 1/1
+1 - Do not update base reg, layer/video control = 1/1
+2 - Switch between data every frame with base reg, layer/video control = 1/0
+3 - Do not update base reg, layer/video control = 1/0
+4 - Switch between data every frame with base reg, layer/video control = 0/1
+5 - Do not update base reg, layer/video control = 0/1
+6 - Switch between data every frame with base reg, layer/video control = 0/0
+7 - Do not update base reg, layer/video control = 0/0
+
