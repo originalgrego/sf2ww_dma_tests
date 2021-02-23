@@ -653,7 +653,7 @@
 001BBA  or.w    ($4c,A5), D0
 
 001BBE  move.w  D0, $800122.l ; Update video control (3f during game play)
-001BC4  move.w  ($52,A5), $800154.l ;  Layer control (0e5a during game play)
+001BC4  move.w  ($52,A5), $800154.l ;  Layer control (0e5a during game play) (0b5a chunli stage) 079a - vega
 001BCC  move.b  ($2db,A5), $800030.l
 001BD4  move.w  ($54,A5), $800152.l ; Priority mask
 001BDC  move.w  ($56,A5), $800150.l ; Priority mask

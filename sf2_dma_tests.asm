@@ -409,6 +409,9 @@ upload_object_data:
   rts
 ;-----------------
 
+; Layer control
+; UU UU OO OO S1 S1 S2 S2 S3 S3 S1E S2E S3E SF1 SF2 RS    
+; 0  0  0  0  1  1  1  0  0  1  0   1   1   0   1   0
 ;-----------------
 
 upload_scroll23_data:
@@ -423,10 +426,17 @@ upload_scroll23_data:
   movea.l #sf2_scroll3, A1
   
   bsr copy_mem
+
+  move.w #$1000, D0
+  movea.l #$00900000, A0
+  movea.l #sf2_palettes, A1
   
+  bsr copy_mem
+  
+  ; Position scroll layers and enable them
   move.l #$01c00200, (scroll_2_pos_offset, A5)
   move.l #$03000400, (scroll_3_pos_offset, A5)
-  move.w #$0e5a, (layer_control_offset, A5)
+  move.w #$079a, (layer_control_offset, A5)
   
   rts
 
@@ -466,3 +476,6 @@ sf2_scroll2:
   
 sf2_scroll3:
   incbin "scroll3_vega_dup.bin"
+  
+sf2_palettes:
+  incbin "palettes_vegastage.bin"
