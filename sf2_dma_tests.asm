@@ -66,13 +66,20 @@ input_b3 = $0040
 
 scroll_2_pos_offset = $3a
 scroll_3_pos_offset = $3e
+
 video_control_offset = $4c
-layer_control_offset = $52
 
 video_control_scroll_2_on = $0004
 video_control_scroll_2_off = $FFFB
 video_control_scroll_3_on = $0008
 video_control_scroll_3_off = $FFF7
+
+layer_control_offset = $52
+
+layer_control_scroll_2_on = $0010
+layer_control_scroll_2_off = $FFEF
+layer_control_scroll_3_on = $0002
+layer_control_scroll_3_off = $FFFD
 
  org  0
   incbin "build\sf2.bin"
@@ -145,6 +152,7 @@ hijack_vsync:
   moveq #$1, D7 ; Vsync handled
 
   rte
+;-------------------
 
 ;-------------------
 main:
@@ -341,7 +349,7 @@ handle_scroll1_value_change:
 handle_scroll2_value_change:
   movea.l #scroll_2_select, A0
   move.b (A0), D0
-  cmpi.b #$04, D0
+  cmpi.b #$08, D0
   bne .scroll2_exit
   
   move.b #$00, (A0)
@@ -359,7 +367,7 @@ handle_scroll2_value_change:
 ;-------------------
   
 scroll2_value_jump_tbl:
-  dc.l scroll2_value_0, scroll2_value_1, scroll2_value_2, scroll2_value_3
+  dc.l scroll2_value_0, scroll2_value_1, scroll2_value_2, scroll2_value_3, scroll2_value_4, scroll2_value_5, scroll2_value_6, scroll2_value_7
 
 ;-------------------
 
@@ -367,7 +375,8 @@ scroll2_value_0:
   move.l #base_reg_scroll2, D0
   move.l D0, base_reg_scroll2_ptr
   
-  ori.w #video_control_scroll_2_on, (video_control_offset, A5)   
+  ori.w #video_control_scroll_2_on, (video_control_offset, A5)
+  ori.w #layer_control_scroll_2_on, (layer_control_offset, A5)
   rts
 
 scroll2_value_1:
@@ -375,6 +384,7 @@ scroll2_value_1:
   move.l D0, base_reg_scroll2_ptr
 
   ori.w #video_control_scroll_2_on, (video_control_offset, A5)   
+  ori.w #layer_control_scroll_2_on, (layer_control_offset, A5)
   rts
 
 scroll2_value_2:
@@ -382,6 +392,7 @@ scroll2_value_2:
   move.l D0, base_reg_scroll2_ptr
 
   andi.w #video_control_scroll_2_off, (video_control_offset, A5)   
+  ori.w #layer_control_scroll_2_on, (layer_control_offset, A5)
   rts
 
 scroll2_value_3:
@@ -389,6 +400,39 @@ scroll2_value_3:
   move.l D0, base_reg_scroll2_ptr
 
   andi.w #video_control_scroll_2_off, (video_control_offset, A5)   
+  ori.w #layer_control_scroll_2_on, (layer_control_offset, A5)
+  rts
+  
+scroll2_value_4:
+  move.l #base_reg_scroll2, D0
+  move.l D0, base_reg_scroll2_ptr
+  
+  ori.w #video_control_scroll_2_on, (video_control_offset, A5)
+  andi.w #layer_control_scroll_2_off, (layer_control_offset, A5)
+  rts
+
+scroll2_value_5:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_scroll2_ptr
+
+  ori.w #video_control_scroll_2_on, (video_control_offset, A5)   
+  andi.w #layer_control_scroll_2_off, (layer_control_offset, A5)
+  rts
+
+scroll2_value_6:
+  move.l #base_reg_scroll2, D0
+  move.l D0, base_reg_scroll2_ptr
+
+  andi.w #video_control_scroll_2_off, (video_control_offset, A5)   
+  andi.w #layer_control_scroll_2_off, (layer_control_offset, A5)
+  rts
+
+scroll2_value_7:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_scroll2_ptr
+
+  andi.w #video_control_scroll_2_off, (video_control_offset, A5)   
+  andi.w #layer_control_scroll_2_off, (layer_control_offset, A5)
   rts
 ;===========================================
 
@@ -396,7 +440,7 @@ scroll2_value_3:
 handle_scroll3_value_change:
   movea.l #scroll_3_select, A0
   move.b (A0), D0
-  cmpi.b #$04, D0
+  cmpi.b #$08, D0
   bne .scroll3_exit
   
   move.b #$00, (A0)
@@ -414,7 +458,7 @@ handle_scroll3_value_change:
 ;-------------------
   
 scroll3_value_jump_tbl:
-  dc.l scroll3_value_0, scroll3_value_1, scroll3_value_2, scroll3_value_3
+  dc.l scroll3_value_0, scroll3_value_1, scroll3_value_2, scroll3_value_3, scroll3_value_4, scroll3_value_5, scroll3_value_6, scroll3_value_7
 
 ;-------------------
 
@@ -423,6 +467,7 @@ scroll3_value_0:
   move.l D0, base_reg_scroll3_ptr
   
   ori.w #video_control_scroll_3_on, (video_control_offset, A5)   
+  ori.w #layer_control_scroll_3_on, (layer_control_offset, A5)
   rts
 
 scroll3_value_1:
@@ -430,6 +475,7 @@ scroll3_value_1:
   move.l D0, base_reg_scroll3_ptr
 
   ori.w #video_control_scroll_3_on, (video_control_offset, A5)   
+  ori.w #layer_control_scroll_3_on, (layer_control_offset, A5)
   rts
 
 scroll3_value_2:
@@ -437,6 +483,7 @@ scroll3_value_2:
   move.l D0, base_reg_scroll3_ptr
 
   andi.w #video_control_scroll_3_off, (video_control_offset, A5)   
+  ori.w #layer_control_scroll_3_on, (layer_control_offset, A5)
   rts
 
 scroll3_value_3:
@@ -444,6 +491,39 @@ scroll3_value_3:
   move.l D0, base_reg_scroll3_ptr
 
   andi.w #video_control_scroll_3_off, (video_control_offset, A5)   
+  ori.w #layer_control_scroll_3_on, (layer_control_offset, A5)
+  rts
+  
+scroll3_value_4:
+  move.l #base_reg_scroll3, D0
+  move.l D0, base_reg_scroll3_ptr
+  
+  ori.w #video_control_scroll_3_on, (video_control_offset, A5)   
+  andi.w #layer_control_scroll_3_off, (layer_control_offset, A5)
+  rts
+
+scroll3_value_5:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_scroll3_ptr
+
+  ori.w #video_control_scroll_3_on, (video_control_offset, A5)   
+  andi.w #layer_control_scroll_3_off, (layer_control_offset, A5)
+  rts
+
+scroll3_value_6:
+  move.l #base_reg_scroll3, D0
+  move.l D0, base_reg_scroll3_ptr
+
+  andi.w #video_control_scroll_3_off, (video_control_offset, A5)   
+  andi.w #layer_control_scroll_3_off, (layer_control_offset, A5)
+  rts
+
+scroll3_value_7:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_scroll3_ptr
+
+  andi.w #video_control_scroll_3_off, (video_control_offset, A5)   
+  andi.w #layer_control_scroll_3_off, (layer_control_offset, A5)
   rts
 ;===========================================
 
