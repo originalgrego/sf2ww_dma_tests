@@ -20,15 +20,28 @@ value_string_pos = $ff8460
 value_string_start = $ff8463
 
 base_vram_object_var = $ff8490
+base_vram_scroll1_var = $ff8492
+base_vram_scroll2_var = $ff8494
+base_vram_scroll3_var = $ff8496
 
-base_reg_null_ptr = $ff8490
-base_reg_object_ptr = $ff8494
+base_reg_null_ptr = $ff84A0
+
+base_reg_object_ptr = $ff84A4
+base_reg_scroll1_ptr = $ff84A8
+base_reg_scroll2_ptr = $ff84AC
+base_reg_scroll3_ptr = $ff84B0
 ; Vars
 
 ; Vram constants
 base_vram_object = $9100
+base_vram_scroll1 = $90c0
+base_vram_scroll2 = $9040
+base_vram_scroll3 = $9080
 
 base_reg_object = $800100
+base_reg_scroll1 = $800102
+base_reg_scroll2 = $800104
+base_reg_scroll3 = $800106
 ; Vram constants
 
 ; Inputs
@@ -72,9 +85,17 @@ layer_control_offset = $52
 ;-------------------
 ; Stop vsync handling after inputs are read and palette updated and do custom logic
  org $000A9C
+  jmp hijack_vsync
+;-------------------
 
+;=================================
+; Free space
+;=================================
+ org $0E0000
+
+;-------------------
+hijack_vsync:
   ; From 000A9C
-;  move.w  ($2a,A5), $800100.l ; Object
   move.w  ($32,A5), $800108.l ; rowscroll
 
   move.w  $800148.l, ($5e,A5)
@@ -99,18 +120,6 @@ layer_control_offset = $52
   moveq #$1, D7 ; Vsync handled
 
   rte
-;-------------------
-; Overwrite default scroll 2 and 3 palette banks
-
- org $C9000
-   incbin "palettes_scroll2_sagatstage.bin"
- org $CE000
-   incbin "palettes_scroll3_sagatstage.bin"
-
-;=================================
-; Free space
-;=================================
- org $0E0000
 
 ;-------------------
 main:
@@ -144,13 +153,34 @@ main:
 
 ;-------------------
 initialize_base_register_vars:
-  ; Object
+
+  ; Values
   move.w #base_vram_object, D0
   move.w D0, base_vram_object_var
-  
+
+  move.w #base_vram_scroll1, D0
+  move.w D0, base_vram_scroll1_var
+
+  move.w #base_vram_scroll2, D0
+  move.w D0, base_vram_scroll2_var
+
+  move.w #base_vram_scroll3, D0
+  move.w D0, base_vram_scroll3_var
+  ; Values
+
+  ; Pointers
   move.l #base_reg_object, D0
   move.l D0, base_reg_object_ptr
-  ; Object
+
+  move.l #base_reg_scroll1, D0
+  move.l D0, base_reg_scroll1_ptr
+
+  move.l #base_reg_scroll2, D0
+  move.l D0, base_reg_scroll2_ptr
+
+  move.l #base_reg_scroll3, D0
+  move.l D0, base_reg_scroll3_ptr
+  ; Pointers
   
   rts
 ;-------------------
