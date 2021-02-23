@@ -19,19 +19,17 @@ row_scroll_select = $ff8435
 value_string_pos = $ff8460
 value_string_start = $ff8463
 
-base_vram_null_var = $ff8490
+base_vram_object_var = $ff8490
 
-base_vram_object_var = $ff8492
-
-base_reg_object_ptr = $ff84C0
-base_reg_object_data_ptr = $ff84C4
+base_reg_null_ptr = $ff8490
+base_reg_object_ptr = $ff8494
 ; Vars
 
-; Vram
+; Vram constants
 base_vram_object = $9100
 
 base_reg_object = $800100
-; Vram
+; Vram constants
 
 ; Inputs
 b_input_right = $00
@@ -73,11 +71,29 @@ layer_control_offset = $52
  
 ;-------------------
 ; Stop vsync handling after inputs are read and palette updated and do custom logic
- org $000ABC
+ org $000A9C
+
+  ; From 000A9C
+;  move.w  ($2a,A5), $800100.l ; Object
+  move.w  ($32,A5), $800108.l ; rowscroll
+
+  move.w  $800148.l, ($5e,A5)
+
+  jsr $001baa ; INput and update video control
+  jsr $000b06 ; Palette
+  ; From 000A9C  
+ 
   move.l D6, (loop_count, A5) ; Store loop count
   
-  eori.w  #$0080, ($2a,A5) ; Switch object buffers each frame
-
+  ; Update object base
+  move.w base_vram_object_var, D0
+  movea.l base_reg_object_ptr, A0
+  move.w D0, (A0)
+  
+  movea.l #base_vram_object_var, A0
+  eori.w  #$0080, (A0) ; Switch object buffers each frame
+  ; Update object base
+  
   movem.l (A7)+, D0-D7/A0-A6 ; Restore regs
 
   moveq #$1, D7 ; Vsync handled
@@ -134,9 +150,6 @@ initialize_base_register_vars:
   
   move.l #base_reg_object, D0
   move.l D0, base_reg_object_ptr
-  
-  move.l #base_vram_object_var, D0
-  move.l D0, base_reg_object_data_ptr
   ; Object
   
   rts
@@ -295,11 +308,11 @@ handle_scroll3_value_change:
   rts
 ;-------------------
 
-;-------------------
+;===========================================
 handle_object_value_change:
   movea.l #object_select, A0
   move.b (A0), D0
-  cmpi.b #$02, D0
+  cmpi.b #$03, D0
   bne .object_exit
   
   move.b #$00, (A0)
@@ -314,18 +327,34 @@ handle_object_value_change:
     
   rts
 
+;-------------------
+
 object_value_jump_tbl:
-    dc.l object_value_0, object_value_1
-    
+  dc.l object_value_0, object_value_1, object_value_2
+
+;-------------------
+
 object_value_0:
-  eori.w #$0040, ($2a,A5) ; If a button was pressed switch object buffers
+  move.l #base_reg_object, D0
+  move.l D0, base_reg_object_ptr
+
+  movea.l #base_vram_object_var, A0
+  andi.w #$FFBF, (A0)   
   rts
 
 object_value_1:
-  eori.w #$0040, ($2a,A5) ; If a button was pressed switch object buffers
-  rts
+  move.l #base_reg_object, D0
+  move.l D0, base_reg_object_ptr
 
-;-------------------
+  movea.l #base_vram_object_var, A0
+  ori.w #$0040, (A0)   
+  rts
+  
+object_value_2:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_object_ptr
+  rts
+;===========================================
 
 
 ;-------------------
