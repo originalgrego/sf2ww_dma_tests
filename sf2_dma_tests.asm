@@ -114,6 +114,24 @@ hijack_vsync:
   movea.l #base_vram_object_var, A0
   eori.w  #$0080, (A0) ; Switch object buffers each frame
   ; Update object base
+
+  ; Update scroll2 base
+  move.w base_vram_scroll2_var, D0
+  movea.l base_reg_scroll2_ptr, A0
+  move.w D0, (A0)
+  
+  movea.l #base_vram_scroll2_var, A0
+  eori.w  #$0040, (A0) ; Switch object buffers each frame
+  ; Update scroll2 base
+
+  ; Update scroll3 base
+  move.w base_vram_scroll3_var, D0
+  movea.l base_reg_scroll3_ptr, A0
+  move.w D0, (A0)
+  
+  movea.l #base_vram_scroll3_var, A0
+  eori.w  #$0040, (A0) ; Switch object buffers each frame
+  ; Update scroll3 base
   
   movem.l (A7)+, D0-D7/A0-A6 ; Restore regs
 
@@ -312,7 +330,7 @@ handle_scroll1_value_change:
   rts
 ;-------------------
 
-;-------------------
+;===========================================
 handle_scroll2_value_change:
   movea.l #scroll_2_select, A0
   move.b (A0), D0
@@ -322,10 +340,44 @@ handle_scroll2_value_change:
   move.b #$00, (A0)
   
 .scroll2_exit
+  moveq #$00, D0
+  move.b (A0), D0
+  add.w   D0, D0
+  add.w   D0, D0
+  movea.l scroll2_value_jump_tbl(PC,D0.w), A0
+  jsr     (A0)
+
   rts
-;-------------------
 
 ;-------------------
+  
+scroll2_value_jump_tbl:
+  dc.l scroll2_value_0, scroll2_value_1, scroll2_value_2, scroll2_value_3
+
+;-------------------
+
+scroll2_value_0:
+  move.l #base_reg_scroll2, D0
+  move.l D0, base_reg_scroll2_ptr
+  rts
+
+scroll2_value_1:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_scroll2_ptr
+  rts
+
+scroll2_value_2:
+  move.l #base_reg_scroll2, D0
+  move.l D0, base_reg_scroll2_ptr
+  rts
+
+scroll2_value_3:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_scroll2_ptr
+  rts
+;===========================================
+
+;===========================================
 handle_scroll3_value_change:
   movea.l #scroll_3_select, A0
   move.b (A0), D0
@@ -335,8 +387,42 @@ handle_scroll3_value_change:
   move.b #$00, (A0)
   
 .scroll3_exit
+  moveq #$00, D0
+  move.b (A0), D0
+  add.w   D0, D0
+  add.w   D0, D0
+  movea.l scroll3_value_jump_tbl(PC,D0.w), A0
+  jsr     (A0)
+
   rts
+
 ;-------------------
+  
+scroll3_value_jump_tbl:
+  dc.l scroll3_value_0, scroll3_value_1, scroll3_value_2, scroll3_value_3
+
+;-------------------
+
+scroll3_value_0:
+  move.l #base_reg_scroll3, D0
+  move.l D0, base_reg_scroll3_ptr
+  rts
+
+scroll3_value_1:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_scroll3_ptr
+  rts
+
+scroll3_value_2:
+  move.l #base_reg_scroll3, D0
+  move.l D0, base_reg_scroll3_ptr
+  rts
+
+scroll3_value_3:
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_scroll3_ptr
+  rts
+;===========================================
 
 ;===========================================
 handle_object_value_change:
