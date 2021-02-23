@@ -7,11 +7,11 @@
 00042E  move.b  #$f0, $800181.l
 000436  move.w  #$ffc0, $80010c.l
 00043E  move.w  #$0, $80010e.l
-000446  move.w  #$9100, $800100.l
-00044E  move.w  #$90c0, $800102.l
-000456  move.w  #$9040, $800104.l
-00045E  move.w  #$9080, $800106.l
-000466  move.w  #$9200, $800108.l
+000446  move.w  #$9100, $800100.l ; Object
+00044E  move.w  #$90c0, $800102.l ; Scroll 1
+000456  move.w  #$9040, $800104.l ; Scroll 2
+00045E  move.w  #$9080, $800106.l ; Scroll 3
+000466  move.w  #$9200, $800108.l ; Row scroll
 
 00046E  lea     ($6,PC) ; ($476), A4
 000472  bra     $7b0
@@ -376,7 +376,7 @@
 000A9C  move.w  ($2a,A5), $800100.l ; Object
 000AA4  move.w  ($32,A5), $800108.l ; rowscroll
 000AAC  move.w  $800148.l, ($5e,A5)
-000AB4  bsr     $1baa ; INput
+000AB4  bsr     $1baa ; INput and update video control
 000AB8  bsr     $b06 ; Palette
 
 000ABC  jsr     $1b14.w
@@ -652,13 +652,13 @@
 001BB8  lsl.w   #8, D0
 001BBA  or.w    ($4c,A5), D0
 
-001BBE  move.w  D0, $800122.l
-001BC4  move.w  ($52,A5), $800154.l
+001BBE  move.w  D0, $800122.l ; Update video control (3f during game play)
+001BC4  move.w  ($52,A5), $800154.l ;  Layer control (0e5a during game play)
 001BCC  move.b  ($2db,A5), $800030.l
-001BD4  move.w  ($54,A5), $800152.l
-001BDC  move.w  ($56,A5), $800150.l
-001BE4  move.w  ($58,A5), $80014e.l
-001BEC  move.w  ($5a,A5), $80014c.l
+001BD4  move.w  ($54,A5), $800152.l ; Priority mask
+001BDC  move.w  ($56,A5), $800150.l ; Priority mask
+001BE4  move.w  ($58,A5), $80014e.l ; Priority mask
+001BEC  move.w  ($5a,A5), $80014c.l ; Priority mask
 
 001BF4  move.l  ($76,A5), D0
 001BF8  lsr.l   #8, D0
@@ -703,11 +703,11 @@
 001C82  move.w  ($36,A5), D0
 001C86  add.w   D1, D0
 001C88  move.w  D0, ($60,A5)
-001C8C  move.w  ($64,A5), $800110.l
+001C8C  move.w  ($64,A5), $800110.l ; Update scroll 1 x
 001C94  move.w  ($3a,A5), D0
 001C98  add.w   D1, D0
 001C9A  move.w  D0, ($64,A5)
-001C9E  move.w  ($68,A5), $800114.l
+001C9E  move.w  ($68,A5), $800114.l ; Update scroll 3 x
 001CA6  move.w  ($3e,A5), D0
 001CAA  add.w   D1, D0
 001CAC  move.w  D0, ($68,A5)
@@ -726,11 +726,13 @@
 001CF4  move.w  #$100, D0
 001CF8  sub.w   ($38,A5), D0
 001CFC  move.w  D0, ($62,A5)
-001D00  move.w  ($66,A5), $800112.l
+001D00  move.w  ($66,A5), $800112.l ; Update scroll 2 y
+
 001D08  move.w  #$300, D0
 001D0C  sub.w   ($3c,A5), D0
 001D10  move.w  D0, ($66,A5)
-001D14  move.w  ($6a,A5), $800116.l
+
+001D14  move.w  ($6a,A5), $800116.l ; Update scroll 3 y
 001D1C  move.w  #$700, D0
 001D20  sub.w   ($40,A5), D0
 001D24  move.w  D0, ($6a,A5)

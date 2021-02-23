@@ -35,6 +35,9 @@ input_b1 = $0010
 input_b2 = $0020
 input_b3 = $0040
 
+scroll_2_pos_offset = $3a
+scroll_3_pos_offset = $3e
+layer_control_offset = $52
 
  org  0
   incbin "build\sf2.bin"
@@ -409,17 +412,21 @@ upload_object_data:
 ;-----------------
 
 upload_scroll23_data:
-  move.w #$400, D0
+  move.w #$2000, D0
   movea.l #$00904000, A0
   movea.l #sf2_scroll2, A1
   
   bsr copy_mem
   
-  move.w #$400, D0
+  move.w #$2000, D0
   movea.l #$00908000, A0
   movea.l #sf2_scroll3, A1
   
   bsr copy_mem
+  
+  move.l #$01c00200, (scroll_2_pos_offset, A5)
+  move.l #$03000400, (scroll_3_pos_offset, A5)
+  move.w #$0e5a, (layer_control_offset, A5)
   
   rts
 
@@ -455,7 +462,7 @@ sf2_objects_2:
   incbin "sf2_objects_2.bin"
  
 sf2_scroll2:
-  incbin "scroll2_sagatstage.bin"
+  incbin "scroll2_vega_dup.bin"
   
 sf2_scroll3:
-  incbin "scroll3_sagatstage.bin"
+  incbin "scroll3_vega_dup.bin"
