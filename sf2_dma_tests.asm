@@ -24,6 +24,7 @@ base_vram_scroll1_var = $ff8492
 base_vram_scroll2_var = $ff8494
 base_vram_scroll3_var = $ff8496
 base_vram_rowscroll_var = $ff8498
+base_vram_pal_control_var = $ff849A
 
 base_reg_null_ptr = $ff84A0
 
@@ -32,6 +33,8 @@ base_reg_scroll1_ptr = $ff84A8
 base_reg_scroll2_ptr = $ff84AC
 base_reg_scroll3_ptr = $ff84B0
 base_reg_rowscroll_ptr = $ff84B4
+base_reg_palette_ptr = $ff84B8
+base_reg_pal_control_ptr = $ff84BC
 ; Vars
 
 ; Vram constants
@@ -40,12 +43,15 @@ base_vram_scroll1 = $90c0
 base_vram_scroll2 = $9040
 base_vram_scroll3 = $9080
 base_vram_rowscroll = $9200
+base_vram_palette = $9000
 
 base_reg_object = $800100
 base_reg_scroll1 = $800102
 base_reg_scroll2 = $800104
 base_reg_scroll3 = $800106
 base_reg_rowscroll = $800108
+base_reg_palette = $80010a
+base_reg_pal_control = $80014a
 ; Vram constants
 
 ; Inputs
@@ -120,10 +126,23 @@ hijack_vsync:
 
   move.w  ($4c,A5), $800122.l ; Video control
   jsr $001BC4 ; Input and update video control, skip video control
-  jsr $000b06 ; Palette
   ; From 000A9C  
  
   move.l D6, (loop_count, A5) ; Store loop count
+
+  ; Update pal
+  move.w base_vram_pal_control_var, D0
+  movea.l base_reg_pal_control_ptr, A0
+  move.w D0, (A0)
+  
+  move.w  #base_vram_palette, D0
+  movea.l  base_reg_palette_ptr, A0
+  move.w D0, (A0)
+  
+  move.w  #$50, D0
+.palette_vsync_loop
+  dbra    D0, .palette_vsync_loop ; Original code does this
+  ; Update pal
   
   ; Update rowscroll
   move.w base_vram_rowscroll_var, D0
@@ -134,7 +153,6 @@ hijack_vsync:
   eori.w  #$0010, (A0) ; Switch object buffers each frame
   ; Update rowscroll
 
-  
   ; Update object base
   move.w base_vram_object_var, D0
   movea.l base_reg_object_ptr, A0
@@ -218,6 +236,9 @@ initialize_base_register_vars:
 
   move.w #base_vram_rowscroll, D0
   move.w D0, base_vram_rowscroll_var
+
+  move.w #$003F, D0
+  move.w D0, base_vram_pal_control_var
   ; Values
 
   ; Pointers
@@ -235,6 +256,12 @@ initialize_base_register_vars:
 
   move.l #base_reg_rowscroll, D0
   move.l D0, base_reg_rowscroll_ptr
+
+  move.l #base_reg_palette, D0
+  move.l D0, base_reg_palette_ptr
+
+  move.l #base_reg_pal_control, D0
+  move.l D0, base_reg_pal_control_ptr
   ; Pointers
   
   rts
@@ -341,18 +368,26 @@ clamp_value_and_update_pointers:
   rts
 ;-------------------
 
-;-------------------
+;===========================================
 handle_palette_value_change:
   movea.l #palette_select, A0
   move.b (A0), D0
-  cmpi.b #$02, D0
+  cmpi.b #$0A, D0
   bne .palette_exit
   
   move.b #$00, (A0)
   
 .palette_exit
   rts
+
 ;-------------------
+
+palette_control_table:
+  dc.w $003F, $0001, $0002, $0004, $0008, $0010, $0020, $0015, $002A
+;-------------------
+  
+
+;===========================================
 
 ;-------------------
 handle_scroll1_value_change:
@@ -870,7 +905,7 @@ upload_scroll23_data:
   ; Position scroll layers and enable them
   move.l #$01c00200, (scroll_2_pos_offset, A5)
   move.l #$03000400, (scroll_3_pos_offset, A5)
-  move.w #$079a, (layer_control_offset, A5)
+  move.w #$079B, (layer_control_offset, A5) ; Vega stage settings + untested rowscroll bit
   
   rts
 
