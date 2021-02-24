@@ -373,20 +373,40 @@ handle_palette_value_change:
   movea.l #palette_select, A0
   move.b (A0), D0
   cmpi.b #$0A, D0
-  bne .palette_exit
+  bne .palette_continue
   
   move.b #$00, (A0)
   
-.palette_exit
+.palette_continue
+  moveq #$00, D0
+  move.b (A0), D0
+  add.w   D0, D0
+  move.w palette_control_table(PC,D0.w), D0
+  move.w D0, base_vram_pal_control_var
+  
+  move.b (A0), D0
+  cmpi.b #$09, D0
+  beq .disable_palette_update
+
+  move.l #base_reg_palette, D0
+  move.l D0, base_reg_palette_ptr
+
+  move.l #base_reg_pal_control, D0
+  move.l D0, base_reg_pal_control_ptr
+  
   rts
 
-;-------------------
+.disable_palette_update
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_palette_ptr
+
+  move.l #base_reg_null_ptr, D0
+  move.l D0, base_reg_pal_control_ptr
+  
+  rts
 
 palette_control_table:
-  dc.w $003F, $0001, $0002, $0004, $0008, $0010, $0020, $0015, $002A
-;-------------------
-  
-
+  dc.w $003F, $0001, $0002, $0004, $0008, $0010, $0020, $0015, $002A, $0000
 ;===========================================
 
 ;-------------------
