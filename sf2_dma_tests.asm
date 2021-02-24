@@ -108,6 +108,9 @@ rowscroll_off = $FFFE
 ;   NOP
 ;   NOP
  
+ org $000752
+   jmp hijack_clear_ram
+ 
 ;-------------------
 ; Stop vsync handling after inputs are read and palette updated and do custom logic
  org $000A9C
@@ -188,11 +191,24 @@ hijack_vsync:
 ;-------------------
 
 ;-------------------
+hijack_clear_ram
+  lea     $ff0000.l, A0 
+  move.w  #$1fff, D4
+  moveq   #$0, D0
+
+.clear_ram_loop
+  move.l  D0, (A0)+
+  move.l  D0, (A0)+
+  dbra    D4, .clear_ram_loop
+  
+  jmp initialize_base_register_vars
+;-------------------
+
+;-------------------
 main:
   moveq #$0, D7 ; Reset vsync handled
   moveq #$0, D6 ; Reset loop count
 
-  bsr initialize_base_register_vars
   bsr fix_palette_brightness
   bsr upload_object_data
   bsr upload_rowscroll_data
@@ -264,7 +280,7 @@ initialize_base_register_vars:
   move.l D0, base_reg_pal_control_ptr
   ; Pointers
   
-  rts
+  jmp     (A4)
 ;-------------------
 
 ;-------------------

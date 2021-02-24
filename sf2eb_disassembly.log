@@ -162,6 +162,7 @@
 0006BE  move.w  D0, ($48,A5)
 0006C2  move.w  D0, ($72,A5)
 0006C6  jmp     $910.w
+
 0006CA  movea.l A0, A3
 0006CC  move.w  #$3, D1
 0006D0  moveq   #$0, D3
@@ -171,12 +172,16 @@
 0006DA  move.w  D0, (A0)
 0006DC  cmp.w   (A0), D0
 0006DE  bne     $6f4
+
 0006E0  move.w  D2, (A0)+
 0006E2  cmpa.l  A1, A0
 0006E4  bls     $6d8
+
 0006E6  addi.w  #$2, D3
 0006EA  dbra    D1, $6d2
+
 0006EE  jmp     (A6)
+
 000706  lea     (A2), A0
 000708  moveq   #$0, D0
 00070A  move.b  (A0)+, D0
@@ -198,29 +203,37 @@
 000734  lea     ($80,A1), A1
 000738  bra     $722
 00073A  jmp     (A5)
+
 00073C  lea     $900000.l, A0
 000742  lea     $903fff.l, A1
 000748  move.w  #$0, (A0)+
 00074C  cmpa.l  A1, A0
 00074E  bls     $748
 000750  jmp     (A4)
-000752  lea     $ff0000.l, A0
+
+; Clear ram
+000752  lea     $ff0000.l, A0 
 000758  move.w  #$1fff, D4
 00075C  moveq   #$0, D0
+
 00075E  move.l  D0, (A0)+
 000760  move.l  D0, (A0)+
 000762  dbra    D4, $75e
 000766  jmp     (A4)
+; Clear ram
+
 000768  lea     $90c000.l, A0
 00076E  lea     $90ffff.l, A1
 000774  move.w  #$4020, D0
 000778  moveq   #$0, D1
 00077A  bra     $7a6
+
 00077E  lea     $904000.l, A0
 000784  lea     $907fff.l, A1
 00078A  move.w  #$2800, D0
 00078E  moveq   #$0, D1
 000790  bra     $7a6
+
 000794  lea     $908000.l, A0
 00079A  lea     $90bfff.l, A1
 0007A0  move.w  #$400, D0
@@ -229,7 +242,9 @@
 0007A8  move.w  D1, (A0)+
 0007AA  cmpa.l  A1, A0
 0007AC  bls     $7a6
+
 0007AE  jmp     (A4)
+
 0007B0  lea     $910000.l, A0
 0007B6  move.w  #$0, D0
 0007BA  moveq   #$0, D1
@@ -239,6 +254,7 @@
 0007C4  move.l  D1, (A0)+
 0007C6  dbra    D4, $7c0
 0007CA  jmp     (A4)
+
 0007CC  lea     ($122,PC) ; ($8f0), A0
 0007D0  lea     $900400.l, A1
 0007D6  move.l  (A0)+, D0
