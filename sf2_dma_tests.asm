@@ -131,7 +131,9 @@ hijack_vsync:
   jsr $001BC4 ; Input and update video control, skip video control
   ; From 000A9C  
  
-  move.l D6, (loop_count, A5) ; Store loop count
+  move.l #$7fffffff, D7
+  sub.l D6, D7
+  move.l D7, (loop_count, A5) ; Store loop count
 
   ; Update pal
   move.w base_vram_pal_control_var, D0
@@ -185,7 +187,7 @@ hijack_vsync:
   
   movem.l (A7)+, D0-D7/A0-A6 ; Restore regs
 
-  moveq #$1, D7 ; Vsync handled
+  moveq #$0, D6 ; Vsync handled
 
   rte
 ;-------------------
@@ -206,9 +208,6 @@ hijack_clear_ram
 
 ;-------------------
 main:
-  moveq #$0, D7 ; Reset vsync handled
-  moveq #$0, D6 ; Reset loop count
-
   bsr fix_palette_brightness
   bsr upload_object_data
   bsr upload_rowscroll_data
@@ -217,19 +216,14 @@ main:
   bsr upload_scroll23_data
 
 .loop
-  moveq #$0, D7 ; Reset vsync handled
-
   bsr draw_count
   bsr draw_values
   bsr handle_controls
 
-  moveq #$0, D6 ; Reset loop count
+  move.l #$7fffffff, D6 ; Reset loop count
 
 .count_loop
-  addq.w #$1, D6 ; Increment loop count
-
-  tst.b D7 ; Check vsync handled
-  beq .count_loop
+  dbra D6, .count_loop
 
   bra .loop
 ;-------------------
