@@ -111,6 +111,10 @@ rowscroll_off = $FFFE
  org $000752
    jmp hijack_clear_ram
  
+ ; Use d2 instead of d6 for initial draw routine
+ org $0093D0
+  dbra  D2, $93a0
+ 
 ;-------------------
 ; Stop vsync handling after inputs are read and palette updated and do custom logic
  org $000A9C
@@ -814,7 +818,7 @@ draw_count:
   movea.l #loop_count_string_start, A0
   
   moveq #$3, D0 ; Loop three times
-
+  moveq #$0, D2
 .draw_count_loop
   move.b (A1)+, D1
   move.b D1, D2
@@ -836,6 +840,16 @@ draw_count:
 
   movea.l #loop_count_string_pos, A2
   bsr draw_string_hook
+
+  move.w base_vram_object_var, D0
+  rol.l #$08, D0
+  add.w #$80, D0
+  movea.l D0, A0 ; Object vram location in A0
+
+  movea.l #loop_count_string_start, A1
+  move.l #$00D00040, D5
+  moveq   #$7, D2 ; Draw eight characters
+  jsr $0093A0 ; Call draw high score
 
   rts
 ;-------------------
