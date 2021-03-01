@@ -13,7 +13,6 @@ Rowscroll & Scroll 2/3:
 6 - Switch between data every frame with base reg, layer/video control = 0/0
 7 - Do not update base reg, layer/video control = 0/0
 
-
 Palettes:
 0 - $3f sent to palette control, all pages, base pal reg updated
 1 - $01 sent to palette control, page 0 sprites, base pal reg updated
@@ -25,4 +24,13 @@ Palettes:
 7 - $15 sent to palette control, stars1/sprites/scroll2, base pal reg updated
 8 - $2A sent to palette control, stars2/scroll3/scroll1, base pal reg updated
 9 - Nothing sent to palette control or base reg
+
+Control Regs (B3):
+0 - Default, layer control unknown bits off, video control on
+1 - layer control unknown 1/2 on/off, video control on
+2 - layer control unknown 2/2 off/on, video control on
+3 - layer control unknown bits off, video control 1/2/3 off/on/on
+4 - layer control unknown bits off, video control 1/2/3 on/off/on
+5 - layer control unknown bits off, video control 1/2/3 on/on/off
+6 - layer controll scroll1 enable off, unknown bits off, video control on
 
