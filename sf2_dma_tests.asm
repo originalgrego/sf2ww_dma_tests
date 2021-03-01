@@ -114,10 +114,6 @@ menu_item_count = $06
  org $000752
    jmp hijack_clear_ram
  
- ; Use d2 instead of d6 for initial draw routine
- org $0093D0
-  dbra  D2, $93a0
- 
 ;-------------------
 ; Stop vsync handling after inputs are read and palette updated and do custom logic
  org $000A9C
@@ -871,8 +867,23 @@ draw_count:
   movea.l #loop_count_string_start, A1
   move.l #$00D00040, D5
   moveq   #$7, D2 ; Draw eight characters
-  jsr $0093A0 ; Call draw high score
+  bsr draw_object_text
 
+  rts
+;-------------------
+
+;-------------------
+draw_object_text:
+  moveq   #$0, D0
+  move.b  (A1)+, D0
+  addi.w  #-$7f80, D0
+
+  move.l  D5, (A0)+
+  move.w  D0, (A0)+
+  move.w  #$d, (A0)+
+
+  addi.l  #$c0000, D5 ; Change x position
+  dbra    D2, draw_object_text
   rts
 ;-------------------
 
