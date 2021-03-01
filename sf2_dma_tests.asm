@@ -15,6 +15,7 @@ scroll_2_select = $ff8432
 scroll_3_select = $ff8433
 object_select = $ff8434
 row_scroll_select = $ff8435
+control_select = $ff8436
 
 value_string_pos = $ff8460
 value_string_start = $ff8463
@@ -93,6 +94,8 @@ layer_control_scroll_3_off = $FFFD
 
 rowscroll_on = $0001
 rowscroll_off = $FFFE
+
+menu_item_count = $06
 
  org  0
   incbin "build\sf2.bin"
@@ -374,11 +377,30 @@ clamp_value_and_update_pointers:
 
 .clamp_check_b2
   btst #b_input_b2, D1
-  beq .clamp_exit
+  beq .clamp_check_b3
   
   bsr handle_row_scroll_value_change
 
+.clamp_check_b3
+  btst #b_input_b3, D1
+  beq .clamp_exit
+  
+  bsr handle_control_value_change
+
 .clamp_exit
+  rts
+;-------------------
+
+;-------------------
+handle_control_value_change:
+  movea.l #control_select, A0
+  move.b (A0), D0
+  cmpi.b #$02, D0
+  bne .control_continue
+  
+  move.b #$00, (A0)
+  
+.control_continue
   rts
 ;-------------------
 
@@ -764,7 +786,7 @@ update_value_string:
   movea.l #value_string_start, A1
   movea.l #nibble_to_char, A2
   
-  moveq #$05, D0
+  moveq #menu_item_count, D0
 
 .update_value_string_loop  
   moveq #$00, D1
@@ -786,7 +808,7 @@ update_value_string:
 
 ;-------------------
 increment_value:
-  moveq #$05, D0 ; Check six inputs, 00 - 05
+  moveq #menu_item_count, D0
 
 .increment_value_loop
   btst D0, D1
@@ -978,19 +1000,19 @@ spacer_string_1:
   dc.b $10, $0b, $00, "                  ", $00
 
 control_string:
-  dc.b $10, $0c, $00, "R  L  D  U  B1 B2 ", $00
+  dc.b $10, $0c, $00, "R  L  D  U  B1 B2 B3", $00
 
 spacer_string_2:
   dc.b $10, $0d, $00, "                  ", $00
 
 config_string:
-  dc.b $10, $0e, $00, "PL S1 S2 S3 OB RS ", $00
+  dc.b $10, $0e, $00, "PL S1 S2 S3 OB RS CT", $00
 
 spacer_string_3:
   dc.b $10, $0f, $00, "                  ", $00
 
 default_value_string:
-  dc.b $10, $10, $00, "0  0  0  0  0  0  ", $00
+  dc.b $10, $10, $00, "0  0  0  0  0  0  0 ", $00
 
 default_count_string:
   dc.b $14, $0A, $00, $00

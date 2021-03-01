@@ -1692,12 +1692,14 @@
 0093A8  addi.w  #-$7f80, D0
 0093AC  move.w  D0, ($4,A0)
 0093B0  move.w  #$d, ($6,A0)
-0093B6  adda.l  #$8000, A0
+
+0093B6  adda.l  #$8000, A0 ; Move to other ram page
 0093BC  move.l  D5, (A0)+
 0093BE  move.w  D0, (A0)+
 0093C0  move.w  #$d, (A0)+
-0093C4  addi.l  #$c0000, D5
-0093CA  suba.l  #$8000, A0
+
+0093C4  addi.l  #$c0000, D5 ; Change x position
+0093CA  suba.l  #$8000, A0 ; Return to first page
 0093D0  dbra    D6, $93a0
 0093D4  rts
 ; Draw high score name
