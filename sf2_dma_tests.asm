@@ -78,6 +78,7 @@ input_b3 = $0040
 scroll_2_pos_offset = $3a
 scroll_3_pos_offset = $3e
 
+
 video_control_offset = $4c
 
 video_control_scroll_2_on = $0004
@@ -85,12 +86,36 @@ video_control_scroll_2_off = $FFFB
 video_control_scroll_3_on = $0008
 video_control_scroll_3_off = $FFF7
 
+video_control_unknown_1_on = $0002
+video_control_unknown_1_off = $FFFD
+video_control_unknown_2_on = $0010
+video_control_unknown_2_off = $FFEF
+video_control_unknown_3_on = $0020
+video_control_unknown_3_off = $FFDF
+
+
 layer_control_offset = $52
 
+layer_control_scroll_1_on = $0008
+layer_control_scroll_1_off = $FFF7
 layer_control_scroll_2_on = $0010
 layer_control_scroll_2_off = $FFEF
 layer_control_scroll_3_on = $0002
 layer_control_scroll_3_off = $FFFD
+
+layer_control_unknown_1_on = $0004
+layer_control_unknown_1_off = $FFFB
+layer_control_unknown_2_on = $0020
+layer_control_unknown_2_off = $FFDF
+
+;-----------------
+; Layer control
+;
+; UU UU OO OO   S1 S1 S2 S2   S3 S3 SF2 S2E   S1E SF1 S3E RS    
+; 0  0  0  0    1  1  1  0    1  0  0   1     1   0   1   1
+
+default_layer_control = $079B
+;-----------------
 
 rowscroll_on = $0001
 rowscroll_off = $FFFE
@@ -387,18 +412,103 @@ clamp_value_and_update_pointers:
   rts
 ;-------------------
 
-;-------------------
+;===========================================
 handle_control_value_change:
   movea.l #control_select, A0
   move.b (A0), D0
-  cmpi.b #$02, D0
+  cmpi.b #$07, D0
   bne .control_continue
   
   move.b #$00, (A0)
   
 .control_continue
+  moveq #$00, D0
+  move.b (A0), D0
+  add.w   D0, D0
+  add.w   D0, D0
+  movea.l control_value_jump_tbl(PC,D0.w), A0
+  jsr     (A0)
+
   rts
+
 ;-------------------
+  
+control_value_jump_tbl:
+  dc.l control_value_0, control_value_1, control_value_2, control_value_3, control_value_4, control_value_5, control_value_6
+
+;-------------------
+
+control_value_0:
+  ori.w #layer_control_scroll_1_on, (layer_control_offset, A5)   
+  andi.w #layer_control_unknown_1_off, (layer_control_offset, A5)   
+  andi.w #layer_control_unknown_2_off, (layer_control_offset, A5)   
+  
+  ori.w #video_control_unknown_1_on, (video_control_offset, A5)
+  ori.w #video_control_unknown_2_on, (video_control_offset, A5)
+  ori.w #video_control_unknown_3_on, (video_control_offset, A5)
+  rts
+
+control_value_1:
+  ori.w #layer_control_scroll_1_on, (layer_control_offset, A5)   
+  ori.w #layer_control_unknown_1_on, (layer_control_offset, A5)   
+  andi.w #layer_control_unknown_2_off, (layer_control_offset, A5)   
+  
+  ori.w #video_control_unknown_1_on, (video_control_offset, A5)
+  ori.w #video_control_unknown_2_on, (video_control_offset, A5)
+  ori.w #video_control_unknown_3_on, (video_control_offset, A5)
+  rts
+
+control_value_2:
+  ori.w #layer_control_scroll_1_on, (layer_control_offset, A5)   
+  andi.w #layer_control_unknown_1_off, (layer_control_offset, A5)   
+  ori.w #layer_control_unknown_2_on, (layer_control_offset, A5)   
+  
+  ori.w #video_control_unknown_1_on, (video_control_offset, A5)
+  ori.w #video_control_unknown_2_on, (video_control_offset, A5)
+  ori.w #video_control_unknown_3_on, (video_control_offset, A5)
+  rts
+
+control_value_3:
+  ori.w #layer_control_scroll_1_on, (layer_control_offset, A5)   
+  andi.w #layer_control_unknown_1_off, (layer_control_offset, A5)   
+  andi.w #layer_control_unknown_2_off, (layer_control_offset, A5)   
+  
+  andi.w #video_control_unknown_1_off, (video_control_offset, A5)
+  ori.w #video_control_unknown_2_on, (video_control_offset, A5)
+  ori.w #video_control_unknown_3_on, (video_control_offset, A5)
+  rts
+
+control_value_4:
+  ori.w #layer_control_scroll_1_on, (layer_control_offset, A5)   
+  andi.w #layer_control_unknown_1_off, (layer_control_offset, A5)   
+  andi.w #layer_control_unknown_2_off, (layer_control_offset, A5)   
+  
+  ori.w #video_control_unknown_1_on, (video_control_offset, A5)
+  andi.w #video_control_unknown_2_off, (video_control_offset, A5)
+  ori.w #video_control_unknown_3_on, (video_control_offset, A5)
+  rts
+
+control_value_5:
+  ori.w #layer_control_scroll_1_on, (layer_control_offset, A5)   
+  andi.w #layer_control_unknown_1_off, (layer_control_offset, A5)   
+  andi.w #layer_control_unknown_2_off, (layer_control_offset, A5)   
+  
+  ori.w #video_control_unknown_1_on, (video_control_offset, A5)
+  ori.w #video_control_unknown_2_on, (video_control_offset, A5)
+  andi.w #video_control_unknown_3_off, (video_control_offset, A5)
+  rts
+
+control_value_6:
+  andi.w #layer_control_scroll_1_off, (layer_control_offset, A5)   
+  andi.w #layer_control_unknown_1_off, (layer_control_offset, A5)   
+  andi.w #layer_control_unknown_2_off, (layer_control_offset, A5)   
+  
+  ori.w #video_control_unknown_1_on, (video_control_offset, A5)
+  ori.w #video_control_unknown_2_on, (video_control_offset, A5)
+  ori.w #video_control_unknown_3_on, (video_control_offset, A5)
+
+  rts
+;===========================================
 
 ;===========================================
 handle_palette_value_change:
@@ -955,11 +1065,6 @@ upload_object_data:
   rts
 ;-----------------
 
-; Layer control
-; UU UU OO OO S1 S1 S2 S2 S3 S3 S1E S2E S3E SF1 SF2 RS    
-; 0  0  0  0  1  1  1  0  0  1  0   1   1   0   1   0
-;-----------------
-
 upload_scroll23_data:
   move.w #$2000, D0
   movea.l #$00904000, A0
@@ -982,7 +1087,7 @@ upload_scroll23_data:
   ; Position scroll layers and enable them
   move.l #$01c00200, (scroll_2_pos_offset, A5)
   move.l #$03000400, (scroll_3_pos_offset, A5)
-  move.w #$079B, (layer_control_offset, A5) ; Vega stage settings + untested rowscroll bit
+  move.w #default_layer_control, (layer_control_offset, A5) ; Vega stage settings + untested rowscroll bit
   
   rts
 
